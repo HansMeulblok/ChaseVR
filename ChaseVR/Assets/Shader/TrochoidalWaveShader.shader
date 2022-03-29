@@ -7,9 +7,9 @@ Shader "Custom/TrochoidalWaveShader"
         _Glossiness("Smoothness", Range(0,1)) = 0.5
         _Metallic("Metallic", Range(0,1)) = 0.0
 
-        _DeltaSpeed ("Delta Speed", Float) = 1
-        _Offset ("Offset", Float) = 1
-        _Radius ("Radius", Float) = 1
+        _DeltaSpeed("Delta Speed", Float) = 1
+        _Offset("Offset", Float) = 1
+        _Radius("Radius", Float) = 1
 
         _WaveStartPos ("Wave Start Position", Vector) = (-50, 0, -45, 1)
     }
@@ -62,6 +62,7 @@ Shader "Custom/TrochoidalWaveShader"
             rotatedOffset.x = sin(_Time.x * _DeltaSpeed + worldSpace.x * _Offset) * _Radius;
             rotatedOffset.y = cos(_Time.x * _DeltaSpeed + worldSpace.x * _Offset) * _Radius;
             v.vertex.xyz += mul(unity_WorldToObject, rotatedOffset);
+            
         }
 
         void surf (Input IN, inout SurfaceOutputStandard o)

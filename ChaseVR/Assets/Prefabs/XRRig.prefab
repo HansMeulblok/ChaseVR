@@ -56,8 +56,8 @@ MonoBehaviour:
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
   m_ControllerNode: 4
-  m_SelectUsage: 2
-  m_ActivateUsage: 4
+  m_SelectUsage: 14
+  m_ActivateUsage: 14
   m_UIPressUsage: 2
   m_AxisToPressThreshold: 0.9
   m_RotateAnchorLeft: 16
@@ -1228,8 +1228,8 @@ MonoBehaviour:
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
   m_ControllerNode: 4
-  m_SelectUsage: 3
-  m_ActivateUsage: 2
+  m_SelectUsage: 5
+  m_ActivateUsage: 5
   m_UIPressUsage: 2
   m_AxisToPressThreshold: 0.1
   m_RotateAnchorLeft: 16
@@ -1342,6 +1342,7 @@ GameObject:
   - component: {fileID: 1444128592}
   - component: {fileID: 1444128594}
   - component: {fileID: 1601895678}
+  - component: {fileID: 6880152706748495615}
   m_Layer: 0
   m_Name: XRRig
   m_TagString: Untagged
@@ -1444,3 +1445,25 @@ MonoBehaviour:
   TeleportFade: 0
   activationThreshold: 0.5
   blackOutSquare: {fileID: 0}
+--- !u!114 &6880152706748495615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8736353652022170056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4f2c0214c9b494fa7eb5b8b2c02885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_System: {fileID: 0}
+  m_TurnAmount: 45
+  m_DebounceTime: 0.5
+  m_EnableTurnLeftRight: 1
+  m_EnableTurnAround: 1
+  m_TurnUsage: 0
+  m_Controllers:
+  - {fileID: 8736353651792482940}
+  - {fileID: 8736353650507309305}
+  m_DeadZone: 0.75

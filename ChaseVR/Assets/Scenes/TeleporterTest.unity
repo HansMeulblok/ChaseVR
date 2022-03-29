@@ -358,6 +358,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1601895678, guid: c7157b165a27ffd4fa342e83fbe42cdb, type: 3}
+      propertyPath: teleportActivationButting
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8736353652022170056, guid: c7157b165a27ffd4fa342e83fbe42cdb,
         type: 3}
       propertyPath: m_Name

@@ -5,37 +5,54 @@ using UnityEngine;
 public class SurfBoardMovement : MonoBehaviour
 {
     public float speed;
-    public bool start = false;
     public Material waveMaterial;
 
+    [HideInInspector]
     public float _DeltaSpeed;
+    [HideInInspector]
     public float _Offset;
+    [HideInInspector]
     public float _Radius;
 
+    [HideInInspector]
     public Vector3 _WaveStartPos;
+    [HideInInspector]
     public Vector3 _RotatedOffset;
+
+    public float timeValue;
+    [HideInInspector]
+    public float t;
 
     private void Start()
     {
         speed *= 0.01f;
 
+        _DeltaSpeed = waveMaterial.GetFloat("_DeltaSpeed");
+        _Offset = waveMaterial.GetFloat("_Offset");
+        _Radius = waveMaterial.GetFloat("_Radius");
+        _WaveStartPos = waveMaterial.GetVector("_WaveStartPos");
+
+        timeValue = 0;
+        
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-    }
+        if (transform.position.x <= 75f)
+        {
+            transform.position += Vector3.right * speed;
+            transform.position = new Vector3(transform.position.x, Mathf.Lerp(1.38f, 0.2f, t), transform.position.z);
+        }
 
+        waveMaterial.SetVector("_SurfBoardPos", transform.position);
 
-    public void Floater()
-    {
-        //_Radius = 0.7f * Mathf.Log(-(Vector3.Distance(worldSpace, _WaveStartPos) - 120)) - 1;
-        //_Radius = Mathf.Clamp(_Radius, 0.1f, 2f);
+        t += 0.2f * Time.deltaTime;
 
+        timeValue += Time.deltaTime;
+             
 
-        //_RotatedOffset.x = Mathf.Sin(Time.time * _DeltaSpeed + worldSpace.x * _Offset) * _Radius;
-        //_RotatedOffset.y = Mathf.Cos(Time.time * _DeltaSpeed + worldSpace.x * _Offset) * _Radius;
-        //v.vertex.xyz += mul(unity_WorldToObject, rotatedOffset);
+        waveMaterial.SetFloat("_TimeValue", timeValue);
     }
 }

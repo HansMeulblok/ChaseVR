@@ -11,7 +11,10 @@ Shader "Custom/TrochoidalWaveShader"
         _Offset("Offset", Float) = 1
         _Radius("Radius", Float) = 1
 
-        _WaveStartPos ("Wave Start Position", Vector) = (-50, 0, -45, 1)
+        _WaveStartPos("Wave Start Position", Vector) = (-50, 0, -45, 1)
+        _SurfBoardPos("Surf Board Pos", Vector) = (0, 0, 0, 1)
+
+        _TimeValue("Time Value", Float) = 1
     }
     SubShader
     {
@@ -40,7 +43,12 @@ Shader "Custom/TrochoidalWaveShader"
         float _Offset;
         float _Radius;
 
+        float _TimeValue;
+
         float3 _WaveStartPos;
+        float3 _SurfBoardPos;
+        float3 _WorldSpace;
+        float3 _RotatedOffset;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -51,17 +59,17 @@ Shader "Custom/TrochoidalWaveShader"
 
         void vert (inout appdata_full v) 
         {
-            float3 worldSpace = mul(unity_ObjectToWorld, v.vertex);
-            float3 rotatedOffset = float3(0, 0, 0);
+            _WorldSpace = mul(unity_ObjectToWorld, v.vertex);
+            _RotatedOffset = float3(0, 0, 0);
 
-            _Radius = 0.7 * log(-(distance(worldSpace, _WaveStartPos) - 120)) - 1;
+            _Radius = 0.7 * log(-(distance(_WorldSpace, _WaveStartPos) - 120)) - 1;
+            _Radius /= distance(_WorldSpace.x, _SurfBoardPos.x) * 0.3;
+        
             _Radius = clamp(_Radius, 0.1, 2);
 
-            //_Radius = _Radius / distance(worldSpace, _WaveStartPos) * 25;
-
-            rotatedOffset.x = sin(_Time.x * _DeltaSpeed + worldSpace.x * _Offset) * _Radius;
-            rotatedOffset.y = cos(_Time.x * _DeltaSpeed + worldSpace.x * _Offset) * _Radius;
-            v.vertex.xyz += mul(unity_WorldToObject, rotatedOffset);
+            _RotatedOffset.x = sin(_TimeValue * _DeltaSpeed + _WorldSpace.x * _Offset) * _Radius;
+            _RotatedOffset.y = cos(_TimeValue * _DeltaSpeed + _WorldSpace.x * _Offset) * _Radius;
+            v.vertex.xyz += mul(unity_WorldToObject, _RotatedOffset);
             
         }
 

@@ -233,15 +233,15 @@ GameObject:
   - component: {fileID: 13571440}
   - component: {fileID: 13571439}
   - component: {fileID: 13571438}
-  - component: {fileID: 13571441}
   - component: {fileID: 13571442}
+  - component: {fileID: 13571441}
   m_Layer: 0
   m_Name: LeftHandSurfInteractionTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &13571437
 Transform:
   m_ObjectHideFlags: 0
@@ -250,8 +250,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13571436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 1}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: -0.78, y: 0, z: 0.659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1599262823}
   m_RootOrder: 5
@@ -288,7 +288,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e9cab53fe3c012041965a0ef5a6cf2f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -327,7 +327,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 13571436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b06e8a825c432a443b8c6056968da69e, type: 3}
+  m_Script: {fileID: 11500000, guid: c51607efa2c782c4889f92ab95a5cdc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!54 &13571442
@@ -1126,15 +1126,15 @@ GameObject:
   - component: {fileID: 157117238}
   - component: {fileID: 157117237}
   - component: {fileID: 157117236}
-  - component: {fileID: 157117235}
   - component: {fileID: 157117239}
+  - component: {fileID: 157117235}
   m_Layer: 0
   m_Name: RighttHandSurfInteractionTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &157117234
 Transform:
   m_ObjectHideFlags: 0
@@ -1143,8 +1143,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157117233}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: -1}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 0.75, y: 0, z: 0.677}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1599262823}
   m_RootOrder: 6
@@ -1158,7 +1158,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 157117233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b06e8a825c432a443b8c6056968da69e, type: 3}
+  m_Script: {fileID: 11500000, guid: c51607efa2c782c4889f92ab95a5cdc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &157117236
@@ -1193,7 +1193,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e9cab53fe3c012041965a0ef5a6cf2f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2648,7 +2648,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4190c1729f0dd414baae4599c571cd35,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -38.01
+      value: -39.69
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4190c1729f0dd414baae4599c571cd35,
         type: 3}
@@ -11466,13 +11466,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845c87b0b58da2740ace41bcea76fbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7.3
   waveMaterial: {fileID: 2100000, guid: 41d72b1301e262a4c94697f7548617f2, type: 2}
-  _DeltaSpeed: 0
-  _Offset: 0
-  _Radius: 0
-  _WaveStartPos: {x: 0, y: 0, z: 0}
-  _RotatedOffset: {x: 0, y: 0, z: 0}
+  speedMultiplier: 0.068
+  surfBoardSpeed: 0
+  shaderSpeed: 0
+  radius: 0
+  waveStartPos: {x: 0, y: 0, z: 0}
+  rotatedOffset: {x: 0, y: 0, z: 0}
   timeValue: 0
   t: 0
 --- !u!4 &1503952436 stripped
@@ -13699,6 +13699,66 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 884301263}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1765750444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1765750446}
+  - component: {fileID: 1765750445}
+  m_Layer: 0
+  m_Name: SurfInteractionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1765750445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765750444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b06e8a825c432a443b8c6056968da69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handInteractionTriggers:
+  - {fileID: 0}
+  - {fileID: 0}
+  triggersMeshRenderers:
+  - {fileID: 0}
+  - {fileID: 0}
+  surfTriggerCorrect: {fileID: 2100000, guid: 2bc583c1c9987d1409eafe4f210f5bad, type: 2}
+  surfTriggerIncorrect: {fileID: 2100000, guid: e9cab53fe3c012041965a0ef5a6cf2f4,
+    type: 2}
+  canTriggerLeft: 1
+  canTriggerRight: 1
+  canPause: 1
+  waveMaterial: {fileID: 2100000, guid: 41d72b1301e262a4c94697f7548617f2, type: 2}
+  timerTime: 3
+  stateBothHands: 0
+  stateLeftHand: 0
+  stateRightHand: 0
+--- !u!4 &1765750446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765750444}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.9668903, y: -24.089703, z: -48.74069}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1769991367
 GameObject:
   m_ObjectHideFlags: 0

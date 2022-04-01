@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SurfBoardMovement : MonoBehaviour
-{
-    public float speed;
+{   
     public Material waveMaterial;
+    public float speedMultiplier;
 
     [HideInInspector]
-    public float _DeltaSpeed;
+    public float surfBoardSpeed;
     [HideInInspector]
-    public float _Offset;
+    public float shaderSpeed;
     [HideInInspector]
-    public float _Radius;
+    public float radius;
 
     [HideInInspector]
-    public Vector3 _WaveStartPos;
+    public Vector3 waveStartPos;
     [HideInInspector]
-    public Vector3 _RotatedOffset;
+    public Vector3 rotatedOffset;
 
     public float timeValue;
     [HideInInspector]
@@ -25,25 +25,25 @@ public class SurfBoardMovement : MonoBehaviour
 
     private void Start()
     {
-        speed *= 0.01f;
+        
+        
 
-        _DeltaSpeed = waveMaterial.GetFloat("_DeltaSpeed");
-        _Offset = waveMaterial.GetFloat("_Offset");
-        _Radius = waveMaterial.GetFloat("_Radius");
-        _WaveStartPos = waveMaterial.GetVector("_WaveStartPos");
+        radius = waveMaterial.GetFloat("_Radius");
+        waveStartPos = waveMaterial.GetVector("_WaveStartPos");
 
         timeValue = 0;
-        
-        
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        shaderSpeed = waveMaterial.GetFloat("_DeltaSpeed");
+        surfBoardSpeed = shaderSpeed * speedMultiplier;
+
         if (transform.position.x <= 75f)
         {
-            transform.position += Vector3.right * speed;
-            transform.position = new Vector3(transform.position.x, Mathf.Lerp(1.38f, 0.2f, t), transform.position.z);
+            transform.position += Vector3.right * surfBoardSpeed;
+            transform.position = new Vector3(transform.position.x, transform.position.y/*Mathf.Lerp(1.38f, 0.2f, t)*/, transform.position.z);
         }
 
         waveMaterial.SetVector("_SurfBoardPos", transform.position);

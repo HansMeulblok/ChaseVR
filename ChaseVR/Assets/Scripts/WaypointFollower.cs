@@ -7,6 +7,7 @@ public class WaypointFollower : MonoBehaviour
     [SerializeField] public Waypoints waypoints;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float distanceThreshold;
+    [SerializeField] private float distanceToNextWaypoint;
     private Transform currentWayPoint;
     private Transform lookAtPoint;
 
@@ -25,12 +26,12 @@ public class WaypointFollower : MonoBehaviour
             currentWayPoint = waypoints.GetNextWaypoint(currentWayPoint);
         }
 
-        // transform.LookAt(new Vector3(transform.position.x, lookAtPoint.position.y, lookAtPoint.position.z));
-        
         var lookDir = lookAtPoint.position - transform.position;
         lookDir.y = 0;
-        // lookDir.z = 0;
         transform.rotation = Quaternion.LookRotation(lookDir);
+
+        
+        distanceToNextWaypoint = Vector3.Distance(transform.position, waypoints.GetNextWaypoint(currentWayPoint).transform.position);
 
     }
 }

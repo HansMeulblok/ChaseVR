@@ -16,7 +16,7 @@ public class SurfInteractionTriggerRight : MonoBehaviour
             //SurfInteractionManager.Instance.rightHandInTrigger = true;
             
             SurfInteractionManager.Instance.SetTriggerMaterial(gameObject.GetComponent<MeshRenderer>(),
-                                                               SurfInteractionManager.Instance.surfTriggerCorrect);
+                                                               SurfInteractionManager.Instance.surfTriggerCorrectLeft);
 
             Debug.Log("right hand stay");
         }
@@ -29,7 +29,7 @@ public class SurfInteractionTriggerRight : MonoBehaviour
             //SurfInteractionManager.Instance.rightHandInTrigger = false;
 
             SurfInteractionManager.Instance.SetTriggerMaterial(gameObject.GetComponent<MeshRenderer>(),
-                                                              SurfInteractionManager.Instance.surfTriggerIncorrect);
+                                                              SurfInteractionManager.Instance.surfTriggerIncorrectLeft);
 
             Debug.Log("right hand exit");
         }

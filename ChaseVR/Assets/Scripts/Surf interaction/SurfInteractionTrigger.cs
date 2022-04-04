@@ -34,7 +34,8 @@ public class SurfInteractionTrigger : MonoBehaviour
         }
 
         if (SurfInteractionManager.Instance.stateLeftHand == SurfInteractionManager.StateLeftHand.LeftInTrigger &&
-            SurfInteractionManager.Instance.stateRightHand == SurfInteractionManager.StateRightHand.RightInTrigger)
+            SurfInteractionManager.Instance.stateRightHand == SurfInteractionManager.StateRightHand.RightInTrigger &&
+            SurfInteractionManager.Instance.stateBothHands == SurfInteractionManager.StateBothHands.BothHandsOutTrigger)
         {
             SurfInteractionManager.Instance.stateBothHands = SurfInteractionManager.StateBothHands.BothHandsInTrigger;
         }
@@ -52,8 +53,16 @@ public class SurfInteractionTrigger : MonoBehaviour
             SurfInteractionManager.Instance.stateRightHand = SurfInteractionManager.StateRightHand.RightOutTrigger;
         }
 
+        if ((SurfInteractionManager.Instance.stateLeftHand == SurfInteractionManager.StateLeftHand.LeftOutTrigger ||
+            SurfInteractionManager.Instance.stateRightHand == SurfInteractionManager.StateRightHand.RightOutTrigger) && 
+            !SurfInteractionManager.Instance.isPlaying)
+        {
+            SurfInteractionManager.Instance.stateBothHands = SurfInteractionManager.StateBothHands.BothHandsOutTrigger;
+        }
+        
         if (SurfInteractionManager.Instance.stateLeftHand == SurfInteractionManager.StateLeftHand.LeftOutTrigger &&
-            SurfInteractionManager.Instance.stateRightHand == SurfInteractionManager.StateRightHand.RightOutTrigger)
+            SurfInteractionManager.Instance.stateRightHand == SurfInteractionManager.StateRightHand.RightOutTrigger && 
+            SurfInteractionManager.Instance.isPlaying)
         {
             SurfInteractionManager.Instance.stateBothHands = SurfInteractionManager.StateBothHands.BothHandsOutTrigger;
         }

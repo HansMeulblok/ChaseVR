@@ -12,17 +12,18 @@ public class SurfInteractionManager : MonoBehaviour
     [HideInInspector]
     public MeshRenderer[] triggersMeshRenderers = new MeshRenderer[2];// meshRendererLeft, meshRendererRight;
     [HideInInspector]
-    public Material surfTriggerCorrect, surfTriggerIncorrect;
+    public Material surfTriggerCorrectLeft, surfTriggerIncorrectLeft, surfTriggerCorrectRight, surfTriggerIncorrectRight;
     private Vector3 handInteractionTriggersScale;
 
     [HideInInspector]
-    public bool canTriggerLeft = true, canTriggerRight = true, canPause = true;
-
+    public bool canTriggerLeft = true, canTriggerRight = true, canPause = true, isPlaying = false;
 
     public Material waveMaterial;
     public float timerTime;
 
     private Coroutine leftHandCoroutine, rightHandCoroutine;
+
+    private SurfBoardMovement sbMove;
 
     public enum StateBothHands
     {
@@ -32,8 +33,8 @@ public class SurfInteractionManager : MonoBehaviour
 
     public enum StateLeftHand
     {
-        LeftInTrigger,
-        LeftOutTrigger
+        LeftOutTrigger,
+        LeftInTrigger
     }
 
     public enum StateRightHand
@@ -42,9 +43,22 @@ public class SurfInteractionManager : MonoBehaviour
         RightOutTrigger
     }
 
+    [HideInInspector]
     public StateBothHands stateBothHands;
+    [HideInInspector]
     public StateLeftHand stateLeftHand;
+    [HideInInspector]
     public StateRightHand stateRightHand;
+
+    [InspectorButton("ResumeSurfing")]
+    public bool clickResume;
+
+    [InspectorButton("PauseSurfing")]
+    public bool clickPause;
+
+
+    public float testValue;
+
 
     private void Awake()
     {
@@ -65,10 +79,15 @@ public class SurfInteractionManager : MonoBehaviour
             triggersMeshRenderers[i] = handInteractionTriggers[i].gameObject.GetComponent<MeshRenderer>();
         }
 
-        surfTriggerCorrect = Resources.Load("Materials/SurfTriggerCorrect", typeof(Material)) as Material;
-        surfTriggerIncorrect = Resources.Load("Materials/SurfTriggerIncorrect", typeof(Material)) as Material;
+        surfTriggerCorrectLeft = Resources.Load("Materials/SurfTriggerCorrectLeft", typeof(Material)) as Material;
+        surfTriggerIncorrectLeft = Resources.Load("Materials/SurfTriggerIncorrectLeft", typeof(Material)) as Material;
+        
+        surfTriggerCorrectRight = Resources.Load("Materials/SurfTriggerCorrectRight", typeof(Material)) as Material;
+        surfTriggerIncorrectRight = Resources.Load("Materials/SurfTriggerIncorrectRight", typeof(Material)) as Material;
 
         stateBothHands = StateBothHands.BothHandsOutTrigger;
+
+        sbMove = FindObjectOfType<SurfBoardMovement>();
     }
 
     private void Update()
@@ -87,6 +106,7 @@ public class SurfInteractionManager : MonoBehaviour
 
             case StateBothHands.BothHandsInTrigger:
 
+                if (isPlaying)
                 canPause = true;
 
                 break;
@@ -102,18 +122,22 @@ public class SurfInteractionManager : MonoBehaviour
         {
             case StateLeftHand.LeftOutTrigger:
 
-                SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerIncorrect);
-                ResetTriggerScale(0);
-                StopCoroutine(leftHandCoroutine);
+                ResetTriggerAlpha(0);
+                canTriggerLeft = true;
+
+                if (stateBothHands == StateBothHands.BothHandsOutTrigger && !isPlaying)
+                    SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerIncorrectLeft);
+                
+                if (leftHandCoroutine != null)
+                    StopCoroutine(leftHandCoroutine);
 
                 break;
 
             case StateLeftHand.LeftInTrigger:
 
-                SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerCorrect);
-
                 if (canTriggerLeft)
                 {
+                    SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerCorrectLeft);
                     leftHandCoroutine = StartCoroutine(TriggerTimer(timerTime, handInteractionTriggers[0].transform));
 
                     canTriggerLeft = false;
@@ -123,7 +147,7 @@ public class SurfInteractionManager : MonoBehaviour
 
             default:
 
-                SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerIncorrect);
+                SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerIncorrectLeft);
 
                 break;
         }
@@ -133,18 +157,22 @@ public class SurfInteractionManager : MonoBehaviour
         {
             case StateRightHand.RightOutTrigger:
 
-                SetTriggerMaterial(triggersMeshRenderers[1], surfTriggerIncorrect);
-                ResetTriggerScale(1);
-                StopCoroutine(rightHandCoroutine);
+                ResetTriggerAlpha(1);
+                canTriggerRight = true;
+
+                if (stateBothHands == StateBothHands.BothHandsOutTrigger && !isPlaying)
+                    SetTriggerMaterial(triggersMeshRenderers[1], surfTriggerIncorrectRight);
+
+                if (rightHandCoroutine != null)
+                    StopCoroutine(rightHandCoroutine);
 
                 break;
 
             case StateRightHand.RightInTrigger:
 
-                SetTriggerMaterial(triggersMeshRenderers[1], surfTriggerCorrect);
-
                 if (canTriggerRight)
                 {
+                    SetTriggerMaterial(triggersMeshRenderers[1], surfTriggerCorrectRight);
                     rightHandCoroutine = StartCoroutine(TriggerTimer(timerTime, handInteractionTriggers[1].transform));
 
                     canTriggerRight = false;
@@ -154,7 +182,7 @@ public class SurfInteractionManager : MonoBehaviour
 
             default:
 
-                SetTriggerMaterial(triggersMeshRenderers[1], surfTriggerIncorrect);
+                SetTriggerMaterial(triggersMeshRenderers[1], surfTriggerIncorrectRight);
 
                 break;
         }
@@ -166,30 +194,39 @@ public class SurfInteractionManager : MonoBehaviour
     {
         float t = 0;
         Color color;
-        
+
+        if (triggerTransform.gameObject.name.Contains("Left"))
+        {
+            color = surfTriggerCorrectLeft.color;
+        }
+        else
+        {
+            color = surfTriggerIncorrectRight.color;
+        }
+
+
+        //color = triggerTransform.GetComponent<MeshRenderer>().material.color;
+
         while (t < timerTime) 
         {
-            color = triggerTransform.GetComponent<MeshRenderer>().material.color;
+            color.r = 0.1f;
+            color.g = 1f;
+            color.b = 0f;
 
-            color.a = Mathf.Lerp(150, 0, (t / timerTime));
+            color.a = Mathf.Lerp(0.5f, 0, (t / timerTime));
 
             triggerTransform.GetComponent<MeshRenderer>().material.color = color;
 
-                //new Vector4(255, 3, 0, Mathf.Lerp(triggerTransform.GetComponent<MeshRenderer>().material.color.a, 0, (t / timerTime)));
-
             t += Time.deltaTime;
 
-            Debug.Log("time test" + t);
 
             yield return null;
         }
 
-        if (stateBothHands == StateBothHands.BothHandsInTrigger)
+        if (stateBothHands == StateBothHands.BothHandsInTrigger && !isPlaying)
         {
             ResumeSurfing();
         }
-
-        Debug.Log("time test end");
     }
 
     public void SetTriggerMaterial(MeshRenderer meshRenderer, Material triggerMat)
@@ -202,23 +239,36 @@ public class SurfInteractionManager : MonoBehaviour
 
     public void PauseSurfing()
     {
-        //transform.localScale = Vector3.one;
+        isPlaying = false;
+
+        //waveMaterial.SetFloat("_TimeValue", waveMaterial.GetFloat("_TimeValue") + 2.5f);
 
         waveMaterial.SetFloat("_DeltaSpeed", 0.2f);
-        canTriggerLeft = true;
-        canTriggerRight = true;
+
+        sbMove.timeValue += testValue;
     }
 
     public void ResumeSurfing()
     {
-        waveMaterial.SetFloat("_TimeValue", waveMaterial.GetFloat("_TimeValue") - 2.5f);
+        isPlaying = true;
+
+        //waveMaterial.SetFloat("_TimeValue", waveMaterial.GetFloat("_TimeValue") - 2.5f);
+        
         waveMaterial.SetFloat("_DeltaSpeed", 1.5f);
+
+        sbMove.timeValue -= testValue;
     }
 
-    public void ResetTriggerScale(int i)
+    public void ResetTriggerAlpha(int i)
     {
-        //handInteractionTriggers[i].transform.localScale = Vector3.one;
-        handInteractionTriggers[i].GetComponent<MeshRenderer>().material.color = new Vector4(255, 3, 0, 150);
+        if (handInteractionTriggers[i].GetComponent<MeshRenderer>().material == surfTriggerCorrectLeft ||
+            handInteractionTriggers[i].GetComponent<MeshRenderer>().material == surfTriggerCorrectRight)
+        {
+            Color color = handInteractionTriggers[i].GetComponent<MeshRenderer>().material.color;
 
+            color.a = 0.5f;
+
+            handInteractionTriggers[i].GetComponent<MeshRenderer>().material.color += color;
+        }
     }
 }

@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class WaypointFollower : MonoBehaviour
 {
-    [SerializeField] public Waypoints waypoints;
-    [SerializeField] private float moveSpeed;
+    [HideInInspector] [SerializeField] public Waypoints waypoints;
+    [HideInInspector] public float moveSpeed;
     [SerializeField] private float distanceThreshold;
     [SerializeField] private float distanceToNextWaypoint;
+    [SerializeField] private float distanceToNextCube;
     private Transform currentWayPoint;
     private Transform lookAtPoint;
+    public int index;
+    public int nextIndex;
 
     void Start()
     {
@@ -30,8 +33,32 @@ public class WaypointFollower : MonoBehaviour
         lookDir.y = 0;
         transform.rotation = Quaternion.LookRotation(lookDir);
 
-        
         distanceToNextWaypoint = Vector3.Distance(transform.position, waypoints.GetNextWaypoint(currentWayPoint).transform.position);
 
+        if(waypoints.transform.GetChild(nextIndex) != null)
+        {
+
+            distanceToNextCube = Vector3.Distance(transform.position, waypoints.transform.GetChild(nextIndex).position);
+
+            // Debug.Log( "index = "+ index + " distance to next cube " + distanceToNextCube);
+        }
+    }
+
+    public void UpdateIndex()
+    {
+        nextIndex = waypoints.getNextCube(index).GetSiblingIndex();
+        Debug.Log(index + " "+ nextIndex);
+    }
+
+    void PauseState()
+    {
+        // handle pause state
+        // move to next waypoint, stop moving after that
+        // bool for stopping the update also updated here
+    }
+
+    void OnDestroy()
+    {
+        
     }
 }

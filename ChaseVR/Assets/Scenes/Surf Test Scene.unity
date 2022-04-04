@@ -250,7 +250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13571436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.78, y: 0, z: 0.659}
+  m_LocalPosition: {x: -0.708, y: -0.587, z: 0.577}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1599262823}
@@ -1143,7 +1143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157117233}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 0, z: 0.677}
+  m_LocalPosition: {x: 0.591, y: -0.5870001, z: -0.7099999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1599262823}
@@ -5113,7 +5113,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 7.2064726e+31, y: 238458660, z: 4.5448167e+30, w: 4.0609862e+12}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -9560,6 +9560,16 @@ PrefabInstance:
       propertyPath: m_RequestedTrackingOriginMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8736353650279447052, guid: c7157b165a27ffd4fa342e83fbe42cdb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.36144
+      objectReference: {fileID: 0}
+    - target: {fileID: 8736353650279447052, guid: c7157b165a27ffd4fa342e83fbe42cdb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 8736353652022170056, guid: c7157b165a27ffd4fa342e83fbe42cdb,
         type: 3}
       propertyPath: m_Name
@@ -13734,17 +13744,22 @@ MonoBehaviour:
   triggersMeshRenderers:
   - {fileID: 0}
   - {fileID: 0}
-  surfTriggerCorrect: {fileID: 2100000, guid: 2bc583c1c9987d1409eafe4f210f5bad, type: 2}
-  surfTriggerIncorrect: {fileID: 2100000, guid: e9cab53fe3c012041965a0ef5a6cf2f4,
-    type: 2}
+  surfTriggerCorrectLeft: {fileID: 0}
+  surfTriggerIncorrectLeft: {fileID: 0}
+  surfTriggerCorrectRight: {fileID: 0}
+  surfTriggerIncorrectRight: {fileID: 0}
   canTriggerLeft: 1
   canTriggerRight: 1
   canPause: 1
+  isPlaying: 0
   waveMaterial: {fileID: 2100000, guid: 41d72b1301e262a4c94697f7548617f2, type: 2}
-  timerTime: 3
+  timerTime: 2
   stateBothHands: 0
   stateLeftHand: 0
-  stateRightHand: 0
+  stateRightHand: 1
+  clickResume: 0
+  clickPause: 0
+  testValue: 5
 --- !u!4 &1765750446
 Transform:
   m_ObjectHideFlags: 0

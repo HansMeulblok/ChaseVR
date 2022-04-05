@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine;
 
 public class WaypointFollower : MonoBehaviour
 {
     [HideInInspector] public Waypoints waypoints;
     [HideInInspector] public float moveSpeed;
     [HideInInspector] public bool canMove = true;
-    [SerializeField] private float distanceThreshold;
+    [HideInInspector] public float distanceThreshold;
     private Transform currentWayPoint;
     private Transform lookAtPoint;
 

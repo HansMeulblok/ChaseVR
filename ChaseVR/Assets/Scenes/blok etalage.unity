@@ -223,8 +223,8 @@ MonoBehaviour:
   blockEtalage: {fileID: 3179790484344420408, guid: 4c02c083be1f6834e8629874b04dc6bd,
     type: 3}
   amountOfBlocks: 8
-  interval: 1.9
-  speed: 1
+  spawnInterval: 3
+  speed: 1.5
   blockHolder: {fileID: 398322932}
 --- !u!1 &471609063
 GameObject:

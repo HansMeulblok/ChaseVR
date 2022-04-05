@@ -23,8 +23,10 @@ public class FollowerManager : MonoBehaviour
         for (int i = 0; i < amountOfBlocks; i++)
         {
             GameObject block = Instantiate(blockEtalage, Vector3.zero, Quaternion.identity, blockHolder);
-            block.GetComponentInChildren<WaypointFollower>().waypoints = this.gameObject.GetComponent<Waypoints>();
-            block.GetComponentInChildren<WaypointFollower>().moveSpeed = speed;
+            WaypointFollower waypointFollower = block.GetComponentInChildren<WaypointFollower>();
+            waypointFollower.waypoints = this.gameObject.GetComponent<Waypoints>();
+            waypointFollower.moveSpeed = speed;
+            waypointFollower.distanceThreshold = 0.5f;
 
             cubes.Add(block);
 
@@ -42,14 +44,16 @@ public class FollowerManager : MonoBehaviour
         {
             foreach (var cube in cubes)
             {
-                cube.GetComponentInChildren<WaypointFollower>().canMove = false;
+                WaypointFollower waypointFollower = cube.GetComponentInChildren<WaypointFollower>();
+                waypointFollower.canMove = false;
             }
         }
         else
         {
             foreach (var cube in cubes)
             {
-                cube.GetComponentInChildren<WaypointFollower>().canMove = true;
+                WaypointFollower waypointFollower = cube.GetComponentInChildren<WaypointFollower>();
+                waypointFollower.canMove = false;
             }
         }
 

@@ -20,27 +20,13 @@ public class FollowerManager : MonoBehaviour
         {
             GameObject block = Instantiate(blockEtalage, Vector3.zero, Quaternion.identity, blockHolder);
             block.GetComponentInChildren<WaypointFollower>().waypoints = this.gameObject.GetComponent<Waypoints>();
-            block.GetComponentInChildren<WaypointFollower>().index = i;
+            // block.GetComponentInChildren<WaypointFollower>().index = i;
             // Debug.Log(i);
-            block.GetComponentInChildren<WaypointFollower>().moveSpeed = 2;
+            block.GetComponentInChildren<WaypointFollower>().moveSpeed = 1;
 
             cubes.Add(block);
-            if(i == amountOfBlocks - 1)
-            {
-                foreach (var cube in cubes)
-                {
-                    cube.GetComponent<WaypointFollower>().UpdateIndex();
-                }
-            }
-            yield return new WaitForSeconds(interval);
-        }
-    }
 
-    public void UpdateEverything()
-    {
-        foreach (var cube in cubes)
-        {
-            cube.GetComponent<WaypointFollower>().UpdateIndex();
+            yield return new WaitForSeconds(interval);
         }
     }
 }

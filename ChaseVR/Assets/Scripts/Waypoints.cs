@@ -43,21 +43,4 @@ public class Waypoints : MonoBehaviour
             return transform.GetChild(0);
         }
     }
-
-    public Transform getNextCube(int index)
-    {
-        if(index == transform.childCount -1)
-        {
-            return transform.GetChild(0);
-        }
-        else
-        {
-            return transform.GetChild(index + 1); 
-        }
-    }
-
-    public void AddCube()
-    {
-        
-    }
 }

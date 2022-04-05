@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypoints: {fileID: 0}
   moveSpeed: 4
+  canMove: 1
   distanceThreshold: 1
 --- !u!1001 &3179790485760387827
 PrefabInstance:

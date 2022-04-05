@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine;
 
 public class WaypointFollower : MonoBehaviour
 {
     [HideInInspector] public Waypoints waypoints;
     [HideInInspector] public float moveSpeed;
+    [HideInInspector] public bool canMove = true;
     [SerializeField] private float distanceThreshold;
-    // [SerializeField] private float distanceToNextWaypoint;
-    // [SerializeField] private float distanceToNextCube;
     private Transform currentWayPoint;
     private Transform lookAtPoint;
 
@@ -22,6 +21,9 @@ public class WaypointFollower : MonoBehaviour
 
     void Update()
     {
+        if(!canMove)
+        return;
+
         transform.position = Vector3.MoveTowards(transform.position, currentWayPoint.position, moveSpeed * Time.deltaTime);
         if(Vector3.Distance(transform.position, currentWayPoint.position) < distanceThreshold)
         {
@@ -33,15 +35,12 @@ public class WaypointFollower : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(lookDir);
     }
 
-    public void Replace(InputAction.CallbackContext context)
+    public void Replace(Transform controller)
     {
         GameObject tempCube = Instantiate(this.gameObject, transform.position, Quaternion.identity);
+        tempCube.AddComponent<CubeScaling>();
+        tempCube.GetComponent<CubeScaling>().controllerTransform = controller;
         Destroy(tempCube.GetComponent<WaypointFollower>());
         gameObject.SetActive(false);
     } 
-
-    public void Revert()
-    {
-        
-    }
 }

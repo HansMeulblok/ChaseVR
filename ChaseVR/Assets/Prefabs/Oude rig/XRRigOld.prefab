@@ -1344,7 +1344,7 @@ GameObject:
   - component: {fileID: 1601895678}
   - component: {fileID: 6880152706748495615}
   m_Layer: 0
-  m_Name: XRRig
+  m_Name: XRRigOld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1441,9 +1441,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RightTeleporterRay: {fileID: 0}
   LeftTeleporterRay: {fileID: 1035135825}
-  teleportActivationButting: 2
-  TeleportFade: 0
+  teleportActivationButting: 14
+  TeleportFade: 14
   activationThreshold: 0.5
+  fadeThreshhold: 0.95
+  maxThreshhold: 0.99
+  minFade: 0.6
+  maxFade: 0.85
+  hasHitMax: 0
   blackOutSquare: {fileID: 0}
 --- !u!114 &6880152706748495615
 MonoBehaviour:

@@ -20,6 +20,7 @@ public class XRHandController : MonoBehaviour
     private float indexValue;
     private float thumbValue;
     private float threeFingersValue;
+    private Vector2 inputaxis;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class XRHandController : MonoBehaviour
     void Update()
     {
         AnimateHand();
+
     }
 
     InputDevice GetInputDevice()
@@ -56,7 +58,9 @@ public class XRHandController : MonoBehaviour
     void AnimateHand()
     {
         inputDevice.TryGetFeatureValue(CommonUsages.trigger, out indexValue);
+        //Debug.Log(indexValue);
         inputDevice.TryGetFeatureValue(CommonUsages.grip, out threeFingersValue);
+
 
         inputDevice.TryGetFeatureValue(CommonUsages.primaryTouch, out bool primaryTouched);
         inputDevice.TryGetFeatureValue(CommonUsages.secondaryTouch, out bool secondaryTouched);

@@ -22,7 +22,7 @@ public class CubeScaling : MonoBehaviour
         
         // change scale based on distance from controller
         float newScale = currentDistance / maxdistance;
-        if(newScale > minSize)
+        if(newScale > minSize && newScale <= maxSize)
         {
             transform.localScale = new Vector3(newScale, newScale, newScale);
         }

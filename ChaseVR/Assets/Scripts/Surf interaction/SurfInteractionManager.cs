@@ -144,7 +144,9 @@ public class SurfInteractionManager : MonoBehaviour
             case StateLeftHand.LeftOutTrigger:
 
                 ResetTriggerAlpha(0);
-                canTriggerLeft = true;
+
+                if (!isPlaying)
+                    canTriggerLeft = true;
 
                 if (stateBothHands == StateBothHands.BothHandsOutTrigger && !isPlaying)
                     SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerIncorrectLeft);
@@ -179,7 +181,9 @@ public class SurfInteractionManager : MonoBehaviour
             case StateRightHand.RightOutTrigger:
 
                 ResetTriggerAlpha(1);
-                canTriggerRight = true;
+
+                if (!isPlaying)
+                    canTriggerRight = true;
 
                 if (stateBothHands == StateBothHands.BothHandsOutTrigger && !isPlaying)
                     SetTriggerMaterial(triggersMeshRenderers[1], surfTriggerIncorrectRight);

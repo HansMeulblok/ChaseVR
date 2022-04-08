@@ -58,7 +58,7 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _DeltaSpeed: 0.2
+    - _DeltaSpeed: 1.8
     - _DeltaTimeSpeedValue: -76.619965
     - _DeltatimeSpeedValue: 1
     - _DetailNormalMapScale: 1
@@ -75,15 +75,15 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TimeValue: 1327.5527
-    - _Translation: -3
+    - _TimeValue: 22.76033
+    - _Translation: -2
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.252047, g: 0.61484754, b: 0.9056604, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RotatedOffset: {r: 0, g: 0, b: 0, a: 0}
-    - _SurfBoardPos: {r: 75.012184, g: 1.32, b: -50.11, a: 0}
+    - _SurfBoardPos: {r: 75.011734, g: 1.32, b: -50.11, a: 0}
     - _WaveStartPos: {r: -50, g: 0, b: -45, a: 0}
     - _WorldSpace: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SurfBoardMovement : MonoBehaviour
 {   
     public Material waveMaterial;
     public float speedMultiplier;
+
+    private string finalEnvironment = "FinalEnvironment";
 
     [HideInInspector]
     public float surfBoardSpeed;
@@ -51,5 +54,10 @@ public class SurfBoardMovement : MonoBehaviour
              
 
         waveMaterial.SetFloat("_TimeValue", timeValue);
+
+        if (transform.position.x >= 75f)
+        {
+            SceneManager.LoadScene(finalEnvironment);
+        }
     }
 }

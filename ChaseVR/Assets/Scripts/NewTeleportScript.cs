@@ -45,16 +45,23 @@ public class NewTeleportScript : MonoBehaviour
 
     public IEnumerator FadeToBlack()
     {
-        Color objectcolor = blackOutSquare.GetComponent<Image>().color;
-        float fadeamount;
-
-        while (blackOutSquare.GetComponent<Image>().color.a < 1)
+        if (!rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit raycasthit))
         {
-            fadeamount = objectcolor.a + (fadespeed * Time.deltaTime);
-            objectcolor = new Color(objectcolor.r, objectcolor.g, objectcolor.b, fadeamount);
-            blackOutSquare.GetComponent<Image>().color = objectcolor;
-            yield return null;
         }
+        else
+        {
+            Color objectcolor = blackOutSquare.GetComponent<Image>().color;
+            float fadeamount;
+
+            while (blackOutSquare.GetComponent<Image>().color.a < 1)
+            {
+                fadeamount = objectcolor.a + (fadespeed * Time.deltaTime);
+                objectcolor = new Color(objectcolor.r, objectcolor.g, objectcolor.b, fadeamount);
+                blackOutSquare.GetComponent<Image>().color = objectcolor;
+                yield return null;
+            }
+        }
+        
 
         StartCoroutine(Teleport());
     }
@@ -99,8 +106,4 @@ public class NewTeleportScript : MonoBehaviour
     {
         rayInteractor.enabled = false;
     }
-
-
-
-
 }

@@ -15,6 +15,7 @@ Shader "Custom/TrochoidalWaveShader"
         _SurfBoardPos("Surf Board Pos", Vector) = (0, 0, 0, 1)
 
         _TimeValue("Time Value", Float) = 1
+        _Translation("Translation", Float) = 0
     }
     SubShader
     {
@@ -50,6 +51,9 @@ Shader "Custom/TrochoidalWaveShader"
         float3 _WorldSpace;
         float3 _RotatedOffset;
 
+        float _Translation;
+
+
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
         // #pragma instancing_options assumeuniformscaling
@@ -67,8 +71,8 @@ Shader "Custom/TrochoidalWaveShader"
         
             _Radius = clamp(_Radius, 0.1, 2);
 
-            _RotatedOffset.x = sin(_TimeValue * _DeltaSpeed + _WorldSpace.x * _Offset) * _Radius;
-            _RotatedOffset.y = cos(_TimeValue * _DeltaSpeed + _WorldSpace.x * _Offset) * _Radius;
+            _RotatedOffset.x = sin((_TimeValue * _DeltaSpeed + _WorldSpace.x * _Offset)) * _Radius;
+            _RotatedOffset.y = cos(/*1.2 **/ (_TimeValue * _DeltaSpeed + _WorldSpace.x * _Offset) /*+ _Translation*/) * _Radius;
             v.vertex.xyz += mul(unity_WorldToObject, _RotatedOffset);
             
         }

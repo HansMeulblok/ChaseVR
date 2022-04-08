@@ -23,7 +23,10 @@ public class SurfInteractionManager : MonoBehaviour
 
     private Coroutine leftHandCoroutine, rightHandCoroutine;
 
+
     private SurfBoardMovement sbMove;
+
+    public bool interaction = false, /*minorInteraction = false*/ allInteraction = false;
 
     public enum StateBothHands
     {
@@ -73,25 +76,43 @@ public class SurfInteractionManager : MonoBehaviour
     }
 
     private void Start()
-    {
-        for (int i = 0; i < triggersMeshRenderers.Length; i++)
+    {        
+        if (interaction)
         {
-            triggersMeshRenderers[i] = handInteractionTriggers[i].gameObject.GetComponent<MeshRenderer>();
+            for (int i = 0; i < handInteractionTriggers.Length; i++)
+            {
+                triggersMeshRenderers[i] = handInteractionTriggers[i].gameObject.GetComponent<MeshRenderer>();
+            }
+
+            surfTriggerCorrectLeft = Resources.Load("Materials/SurfTriggerCorrectLeft", typeof(Material)) as Material;
+            surfTriggerIncorrectLeft = Resources.Load("Materials/SurfTriggerIncorrectLeft", typeof(Material)) as Material;
+
+            surfTriggerCorrectRight = Resources.Load("Materials/SurfTriggerCorrectRight", typeof(Material)) as Material;
+            surfTriggerIncorrectRight = Resources.Load("Materials/SurfTriggerIncorrectRight", typeof(Material)) as Material;
+
+
+            stateBothHands = StateBothHands.BothHandsOutTrigger;
         }
+        else
+        {
+            for (int i = 0; i < triggersMeshRenderers.Length; i++)
+            {
+                handInteractionTriggers[i].gameObject.SetActive(false);
+            }
 
-        surfTriggerCorrectLeft = Resources.Load("Materials/SurfTriggerCorrectLeft", typeof(Material)) as Material;
-        surfTriggerIncorrectLeft = Resources.Load("Materials/SurfTriggerIncorrectLeft", typeof(Material)) as Material;
+            stateBothHands = StateBothHands.BothHandsInTrigger;
+            ResumeSurfing();
+        }
         
-        surfTriggerCorrectRight = Resources.Load("Materials/SurfTriggerCorrectRight", typeof(Material)) as Material;
-        surfTriggerIncorrectRight = Resources.Load("Materials/SurfTriggerIncorrectRight", typeof(Material)) as Material;
-
-        stateBothHands = StateBothHands.BothHandsOutTrigger;
 
         sbMove = FindObjectOfType<SurfBoardMovement>();
     }
 
     private void Update()
     {
+
+        //waveMaterial.SetFloat("_DeltaTimeSpeedValue", waveMaterial.GetFloat("_TimeValue") * waveMaterial.GetFloat("_DeltaSpeed"));
+
         switch (stateBothHands)
         {
             case StateBothHands.BothHandsOutTrigger:
@@ -226,6 +247,14 @@ public class SurfInteractionManager : MonoBehaviour
         if (stateBothHands == StateBothHands.BothHandsInTrigger && !isPlaying)
         {
             ResumeSurfing();
+
+            if (!allInteraction)
+            {
+                for (int i = 0; i < triggersMeshRenderers.Length; i++)
+                {
+                    handInteractionTriggers[i].gameObject.SetActive(false);
+                }
+            }
         }
     }
 
@@ -241,22 +270,17 @@ public class SurfInteractionManager : MonoBehaviour
     {
         isPlaying = false;
 
-        //waveMaterial.SetFloat("_TimeValue", waveMaterial.GetFloat("_TimeValue") + 2.5f);
-
         waveMaterial.SetFloat("_DeltaSpeed", 0.2f);
-
-        sbMove.timeValue += testValue;
+        waveMaterial.SetFloat("_Translation", -3f);
     }
 
     public void ResumeSurfing()
     {
         isPlaying = true;
-
-        //waveMaterial.SetFloat("_TimeValue", waveMaterial.GetFloat("_TimeValue") - 2.5f);
         
-        waveMaterial.SetFloat("_DeltaSpeed", 1.5f);
+        waveMaterial.SetFloat("_DeltaSpeed", 1.8f);
+        waveMaterial.SetFloat("_Translation", -2f);
 
-        sbMove.timeValue -= testValue;
     }
 
     public void ResetTriggerAlpha(int i)

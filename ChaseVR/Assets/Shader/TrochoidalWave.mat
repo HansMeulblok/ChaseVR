@@ -41,7 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
-        m_Scale: {x: 2, y: 1}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -59,12 +59,14 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DeltaSpeed: 0.2
+    - _DeltaTimeSpeedValue: -76.619965
+    - _DeltatimeSpeedValue: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Metallic: 0
+    - _Metallic: 0.5
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Offset: -0.3
@@ -73,14 +75,15 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TimeValue: 76.27921
+    - _TimeValue: 1327.5527
+    - _Translation: -3
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.252047, g: 0.61484754, b: 0.9056604, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RotatedOffset: {r: 0, g: 0, b: 0, a: 0}
-    - _SurfBoardPos: {r: 75.005974, g: 1.32, b: -50.11, a: 0}
+    - _SurfBoardPos: {r: 75.012184, g: 1.32, b: -50.11, a: 0}
     - _WaveStartPos: {r: -50, g: 0, b: -45, a: 0}
     - _WorldSpace: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

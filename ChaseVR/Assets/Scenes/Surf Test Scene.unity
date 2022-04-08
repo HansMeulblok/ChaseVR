@@ -5113,7 +5113,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.2064726e+31, y: 238458660, z: 4.5448167e+30, w: 4.0609862e+12}
+  m_BoundingSphereOverride: {x: 0, y: 6.163164e-33, z: 2.9057e-41, w: 3.8205e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -13751,15 +13751,17 @@ MonoBehaviour:
   canTriggerLeft: 1
   canTriggerRight: 1
   canPause: 1
-  isPlaying: 0
+  isPlaying: 1
   waveMaterial: {fileID: 2100000, guid: 41d72b1301e262a4c94697f7548617f2, type: 2}
   timerTime: 2
+  interaction: 1
+  allInteraction: 1
   stateBothHands: 0
   stateLeftHand: 0
   stateRightHand: 1
   clickResume: 0
   clickPause: 0
-  testValue: 5
+  testValue: 1.2
 --- !u!4 &1765750446
 Transform:
   m_ObjectHideFlags: 0

@@ -25,9 +25,6 @@ public class SurfBoardMovement : MonoBehaviour
 
     private void Start()
     {
-        
-        
-
         radius = waveMaterial.GetFloat("_Radius");
         waveStartPos = waveMaterial.GetVector("_WaveStartPos");
 

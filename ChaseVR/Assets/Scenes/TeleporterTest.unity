@@ -2296,7 +2296,8 @@ MonoBehaviour:
   m_InteractionLayers:
     m_Bits: 3
   m_SelectMode: 1
-  m_CustomReticle: {fileID: 0}
+  m_CustomReticle: {fileID: 919132149155446097, guid: 10091dcbe184a9c4bb59928e7a17e6c4,
+    type: 3}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -2548,7 +2549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d261b605a10dc964ca509606bd31a6df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayInteractor: {fileID: 0}
 --- !u!1 &2083616314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,6 +2639,12 @@ PrefabInstance:
       propertyPath: m_Reticle
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3356822182493196208, guid: 6cfa0b77fbb5a974ba294dc041843be4,
+        type: 3}
+      propertyPath: m_Reticle
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: 10091dcbe184a9c4bb59928e7a17e6c4,
+        type: 3}
     - target: {fileID: 3356822182500583216, guid: 6cfa0b77fbb5a974ba294dc041843be4,
         type: 3}
       propertyPath: m_UIInputModule

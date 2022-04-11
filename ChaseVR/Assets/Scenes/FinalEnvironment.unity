@@ -209,9 +209,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 3
   m_SelectMode: 1
-  m_CustomReticle: {fileID: 0}
+  m_CustomReticle: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
+    type: 3}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -408,9 +409,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 3
   m_SelectMode: 1
-  m_CustomReticle: {fileID: 0}
+  m_CustomReticle: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
+    type: 3}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -918,9 +920,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 3
   m_SelectMode: 1
-  m_CustomReticle: {fileID: 0}
+  m_CustomReticle: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
+    type: 3}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -1022,9 +1025,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 3
   m_SelectMode: 1
-  m_CustomReticle: {fileID: 0}
+  m_CustomReticle: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
+    type: 3}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -1134,7 +1138,8 @@ MonoBehaviour:
   m_InteractionLayers:
     m_Bits: 3
   m_SelectMode: 1
-  m_CustomReticle: {fileID: 0}
+  m_CustomReticle: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
+    type: 3}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -1342,9 +1347,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 3
   m_SelectMode: 1
-  m_CustomReticle: {fileID: 0}
+  m_CustomReticle: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
+    type: 3}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -3209,9 +3215,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 3
   m_SelectMode: 1
-  m_CustomReticle: {fileID: 0}
+  m_CustomReticle: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
+    type: 3}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -3990,9 +3997,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 3
   m_SelectMode: 1
-  m_CustomReticle: {fileID: 0}
+  m_CustomReticle: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
+    type: 3}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -4195,9 +4203,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 3
   m_SelectMode: 1
-  m_CustomReticle: {fileID: 0}
+  m_CustomReticle: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
+    type: 3}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -5035,9 +5044,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 3
   m_SelectMode: 1
-  m_CustomReticle: {fileID: 0}
+  m_CustomReticle: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
+    type: 3}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -5692,9 +5702,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 3
   m_SelectMode: 1
-  m_CustomReticle: {fileID: 0}
+  m_CustomReticle: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
+    type: 3}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -5790,6 +5801,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
         type: 3}
+    - target: {fileID: 3356822182493196208, guid: 6cfa0b77fbb5a974ba294dc041843be4,
+        type: 3}
+      propertyPath: m_LineLength
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356822182493196222, guid: 6cfa0b77fbb5a974ba294dc041843be4,
+        type: 3}
+      propertyPath: m_Velocity
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3356822182500583218, guid: 6cfa0b77fbb5a974ba294dc041843be4,
         type: 3}
       propertyPath: m_Name
@@ -7690,9 +7711,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 3
   m_SelectMode: 1
-  m_CustomReticle: {fileID: 0}
+  m_CustomReticle: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
+    type: 3}
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []

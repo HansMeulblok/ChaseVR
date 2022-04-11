@@ -36,7 +36,7 @@ public class NewTeleportScript : MonoBehaviour
     {
         if (isTeleporting == false && JoyWentNorth == true )
             {
-                Debug.Log(rayInteractor.enabled);
+                //Debug.Log(rayInteractor.enabled);
                 isTeleporting = true;
                 StartCoroutine(FadeToBlack());
             }

@@ -16,8 +16,8 @@ public class AudioManager : MonoBehaviour
 
 	//Variables for audio source object pooling
 	[HideInInspector] public List<GameObject> audioSourceObjects;
-	public GameObject audioSourceObjectToPool;
-	public int amountToPool;
+	[HideInInspector] public GameObject audioSourceObjectToPool;
+	[HideInInspector] public int amountToPool;
 
 	// Variables for the building and driving music 
 	[HideInInspector] public AudioSource musicSource;
@@ -47,14 +47,14 @@ public class AudioManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 
-		audioClips = Resources.LoadAll("Sounds/", typeof(AudioClip)).Cast<AudioClip>().ToList();
+		audioClips = Resources.LoadAll("Audio/", typeof(AudioClip)).Cast<AudioClip>().ToList();
 		AudioListener.volume = 1;
 	}
 
 	private void Start()
 	{
 		// Creates the music sources and plays the clip selected as current music clip
-		musicSource = gameObject.AddComponent<AudioSource>();
+		musicSource = FindObjectOfType<Camera>().GetComponent<AudioSource>();
 
 		musicSource.loop = true;
 
@@ -127,57 +127,68 @@ public class AudioManager : MonoBehaviour
 		// Checks and matches the enum in the method parameter to one of the clips in the Resource/Sounds/ folder.
 		AudioClip toBePlayedClip = audioClips.Where(clip => clip.name.Contains(clipName.ToString())).FirstOrDefault();
 
+		musicSource.clip = toBePlayedClip;
+		musicSource.Play();
+
 		// and starts the coroutine for fading the music
-		StopAllCoroutines();
-		//StartCoroutine(FadeMusic(clipName, toBePlayedClip));
+		StartCoroutine(FadeMusic(clipName, toBePlayedClip));
 	}
 
-	/// <summary>
-	/// The coroutine that handles the fading in and out of the building and driving soundtracks.
-	/// </summary>
-	/// <param name="clipName"></param>
-	/// <param name="toBePlayedClip"></param>
-	/// <returns></returns>
-	/*private IEnumerator FadeMusic(clips clipName, AudioClip toBePlayedClip)
-	{
-		timeElapsed = 0f;
+    /// <summary>
+    /// The coroutine that handles the fading in and out of the building and driving soundtracks.
+    /// </summary>
+    /// <param name="clipName"></param>
+    /// <param name="toBePlayedClip"></param>
+    /// <returns></returns>
+    private IEnumerator FadeMusic(clips clipName, AudioClip toBePlayedClip)
+    {
+        timeElapsed = 0f;
 
-		if (clipName == clips.BuildingMusic)
+		while (timeElapsed < timeToFade)
 		{
-			musicSource1.clip = toBePlayedClip;
-			musicSource1.Play();
+			musicSource.volume = Mathf.Lerp(0, musicVolume, timeElapsed / timeToFade);
 
-			while (timeElapsed < timeToFade)
-			{
-				musicSource1.volume = Mathf.Lerp(0, musicVolume, timeElapsed / timeToFade);
-				musicSource2.volume = Mathf.Lerp(musicVolume, 0, timeElapsed / timeToFade);
-				timeElapsed += Time.deltaTime;
-				yield return null;
-			}
-
-			musicSource2.Stop();
+			timeElapsed += Time.deltaTime;
+			yield return null;
 		}
-		else if (clipName == clips.DrivingMusic)
-		{
-			musicSource2.clip = toBePlayedClip;
-			musicSource2.Play();
 
-			while (timeElapsed < timeToFade)
-			{
-				musicSource2.volume = Mathf.Lerp(0, musicVolume, timeElapsed / timeToFade);
-				musicSource1.volume = Mathf.Lerp(musicVolume, 0, timeElapsed / timeToFade);
-				timeElapsed += Time.deltaTime;
-				yield return null;
-			}
 
-			musicSource1.Stop();
-		}
-	}*/
+		/*if (clipName == clips.BuildingMusic)
+        {
+            musicSource1.clip = toBePlayedClip;
+            musicSource1.Play();
 
-	/// <summary>
-	/// Method that gets a object from the audio source object pool and plays the menu button click sound effect.
-	/// </summary>
-	/*public void MenuButtonClickSound()
+            while (timeElapsed < timeToFade)
+            {
+                musicSource1.volume = Mathf.Lerp(0, musicVolume, timeElapsed / timeToFade);
+                musicSource2.volume = Mathf.Lerp(musicVolume, 0, timeElapsed / timeToFade);
+                timeElapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            musicSource2.Stop();
+        }
+        else if (clipName == clips.DrivingMusic)
+        {
+            musicSource2.clip = toBePlayedClip;
+            musicSource2.Play();
+
+            while (timeElapsed < timeToFade)
+            {
+                musicSource2.volume = Mathf.Lerp(0, musicVolume, timeElapsed / timeToFade);
+                musicSource1.volume = Mathf.Lerp(musicVolume, 0, timeElapsed / timeToFade);
+                timeElapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            musicSource1.Stop();
+        }*/
+    }
+
+    /// <summary>
+    /// Method that gets a object from the audio source object pool and plays the menu button click sound effect.
+    /// </summary>
+    /*public void MenuButtonClickSound()
 	{
 		GameObject audioSource = AudioManager.Instance.GetPooledAudioSourceObject();
 		audioSource.transform.localPosition = gameObject.transform.position;
@@ -188,11 +199,11 @@ public class AudioManager : MonoBehaviour
 		StartCoroutine(WaitForEndOfSound(audioSource, audioSource.GetComponent<AudioSource>().clip.length));
 	}*/
 
-	/// <summary>
-	/// Stops the sounds played by the audio source given.
-	/// </summary>
-	/// <param name="source"></param>
-	public void Stop(AudioSource source)
+    /// <summary>
+    /// Stops the sounds played by the audio source given.
+    /// </summary>
+    /// <param name="source"></param>
+    public void Stop(AudioSource source)
 	{
 		source.Stop();
 	}

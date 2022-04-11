@@ -2176,7 +2176,8 @@ MonoBehaviour:
   m_SmoothMovement: 0
   m_FollowTightness: 10
   m_SnapThresholdDistance: 10
-  m_Reticle: {fileID: 0}
+  m_Reticle: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
+    type: 3}
   m_StopLineAtFirstRaycastHit: 1
 --- !u!1 &3356822182500583218
 GameObject:

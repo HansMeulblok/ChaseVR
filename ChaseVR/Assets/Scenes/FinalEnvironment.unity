@@ -5784,6 +5784,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3356822182493196208, guid: 6cfa0b77fbb5a974ba294dc041843be4,
+        type: 3}
+      propertyPath: m_Reticle
+      value: 
+      objectReference: {fileID: 3292097922809998291, guid: 55cf3f1a6a082bd42b44c7906b9337d5,
+        type: 3}
     - target: {fileID: 3356822182500583218, guid: 6cfa0b77fbb5a974ba294dc041843be4,
         type: 3}
       propertyPath: m_Name

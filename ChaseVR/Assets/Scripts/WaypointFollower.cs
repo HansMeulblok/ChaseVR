@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine;
 
 public class WaypointFollower : MonoBehaviour
@@ -38,12 +39,11 @@ public class WaypointFollower : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(lookDir);
     }
 
-    public void Replace(Transform controller)
+    public void Replace(SelectEnterEventArgs args)
     {
         // Turn this object off and spawn a replacement without this script and WITH the cubescaling script. 
         GameObject tempCube = Instantiate(this.gameObject, transform.position, Quaternion.identity);
         tempCube.AddComponent<CubeScaling>();
-        tempCube.GetComponent<CubeScaling>().controllerTransform = controller;
         Destroy(tempCube.GetComponent<WaypointFollower>());
         gameObject.SetActive(false);
     } 

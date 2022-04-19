@@ -60,7 +60,7 @@ public class SurfInteractionManager : MonoBehaviour
     public bool clickPause;
 
 
-    public float testValue;
+    public float translationFactor;
 
 
     private void Awake()
@@ -77,6 +77,8 @@ public class SurfInteractionManager : MonoBehaviour
 
     private void Start()
     {        
+        
+
         if (interaction)
         {
             for (int i = 0; i < handInteractionTriggers.Length; i++)
@@ -106,6 +108,10 @@ public class SurfInteractionManager : MonoBehaviour
         
 
         sbMove = FindObjectOfType<SurfBoardMovement>();
+
+        sbMove.timeValue = translationFactor;
+
+        ResumeSurfing();
     }
 
     private void Update()
@@ -274,17 +280,26 @@ public class SurfInteractionManager : MonoBehaviour
     {
         isPlaying = false;
 
-        waveMaterial.SetFloat("_DeltaSpeed", 0.2f);
-        waveMaterial.SetFloat("_Translation", -3f);
+        //waveMaterial.SetFloat("_DeltaSpeed", 0.2f);
+        //waveMaterial.SetFloat("_Translation", -3f);
+
+        //sbMove.timeValue -= 2f;
+        //sbMove.transform.position += Vector3.left * translationFactor;
+
+        sbMove.playing = isPlaying;
     }
 
     public void ResumeSurfing()
     {
         isPlaying = true;
-        
-        waveMaterial.SetFloat("_DeltaSpeed", 1.8f);
-        waveMaterial.SetFloat("_Translation", -2f);
 
+        //waveMaterial.SetFloat("_DeltaSpeed", 1.8f);
+        //waveMaterial.SetFloat("_Translation", 2f);
+
+        //sbMove.timeValue += translationFactor;
+        //sbMove.transform.position += Vector3.left * translationFactor;//new Vector3();
+
+        sbMove.playing = isPlaying;
     }
 
     public void ResetTriggerAlpha(int i)

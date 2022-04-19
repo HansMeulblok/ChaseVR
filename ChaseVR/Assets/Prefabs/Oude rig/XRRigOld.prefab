@@ -1439,17 +1439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d3ec0c552cda342813aae93bf35ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RightTeleporterRay: {fileID: 0}
-  LeftTeleporterRay: {fileID: 1035135825}
-  teleportActivationButting: 14
-  TeleportFade: 14
-  activationThreshold: 0.5
-  fadeThreshhold: 0.95
-  maxThreshhold: 0.99
-  minFade: 0.6
-  maxFade: 0.85
-  hasHitMax: 0
-  blackOutSquare: {fileID: 0}
 --- !u!114 &6880152706748495615
 MonoBehaviour:
   m_ObjectHideFlags: 0

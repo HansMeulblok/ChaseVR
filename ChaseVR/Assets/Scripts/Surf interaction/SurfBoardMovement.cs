@@ -26,12 +26,13 @@ public class SurfBoardMovement : MonoBehaviour
     [HideInInspector]
     public float t;
 
+    [HideInInspector]
+    public bool playing = false;
+
     private void Start()
     {
         radius = waveMaterial.GetFloat("_Radius");
         waveStartPos = waveMaterial.GetVector("_WaveStartPos");
-
-        timeValue = 0;
     }
 
     // Update is called once per frame
@@ -40,24 +41,27 @@ public class SurfBoardMovement : MonoBehaviour
         shaderSpeed = waveMaterial.GetFloat("_DeltaSpeed");
         surfBoardSpeed = shaderSpeed * speedMultiplier;
 
-        if (transform.position.x <= 75f)
+        if (playing)
         {
-            transform.position += Vector3.right * surfBoardSpeed;
-            transform.position = new Vector3(transform.position.x, transform.position.y/*Mathf.Lerp(1.38f, 0.2f, t)*/, transform.position.z);
-        }
+            if (transform.position.x <= 75f)
+            {
+                transform.position += Vector3.right * surfBoardSpeed;
+                transform.position = new Vector3(transform.position.x, transform.position.y/*Mathf.Lerp(1.38f, 0.2f, t)*/, transform.position.z);
+            }
+            else if (transform.position.x >= 75f)
+            {
+                SceneManager.LoadScene(finalEnvironment);
+            }
 
-        waveMaterial.SetVector("_SurfBoardPos", transform.position);
+            waveMaterial.SetVector("_SurfBoardPos", transform.position);
 
-        t += 0.2f * Time.deltaTime;
+            //t += 0.2f * Time.deltaTime;
 
-        timeValue += Time.deltaTime;
-             
 
-        waveMaterial.SetFloat("_TimeValue", timeValue);
+            timeValue += Time.deltaTime;
 
-        if (transform.position.x >= 75f)
-        {
-            SceneManager.LoadScene(finalEnvironment);
+
+            waveMaterial.SetFloat("_TimeValue", timeValue);
         }
     }
 }

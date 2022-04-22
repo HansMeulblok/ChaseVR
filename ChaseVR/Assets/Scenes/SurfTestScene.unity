@@ -4502,8 +4502,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.6806151e-38, y: 1.6989825e-38, z: 1.6897992e-38,
-    w: 1.7173498e-38}
+  m_BoundingSphereOverride: {x: 4.5904e-41, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -14629,7 +14628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845c87b0b58da2740ace41bcea76fbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveMaterial: {fileID: 0}
+  waveMaterial: {fileID: 2100000, guid: 41d72b1301e262a4c94697f7548617f2, type: 2}
   speedMultiplier: 0.0663
   surfBoardSpeed: 0
   shaderSpeed: 0

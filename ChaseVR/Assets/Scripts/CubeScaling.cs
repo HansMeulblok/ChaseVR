@@ -5,7 +5,7 @@ using UnityEngine;
 public class CubeScaling : MonoBehaviour
 {
     [SerializeField] private float maxSize;
-    [SerializeField] private float minSize = 0.05f;
+    [SerializeField] private float minSize = 0.01f;
     [HideInInspector] public Transform controllerTransform;
     private float maxdistance;
     private float currentDistance;
@@ -21,7 +21,7 @@ public class CubeScaling : MonoBehaviour
     void Update()
     {
         currentDistance = Vector3.Distance(transform.position, controllerTransform.position); 
-        
+
         // change scale based on distance from controller
         float newScale = currentDistance / maxdistance;
         if(newScale > minSize && newScale <= maxSize)
@@ -32,7 +32,6 @@ public class CubeScaling : MonoBehaviour
 
     public void SetMaxDistance()
     {
-        // maxdistance = Vector3.Distance(transform.position, controllerTransform.position);
-        maxdistance = 1;
+        maxdistance = Vector3.Distance(transform.position, controllerTransform.position);
     }
 }

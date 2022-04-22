@@ -13,24 +13,20 @@ public class FollowerManager : MonoBehaviour
     private bool paused = false;
     void Start()
     {
-        StartCoroutine(BlokSetup());
+        SpawnCubes();
     }
 
-    IEnumerator BlokSetup()
+    void SpawnCubes()
     {
-
-        // Spawn all 'block etalages' and set their speed
-        for (int i = 0; i < amountOfBlocks; i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
-            GameObject block = Instantiate(blockEtalage, Vector3.zero, Quaternion.identity, blockHolder);
+            GameObject block = Instantiate(blockEtalage, transform.GetChild(i).position, Quaternion.identity, blockHolder);
             WaypointFollower waypointFollower = block.GetComponentInChildren<WaypointFollower>();
             waypointFollower.waypoints = this.gameObject.GetComponent<Waypoints>();
+            waypointFollower.currentWayPoint = transform.GetChild(i);
             waypointFollower.moveSpeed = speed;
             waypointFollower.distanceThreshold = 0.5f;
-
             cubes.Add(block);
-
-            yield return new WaitForSeconds(spawnInterval);
         }
     }
 

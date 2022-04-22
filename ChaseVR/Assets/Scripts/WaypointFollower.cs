@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine;
 
+/// DISCLAIMER: dit script is groten geschreven met tegenzin, geen motivatie en 3 uur slaap. 
 public class WaypointFollower : MonoBehaviour
 {
     [HideInInspector] public Waypoints waypoints;
     [HideInInspector] public float moveSpeed;
-    [HideInInspector] public bool canMove = true;
+    public float force = 30;
+    public bool canMove = true;
     [HideInInspector] public float distanceThreshold;
-    private Transform currentWayPoint;
+    [HideInInspector] public Transform controllerTransform;
+    [HideInInspector] public bool replaced;
+    public Transform currentWayPoint;
     private Transform lookAtPoint;
 
     void Start()
     {
+        controllerTransform = GameObject.Find("RightHand Controller").transform;
+        if(!canMove) return;
         lookAtPoint = GameObject.Find("LookAtPoint").transform;
         currentWayPoint = waypoints.GetNextWaypoint(currentWayPoint);
         transform.position = currentWayPoint.position;
@@ -41,10 +47,18 @@ public class WaypointFollower : MonoBehaviour
 
     public void Replace(SelectEnterEventArgs args)
     {
-        // Turn this object off and spawn a replacement without this script and WITH the cubescaling script. 
-        GameObject tempCube = Instantiate(this.gameObject, transform.position, Quaternion.identity);
-        tempCube.AddComponent<CubeScaling>();
-        Destroy(tempCube.GetComponent<WaypointFollower>());
-        gameObject.SetActive(false);
+        if(replaced) return;
+        replaced = true;
+        gameObject.GetComponent<WaypointFollower>().replaced = true;
+        gameObject.GetComponent<WaypointFollower>().canMove = false;
+        gameObject.GetComponent<WaypointFollower>().force = 30;
+
+        gameObject.AddComponent<CubeScaling>();
     } 
+
+    public void ShootCube(SelectExitEventArgs args)
+    {
+        GetComponent<Rigidbody>().AddForce(controllerTransform.forward * force, ForceMode.Impulse);
+
+    }
 }

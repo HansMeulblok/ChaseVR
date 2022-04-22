@@ -4,6 +4,7 @@ Shader "Custom/TrochoidalWaveShader"
     {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
+        _BumpMap("Bumpmap", 2D) = "bump" {}
         _Glossiness("Smoothness", Range(0,1)) = 0.5
         _Metallic("Metallic", Range(0,1)) = 0.0
 
@@ -19,21 +20,23 @@ Shader "Custom/TrochoidalWaveShader"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Transparent" "Queue" = "Transparent" }
         LOD 200
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows vertex:vert
+        #pragma surface surf Standard alpha vertex:vert
 
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
 
         sampler2D _MainTex;
+        sampler2D _BumpMap;
 
         struct Input
         {
             float2 uv_MainTex;
+            float2 uv_BumpMap;
         };
 
         half _Glossiness;
@@ -71,7 +74,7 @@ Shader "Custom/TrochoidalWaveShader"
         
             _Radius = clamp(_Radius, 0.1, 2);
 
-            _RotatedOffset.x = sin((_TimeValue * _DeltaSpeed + _WorldSpace.x * _Offset)) * _Radius;
+            _RotatedOffset.x = sin((_TimeValue * _DeltaSpeed + _WorldSpace.x * _Offset)/* + _Translation*/) * _Radius;
             _RotatedOffset.y = cos(/*1.2 **/ (_TimeValue * _DeltaSpeed + _WorldSpace.x * _Offset) /*+ _Translation*/) * _Radius;
             v.vertex.xyz += mul(unity_WorldToObject, _RotatedOffset);
             
@@ -82,6 +85,7 @@ Shader "Custom/TrochoidalWaveShader"
             // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             o.Albedo = c.rgb;
+            o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
@@ -89,5 +93,5 @@ Shader "Custom/TrochoidalWaveShader"
         }
         ENDCG
     }
-    FallBack "Diffuse"
+    /*FallBack "Diffuse"*/
 }

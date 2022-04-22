@@ -8,7 +8,7 @@ public class SurfBoardMovement : MonoBehaviour
     public Material waveMaterial;
     public float speedMultiplier;
 
-    private string finalEnvironment = "FinalEnvironment";
+    private string finalEnvironment = "SundayTest";
 
     [HideInInspector]
     public float surfBoardSpeed;

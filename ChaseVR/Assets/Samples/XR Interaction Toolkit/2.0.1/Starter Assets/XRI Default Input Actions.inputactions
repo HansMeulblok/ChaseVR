@@ -530,17 +530,6 @@
                 },
                 {
                     "name": "",
-                    "id": "2864b155-3431-4f2d-ab28-ad52e12bec43",
-                    "path": "<XRController>{LeftHand}/primaryButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Teleport Mode Activate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "906bcb35-b78e-4b38-b4d3-2112fb7f8a0f",
                     "path": "<XRController>{LeftHand}/Primary2DAxis",
                     "interactions": "Sector(directions=2)",

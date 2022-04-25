@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandInTriggerHover : MonoBehaviour
+public class HandInTriggerAnimation : MonoBehaviour
 {
     private Vector3 _startPosition;
 
@@ -13,6 +13,6 @@ public class HandInTriggerHover : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position = _startPosition + new Vector3(0.0f, 0.07f * Mathf.Sin(Time.time), 0.0f);
+        transform.position = _startPosition + new Vector3(0.15f * Mathf.Sin(Time.time), 0.0f, 0.0f);
     }
 }

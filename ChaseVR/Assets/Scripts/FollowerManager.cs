@@ -16,7 +16,7 @@ public class FollowerManager : MonoBehaviour
         SpawnCubes();
     }
 
-    void SpawnCubes()
+    public void SpawnCubes()
     {
         for (int i = 0; i < transform.childCount; i++)
         {

@@ -17,6 +17,7 @@ public class SurfInteractionManager : MonoBehaviour
 
     [HideInInspector]
     public bool canTriggerLeft = true, canTriggerRight = true, canPause = true, isPlaying = false;
+    private bool leftDominant, rightDominant, tutorial;
 
     public Material waveMaterial;
     public float timerTime;
@@ -76,8 +77,9 @@ public class SurfInteractionManager : MonoBehaviour
     }
 
     private void Start()
-    {        
-        
+    {
+        leftDominant = rightDominant = false;
+        tutorial = true;
 
         if (interaction)
         {
@@ -151,6 +153,9 @@ public class SurfInteractionManager : MonoBehaviour
 
                 ResetTriggerAlpha(0);
 
+                if (rightDominant || leftDominant)
+                    leftDominant = rightDominant = false;
+
                 if (!isPlaying)
                     canTriggerLeft = true;
 
@@ -163,6 +168,11 @@ public class SurfInteractionManager : MonoBehaviour
                 break;
 
             case StateLeftHand.LeftInTrigger:
+
+                if (!leftDominant && !rightDominant)
+                {
+                    SetDominantHand(0);
+                }
 
                 if (canTriggerLeft)
                 {
@@ -188,6 +198,10 @@ public class SurfInteractionManager : MonoBehaviour
 
                 ResetTriggerAlpha(1);
 
+                if (rightDominant || leftDominant)
+                    leftDominant = rightDominant = false;
+                
+
                 if (!isPlaying)
                     canTriggerRight = true;
 
@@ -200,6 +214,11 @@ public class SurfInteractionManager : MonoBehaviour
                 break;
 
             case StateRightHand.RightInTrigger:
+
+                if (!rightDominant && !leftDominant)
+                {
+                    SetDominantHand(1);
+                }
 
                 if (canTriggerRight)
                 {
@@ -253,6 +272,11 @@ public class SurfInteractionManager : MonoBehaviour
 
             yield return null;
         }
+
+        triggerTransform.GetChild(0).gameObject.SetActive(false);
+
+        if (tutorial)
+        StartCoroutine(MoveNonDominantTrigger());
 
         if (stateBothHands == StateBothHands.BothHandsInTrigger && !isPlaying)
         {
@@ -312,6 +336,66 @@ public class SurfInteractionManager : MonoBehaviour
             color.a = 0.5f;
 
             handInteractionTriggers[i].GetComponent<MeshRenderer>().material.color += color;
+        }
+
+        handInteractionTriggers[i].transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    public void SetDominantHand(int i)
+    {
+        if (i == 0)
+            leftDominant = true;
+        else if (i == 1)
+            rightDominant = true;
+    }
+
+    public IEnumerator MoveNonDominantTrigger()
+    {
+        tutorial = false;
+
+        Debug.Log("set dominant left: " + leftDominant + "      " + rightDominant);
+
+        if (leftDominant)
+        {
+            
+
+            float t = 0;          
+
+            while (t < 5)
+            {
+                canTriggerRight = false;
+                handInteractionTriggers[1].transform.GetChild(0).gameObject.SetActive(false);
+
+                handInteractionTriggers[1].transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, new Vector3(0, 1, 0), 0.1f);
+
+                t += Time.deltaTime;
+
+                Debug.Log("call in de while loop");
+
+                yield return null;
+            }
+
+            canTriggerRight = true;
+            handInteractionTriggers[1].transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else if (rightDominant)
+        {
+            float t = 0;
+
+            while (t < 5)
+            {
+                canTriggerLeft = false;
+                handInteractionTriggers[0].transform.GetChild(0).gameObject.SetActive(false);
+
+                handInteractionTriggers[0].transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, new Vector3(0, 1, 0), -0.1f);
+
+                t += Time.deltaTime;
+
+                yield return null;
+            }
+
+            canTriggerLeft = true;
+            handInteractionTriggers[0].transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 }

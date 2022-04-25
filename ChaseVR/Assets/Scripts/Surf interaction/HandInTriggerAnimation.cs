@@ -8,12 +8,12 @@ public class HandInTriggerAnimation : MonoBehaviour
 
     void Start()
     {
-        _startPosition = transform.position;
+        
     }
 
     void FixedUpdate()
     {
-
+        _startPosition = transform.parent.position;
         transform.position = _startPosition + new Vector3(0.15f * Mathf.Sin(Time.time), 0.0f, 0.0f);
     }
 }

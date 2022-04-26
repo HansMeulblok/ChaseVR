@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.41847748, g: 0.39944667, b: 0.35866323, a: 1}
+  m_IndirectSpecularColor: {r: 0.41881508, g: 0.39826274, b: 0.3577549, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11363,6 +11363,8 @@ MonoBehaviour:
   isPlaying: 1
   waveMaterial: {fileID: 2100000, guid: 41d72b1301e262a4c94697f7548617f2, type: 2}
   timerTime: 1
+  triggerMoveTime: 7
+  triggerMoveSpeed: 0.15
   interaction: 1
   allInteraction: 1
   stateBothHands: 0
@@ -11383,7 +11385,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1769991367
 GameObject:
@@ -14094,7 +14096,7 @@ Transform:
   m_Children:
   - {fileID: 8736353650851765628}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 3.296, y: 90, z: -90}
 --- !u!4 &543450653124947856
 Transform:
@@ -14492,7 +14494,7 @@ GameObject:
   - component: {fileID: 1422322760751400409}
   m_Layer: 0
   m_Name: TriggerTorusLeft
-  m_TagString: Untagged
+  m_TagString: SurfTriggerLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16012,7 +16014,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736353650851765630}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc4f2c0214c9b494fa7eb5b8b2c02885, type: 3}
   m_Name: 
@@ -16021,7 +16023,7 @@ MonoBehaviour:
   m_TurnAmount: 45
   m_DebounceTime: 0.5
   m_EnableTurnLeftRight: 1
-  m_EnableTurnAround: 1
+  m_EnableTurnAround: 0
   m_TurnUsage: 0
   m_Controllers:
   - {fileID: 8736353650538192586}
@@ -16043,7 +16045,7 @@ GameObject:
   - component: {fileID: 6982440032660422353}
   m_Layer: 0
   m_Name: TriggerTorusRight
-  m_TagString: Untagged
+  m_TagString: SurfTriggerRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16633,7 +16635,7 @@ GameObject:
   - component: {fileID: 1396055445}
   m_Layer: 0
   m_Name: LeftHand
-  m_TagString: Untagged
+  m_TagString: LeftHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16861,7 +16863,7 @@ GameObject:
   - component: {fileID: 2123315253}
   m_Layer: 0
   m_Name: RightHand
-  m_TagString: Untagged
+  m_TagString: RightHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

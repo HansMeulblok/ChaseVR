@@ -17,12 +17,14 @@ public class SurfInteractionManager : MonoBehaviour
 
     [HideInInspector]
     public bool canTriggerLeft = true, canTriggerRight = true, canPause = true, isPlaying = false;
-    private bool leftDominant, rightDominant, tutorial;
 
     public Material waveMaterial;
     public float timerTime;
 
     private Coroutine leftHandCoroutine, rightHandCoroutine;
+
+    private bool leftDominant, rightDominant, tutorial;
+    public float triggerMoveTime, triggerMoveSpeed;
 
 
     private SurfBoardMovement sbMove;
@@ -78,7 +80,9 @@ public class SurfInteractionManager : MonoBehaviour
 
     private void Start()
     {
-        leftDominant = rightDominant = false;
+        leftDominant = false;
+        rightDominant = false;
+        
         tutorial = true;
 
         if (interaction)
@@ -118,7 +122,6 @@ public class SurfInteractionManager : MonoBehaviour
 
     private void Update()
     {
-
         //waveMaterial.SetFloat("_DeltaTimeSpeedValue", waveMaterial.GetFloat("_TimeValue") * waveMaterial.GetFloat("_DeltaSpeed"));
 
         switch (stateBothHands)
@@ -153,8 +156,11 @@ public class SurfInteractionManager : MonoBehaviour
 
                 ResetTriggerAlpha(0);
 
-                if (rightDominant || leftDominant)
-                    leftDominant = rightDominant = false;
+                if ((rightDominant || leftDominant) && tutorial)
+                {
+                    leftDominant = false;
+                }
+                    
 
                 if (!isPlaying)
                     canTriggerLeft = true;
@@ -169,7 +175,8 @@ public class SurfInteractionManager : MonoBehaviour
 
             case StateLeftHand.LeftInTrigger:
 
-                if (!leftDominant && !rightDominant)
+
+                if (!rightDominant && !leftDominant)
                 {
                     SetDominantHand(0);
                 }
@@ -198,9 +205,10 @@ public class SurfInteractionManager : MonoBehaviour
 
                 ResetTriggerAlpha(1);
 
-                if (rightDominant || leftDominant)
-                    leftDominant = rightDominant = false;
-                
+                if ((rightDominant || leftDominant) && tutorial)
+                {
+                    rightDominant = false;
+                }
 
                 if (!isPlaying)
                     canTriggerRight = true;
@@ -254,7 +262,7 @@ public class SurfInteractionManager : MonoBehaviour
             color = surfTriggerIncorrectRight.color;
         }
 
-
+        triggerTransform.GetChild(0).gameObject.SetActive(false);
         //color = triggerTransform.GetComponent<MeshRenderer>().material.color;
 
         while (t < timerTime) 
@@ -272,8 +280,6 @@ public class SurfInteractionManager : MonoBehaviour
 
             yield return null;
         }
-
-        triggerTransform.GetChild(0).gameObject.SetActive(false);
 
         if (tutorial)
         StartCoroutine(MoveNonDominantTrigger());
@@ -353,24 +359,18 @@ public class SurfInteractionManager : MonoBehaviour
     {
         tutorial = false;
 
-        Debug.Log("set dominant left: " + leftDominant + "      " + rightDominant);
-
         if (leftDominant)
         {
-            
-
             float t = 0;          
 
-            while (t < 5)
+            while (t < triggerMoveTime)
             {
                 canTriggerRight = false;
                 handInteractionTriggers[1].transform.GetChild(0).gameObject.SetActive(false);
 
-                handInteractionTriggers[1].transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, new Vector3(0, 1, 0), 0.1f);
+                handInteractionTriggers[1].transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, new Vector3(0, 1, 0), triggerMoveSpeed);
 
                 t += Time.deltaTime;
-
-                Debug.Log("call in de while loop");
 
                 yield return null;
             }
@@ -382,12 +382,12 @@ public class SurfInteractionManager : MonoBehaviour
         {
             float t = 0;
 
-            while (t < 5)
+            while (t < triggerMoveTime)
             {
                 canTriggerLeft = false;
                 handInteractionTriggers[0].transform.GetChild(0).gameObject.SetActive(false);
 
-                handInteractionTriggers[0].transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, new Vector3(0, 1, 0), -0.1f);
+                handInteractionTriggers[0].transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, new Vector3(0, 1, 0), -triggerMoveSpeed);
 
                 t += Time.deltaTime;
 

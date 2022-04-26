@@ -16,8 +16,8 @@ public class AudioManager : MonoBehaviour
 
 	//Variables for audio source object pooling
 	[HideInInspector] public List<GameObject> audioSourceObjects;
-	[HideInInspector] public GameObject audioSourceObjectToPool;
-	[HideInInspector] public int amountToPool;
+	public GameObject audioSourceObjectToPool;
+	public int amountToPool;
 
 	// Variables for the building and driving music 
 	[HideInInspector] public AudioSource musicSource;
@@ -30,7 +30,9 @@ public class AudioManager : MonoBehaviour
 	// Enum used for ease of use of implementing any sound effect
 	public enum clips
 	{
-		BeachSound
+		BeachSound,
+		DominantHandAudioQueue,
+		NonDominantHandAudioQueue
 
 		/// wave sound https://www.youtube.com/watch?v=2D8pEz7eSEo, https://www.youtube.com/watch?v=T-RHIo48lPU
 	};
@@ -83,6 +85,8 @@ public class AudioManager : MonoBehaviour
 		{
 			if (!audioSourceObjects[i].activeInHierarchy)
 			{
+				audioSourceObjects[i].SetActive(true);
+
 				return audioSourceObjects[i];
 			}
 		}
@@ -98,6 +102,8 @@ public class AudioManager : MonoBehaviour
 		AudioClip toBePlayedClip = audioClips.Where(clip => clip.name.Contains(clipName.ToString())).FirstOrDefault();
 
 		source.clip = toBePlayedClip;
+
+		WaitForEndOfSound(source.gameObject, toBePlayedClip.length);
 
 		// Only play the sound when the source is still enabled
 		if (source.isActiveAndEnabled)

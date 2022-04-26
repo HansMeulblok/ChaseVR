@@ -117,6 +117,7 @@ public class SurfInteractionManager : MonoBehaviour
 
         sbMove.timeValue = translationFactor;
 
+
         ResumeSurfing();
     }
 
@@ -132,6 +133,12 @@ public class SurfInteractionManager : MonoBehaviour
                 {
                     PauseSurfing();
                     canPause = false;
+
+                    if (tutorial)
+                    {
+                        AudioManager.Instance.Play(AudioManager.clips.NonDominantHandAudioQueue, 
+                                                   AudioManager.Instance.GetPooledAudioSourceObject().GetComponent<AudioSource>());
+                    }
                 }
 
                 break;
@@ -377,6 +384,8 @@ public class SurfInteractionManager : MonoBehaviour
 
             canTriggerRight = true;
             handInteractionTriggers[1].transform.GetChild(0).gameObject.SetActive(true);
+
+            AudioManager.Instance.Play(AudioManager.clips.DominantHandAudioQueue, AudioManager.Instance.GetPooledAudioSourceObject().GetComponent<AudioSource>());
         }
         else if (rightDominant)
         {
@@ -396,6 +405,8 @@ public class SurfInteractionManager : MonoBehaviour
 
             canTriggerLeft = true;
             handInteractionTriggers[0].transform.GetChild(0).gameObject.SetActive(true);
+
+            AudioManager.Instance.Play(AudioManager.clips.NonDominantHandAudioQueue, AudioManager.Instance.GetPooledAudioSourceObject().GetComponent<AudioSource>());
         }
     }
 }

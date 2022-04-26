@@ -252,6 +252,12 @@ public class SurfInteractionManager : MonoBehaviour
                 break;
         }
 
+        HeadSteer();
+
+        if (isPlaying)
+        {
+            HeadSteer();
+        }
     }
 
 
@@ -408,5 +414,19 @@ public class SurfInteractionManager : MonoBehaviour
 
             AudioManager.Instance.Play(AudioManager.clips.NonDominantHandAudioQueue, AudioManager.Instance.GetPooledAudioSourceObject().GetComponent<AudioSource>());
         }
+    }
+
+    public void HeadSteer()
+    {
+
+
+        Debug.Log(Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position));
+
+
+        sbMove.transform.parent.rotation = Quaternion.Euler(0,
+                                                     -(Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position) - 90) * 5f, 
+                                                     0);
+            
+            //Rotate(new Vector3(1, 0, 0), Vector3.Angle(Camera.main.transform.position - sbMove.transform.position, sbMove.transform.position));
     }
 }

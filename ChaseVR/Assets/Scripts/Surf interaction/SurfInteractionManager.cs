@@ -23,10 +23,16 @@ public class SurfInteractionManager : MonoBehaviour
 
     private Coroutine leftHandCoroutine, rightHandCoroutine;
 
+    private bool leftDominant, rightDominant, tutorial;
+    public float triggerMoveTime, triggerMoveSpeed;
+
 
     private SurfBoardMovement sbMove;
 
     public bool interaction = false, /*minorInteraction = false*/ allInteraction = false;
+
+
+    private Vector3 steerMoveAmount;
 
     public enum StateBothHands
     {
@@ -76,8 +82,11 @@ public class SurfInteractionManager : MonoBehaviour
     }
 
     private void Start()
-    {        
+    {
+        leftDominant = false;
+        rightDominant = false;
         
+        tutorial = true;
 
         if (interaction)
         {
@@ -111,12 +120,14 @@ public class SurfInteractionManager : MonoBehaviour
 
         sbMove.timeValue = translationFactor;
 
+        steerMoveAmount = sbMove.transform.position;
+
+
         ResumeSurfing();
     }
 
     private void Update()
     {
-
         //waveMaterial.SetFloat("_DeltaTimeSpeedValue", waveMaterial.GetFloat("_TimeValue") * waveMaterial.GetFloat("_DeltaSpeed"));
 
         switch (stateBothHands)
@@ -127,6 +138,12 @@ public class SurfInteractionManager : MonoBehaviour
                 {
                     PauseSurfing();
                     canPause = false;
+
+                    if (tutorial)
+                    {
+                        AudioManager.Instance.Play(AudioManager.clips.NonDominantHandAudioQueue, 
+                                                   AudioManager.Instance.GetPooledAudioSourceObject().GetComponent<AudioSource>());
+                    }
                 }
 
                 break;
@@ -151,6 +168,12 @@ public class SurfInteractionManager : MonoBehaviour
 
                 ResetTriggerAlpha(0);
 
+                if ((rightDominant || leftDominant) && tutorial)
+                {
+                    leftDominant = false;
+                }
+                    
+
                 if (!isPlaying)
                     canTriggerLeft = true;
 
@@ -163,6 +186,12 @@ public class SurfInteractionManager : MonoBehaviour
                 break;
 
             case StateLeftHand.LeftInTrigger:
+
+
+                if (!rightDominant && !leftDominant)
+                {
+                    SetDominantHand(0);
+                }
 
                 if (canTriggerLeft)
                 {
@@ -188,6 +217,11 @@ public class SurfInteractionManager : MonoBehaviour
 
                 ResetTriggerAlpha(1);
 
+                if ((rightDominant || leftDominant) && tutorial)
+                {
+                    rightDominant = false;
+                }
+
                 if (!isPlaying)
                     canTriggerRight = true;
 
@@ -200,6 +234,11 @@ public class SurfInteractionManager : MonoBehaviour
                 break;
 
             case StateRightHand.RightInTrigger:
+
+                if (!rightDominant && !leftDominant)
+                {
+                    SetDominantHand(1);
+                }
 
                 if (canTriggerRight)
                 {
@@ -218,6 +257,11 @@ public class SurfInteractionManager : MonoBehaviour
                 break;
         }
 
+        //HeadSteer();
+        if (isPlaying)
+        {
+            HeadSteer();
+        }
     }
 
 
@@ -235,7 +279,7 @@ public class SurfInteractionManager : MonoBehaviour
             color = surfTriggerIncorrectRight.color;
         }
 
-
+        triggerTransform.GetChild(0).gameObject.SetActive(false);
         //color = triggerTransform.GetComponent<MeshRenderer>().material.color;
 
         while (t < timerTime) 
@@ -253,6 +297,9 @@ public class SurfInteractionManager : MonoBehaviour
 
             yield return null;
         }
+
+        if (tutorial)
+        StartCoroutine(MoveNonDominantTrigger());
 
         if (stateBothHands == StateBothHands.BothHandsInTrigger && !isPlaying)
         {
@@ -313,5 +360,79 @@ public class SurfInteractionManager : MonoBehaviour
 
             handInteractionTriggers[i].GetComponent<MeshRenderer>().material.color += color;
         }
+
+        handInteractionTriggers[i].transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    public void SetDominantHand(int i)
+    {
+        if (i == 0)
+            leftDominant = true;
+        else if (i == 1)
+            rightDominant = true;
+    }
+
+    public IEnumerator MoveNonDominantTrigger()
+    {
+        tutorial = false;
+
+        if (leftDominant)
+        {
+            float t = 0;          
+
+            while (t < triggerMoveTime)
+            {
+                canTriggerRight = false;
+                handInteractionTriggers[1].transform.GetChild(0).gameObject.SetActive(false);
+
+                handInteractionTriggers[1].transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, new Vector3(0, 1, 0), triggerMoveSpeed);
+
+                t += Time.deltaTime;
+
+                yield return null;
+            }
+
+            canTriggerRight = true;
+            handInteractionTriggers[1].transform.GetChild(0).gameObject.SetActive(true);
+
+            AudioManager.Instance.Play(AudioManager.clips.DominantHandAudioQueue, AudioManager.Instance.GetPooledAudioSourceObject().GetComponent<AudioSource>());
+        }
+        else if (rightDominant)
+        {
+            float t = 0;
+
+            while (t < triggerMoveTime)
+            {
+                canTriggerLeft = false;
+                handInteractionTriggers[0].transform.GetChild(0).gameObject.SetActive(false);
+
+                handInteractionTriggers[0].transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, new Vector3(0, 1, 0), -triggerMoveSpeed);
+
+                t += Time.deltaTime;
+
+                yield return null;
+            }
+
+            canTriggerLeft = true;
+            handInteractionTriggers[0].transform.GetChild(0).gameObject.SetActive(true);
+
+            AudioManager.Instance.Play(AudioManager.clips.NonDominantHandAudioQueue, AudioManager.Instance.GetPooledAudioSourceObject().GetComponent<AudioSource>());
+        }
+    }
+
+    public void HeadSteer()
+    {
+        sbMove.transform.GetChild(2).rotation = Quaternion.Euler(3f,
+                                                     90f - (Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position) - 90f),
+                                                     -90f + (Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position) - 90f) * 1.5f);
+
+        Debug.Log(sbMove.transform.GetChild(2).rotation);
+
+        steerMoveAmount.x = sbMove.transform.position.x;
+        steerMoveAmount.y = sbMove.transform.position.y;
+        steerMoveAmount.z = Mathf.Clamp(sbMove.transform.position.z + (Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position) - 90f) * 0.005f, -80f, -20f);
+        
+
+        sbMove.transform.position = steerMoveAmount;
     }
 }

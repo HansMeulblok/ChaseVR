@@ -25,5 +25,6 @@ public class ToggleRay : MonoBehaviour
     public void TurnOn(InputAction.CallbackContext context)
     {
         GetComponent<XRInteractorLineVisual>().enabled = true;
+        // StartCoroutine(DelayedTurnOn());
     }
 }

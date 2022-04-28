@@ -5,16 +5,16 @@ using UnityEngine;
 public class SurfInteractionTrigger : MonoBehaviour
 {
 
-    private void Start()
+    private void Awake()
     {
-        if (gameObject.name.Contains("Left"))
+        if (gameObject.tag == "SurfTriggerLeft")
         {
             SurfInteractionManager.Instance.handInteractionTriggers[0] = gameObject;
             SurfInteractionManager.Instance.stateLeftHand = SurfInteractionManager.StateLeftHand.LeftOutTrigger;
 
         }
 
-        if (gameObject.name.Contains("Right"))
+        if (gameObject.tag == "SurfTriggerRight")
         {
             SurfInteractionManager.Instance.handInteractionTriggers[1] = gameObject;
             SurfInteractionManager.Instance.stateRightHand = SurfInteractionManager.StateRightHand.RightOutTrigger;
@@ -23,12 +23,12 @@ public class SurfInteractionTrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (gameObject == SurfInteractionManager.Instance.handInteractionTriggers[0] && other.gameObject.name == "LeftHand")
+        if (gameObject == SurfInteractionManager.Instance.handInteractionTriggers[0] && other.gameObject.tag == "LeftHand")
         {
             SurfInteractionManager.Instance.stateLeftHand = SurfInteractionManager.StateLeftHand.LeftInTrigger;
         }
 
-        if (gameObject == SurfInteractionManager.Instance.handInteractionTriggers[1] && other.gameObject.name == "RightHand")
+        if (gameObject == SurfInteractionManager.Instance.handInteractionTriggers[1] && other.gameObject.tag == "RightHand")
         {
             SurfInteractionManager.Instance.stateRightHand = SurfInteractionManager.StateRightHand.RightInTrigger;
         }
@@ -43,12 +43,12 @@ public class SurfInteractionTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (gameObject == SurfInteractionManager.Instance.handInteractionTriggers[0] && other.gameObject.name == "LeftHand")
+        if (gameObject == SurfInteractionManager.Instance.handInteractionTriggers[0] && other.gameObject.tag == "LeftHand")
         {
             SurfInteractionManager.Instance.stateLeftHand = SurfInteractionManager.StateLeftHand.LeftOutTrigger;
         }
 
-        if (gameObject == SurfInteractionManager.Instance.handInteractionTriggers[1] && other.gameObject.name == "RightHand")
+        if (gameObject == SurfInteractionManager.Instance.handInteractionTriggers[1] && other.gameObject.tag == "RightHand")
         {
             SurfInteractionManager.Instance.stateRightHand = SurfInteractionManager.StateRightHand.RightOutTrigger;
         }

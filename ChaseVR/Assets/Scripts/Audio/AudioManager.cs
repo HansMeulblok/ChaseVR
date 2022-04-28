@@ -134,6 +134,7 @@ public class AudioManager : MonoBehaviour
 		AudioClip toBePlayedClip = audioClips.Where(clip => clip.name.Contains(clipName.ToString())).FirstOrDefault();
 
 		musicSource.clip = toBePlayedClip;
+		musicSource.volume = musicVolume;
 		musicSource.Play();
 
 		// and starts the coroutine for fading the music

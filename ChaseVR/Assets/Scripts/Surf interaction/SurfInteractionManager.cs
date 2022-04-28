@@ -31,6 +31,9 @@ public class SurfInteractionManager : MonoBehaviour
 
     public bool interaction = false, /*minorInteraction = false*/ allInteraction = false;
 
+
+    private Vector3 steerMoveAmount;
+
     public enum StateBothHands
     {
         BothHandsOutTrigger,
@@ -116,6 +119,8 @@ public class SurfInteractionManager : MonoBehaviour
         sbMove = FindObjectOfType<SurfBoardMovement>();
 
         sbMove.timeValue = translationFactor;
+
+        steerMoveAmount = sbMove.transform.position;
 
 
         ResumeSurfing();
@@ -252,8 +257,7 @@ public class SurfInteractionManager : MonoBehaviour
                 break;
         }
 
-        HeadSteer();
-
+        //HeadSteer();
         if (isPlaying)
         {
             HeadSteer();
@@ -418,15 +422,17 @@ public class SurfInteractionManager : MonoBehaviour
 
     public void HeadSteer()
     {
+        sbMove.transform.GetChild(2).rotation = Quaternion.Euler(3f,
+                                                     90f - (Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position) - 90f),
+                                                     -90f + (Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position) - 90f) * 1.5f);
 
+        Debug.Log(sbMove.transform.GetChild(2).rotation);
 
-        Debug.Log(Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position));
+        steerMoveAmount.x = sbMove.transform.position.x;
+        steerMoveAmount.y = sbMove.transform.position.y;
+        steerMoveAmount.z = Mathf.Clamp(sbMove.transform.position.z + (Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position) - 90f) * 0.005f, -80f, -20f);
+        
 
-
-        sbMove.transform.parent.rotation = Quaternion.Euler(0,
-                                                     -(Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position) - 90) * 5f, 
-                                                     0);
-            
-            //Rotate(new Vector3(1, 0, 0), Vector3.Angle(Camera.main.transform.position - sbMove.transform.position, sbMove.transform.position));
+        sbMove.transform.position = steerMoveAmount;
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - SurfTriggerRight
   - LeftHand
   - RightHand
+  - ShootingTarget
   layers:
   - Default
   - TransparentFX

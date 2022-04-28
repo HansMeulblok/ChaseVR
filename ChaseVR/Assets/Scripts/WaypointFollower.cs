@@ -50,7 +50,6 @@ public class WaypointFollower : MonoBehaviour
 
     public void Replace(SelectEnterEventArgs args)
     {        
-        Debug.Log("Grab");
         if(holding) 
         {
             return;
@@ -64,9 +63,15 @@ public class WaypointFollower : MonoBehaviour
 
     public void ShootCube(SelectExitEventArgs args)
     {
-        Debug.Log("shoot");
+        GetComponent<XRGrabInteractable>().enabled = false;
         GetComponent<Rigidbody>().AddForce(controllerTransform.forward * force, ForceMode.Impulse);
         holding = false;
+    }
+
+    IEnumerator DelayedTurnOn()
+    {
+        yield return new WaitForSeconds(1);
+        GetComponent<XRGrabInteractable>().enabled = true;
         shootingTarget.GetComponent<MeshRenderer>().enabled = false;
     }
 }

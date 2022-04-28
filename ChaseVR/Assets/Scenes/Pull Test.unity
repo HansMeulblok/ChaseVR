@@ -8209,7 +8209,7 @@ PrefabInstance:
     - target: {fileID: 1250736778284344464, guid: f5ce58de286d69d419b733a2144b26de,
         type: 3}
       propertyPath: m_SelectActionTrigger
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1250736778284344464, guid: f5ce58de286d69d419b733a2144b26de,
         type: 3}

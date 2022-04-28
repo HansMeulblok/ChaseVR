@@ -18,7 +18,7 @@ public class WaypointFollower : MonoBehaviour
     private GameObject shootingTarget;
 
     void Start()
-    {
+    {   
         controllerTransform = GameObject.Find("RightHand Controller").transform;
         shootingTarget = GameObject.FindGameObjectWithTag("ShootingTarget");
         if(!canMove) return;
@@ -54,6 +54,7 @@ public class WaypointFollower : MonoBehaviour
         {
             return;
         }
+        
         shootingTarget.GetComponent<MeshRenderer>().enabled = true;
         holding = true;
         canMove = false;
@@ -66,11 +67,12 @@ public class WaypointFollower : MonoBehaviour
         GetComponent<XRGrabInteractable>().enabled = false;
         GetComponent<Rigidbody>().AddForce(controllerTransform.forward * force, ForceMode.Impulse);
         holding = false;
+        StartCoroutine(DelayedTurnOn());
     }
 
     IEnumerator DelayedTurnOn()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
         GetComponent<XRGrabInteractable>().enabled = true;
         shootingTarget.GetComponent<MeshRenderer>().enabled = false;
     }

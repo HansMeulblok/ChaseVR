@@ -54,4 +54,12 @@ public class FollowerManager : MonoBehaviour
         }
 
     }
+
+    void Update()
+    {
+        if(blockHolder.childCount < 1)
+        {
+            SpawnCubes();
+        }
+    }
 }

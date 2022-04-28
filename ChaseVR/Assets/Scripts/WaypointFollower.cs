@@ -12,13 +12,15 @@ public class WaypointFollower : MonoBehaviour
     public bool canMove = true;
     [HideInInspector] public float distanceThreshold;
     [HideInInspector] public Transform controllerTransform;
-    [HideInInspector] public bool replaced;
+    [HideInInspector] public bool holding;
     public Transform currentWayPoint;
     private Transform lookAtPoint;
+    private GameObject shootingTarget;
 
     void Start()
     {
         controllerTransform = GameObject.Find("RightHand Controller").transform;
+        shootingTarget = GameObject.FindGameObjectWithTag("ShootingTarget");
         if(!canMove) return;
         lookAtPoint = GameObject.Find("LookAtPoint").transform;
         currentWayPoint = waypoints.GetNextWaypoint(currentWayPoint);
@@ -27,6 +29,7 @@ public class WaypointFollower : MonoBehaviour
 
     void Update()
     {
+ 
         if(!canMove)
         return;
 
@@ -46,19 +49,29 @@ public class WaypointFollower : MonoBehaviour
     }
 
     public void Replace(SelectEnterEventArgs args)
-    {
-        if(replaced) return;
-        replaced = true;
-        gameObject.GetComponent<WaypointFollower>().replaced = true;
-        gameObject.GetComponent<WaypointFollower>().canMove = false;
-        gameObject.GetComponent<WaypointFollower>().force = 30;
-
+    {        
+        if(holding) 
+        {
+            return;
+        }
+        shootingTarget.GetComponent<MeshRenderer>().enabled = true;
+        holding = true;
+        canMove = false;
+        force = 30;
         gameObject.AddComponent<CubeScaling>();
     } 
 
     public void ShootCube(SelectExitEventArgs args)
     {
+        GetComponent<XRGrabInteractable>().enabled = false;
         GetComponent<Rigidbody>().AddForce(controllerTransform.forward * force, ForceMode.Impulse);
+        holding = false;
+    }
 
+    IEnumerator DelayedTurnOn()
+    {
+        yield return new WaitForSeconds(1);
+        GetComponent<XRGrabInteractable>().enabled = true;
+        shootingTarget.GetComponent<MeshRenderer>().enabled = false;
     }
 }

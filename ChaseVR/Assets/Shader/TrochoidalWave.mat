@@ -83,7 +83,7 @@ Material:
     - _Color: {r: 0.8726415, g: 0.9803176, b: 1, a: 0.6666667}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RotatedOffset: {r: 0, g: 0, b: 0, a: 0}
-    - _SurfBoardPos: {r: 75.09182, g: 1.127, b: -51.21651, a: 0}
+    - _SurfBoardPos: {r: 75.09182, g: 1.127, b: -57.748375, a: 0}
     - _WaveStartPos: {r: -50, g: 0, b: -45, a: 0}
     - _WorldSpace: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

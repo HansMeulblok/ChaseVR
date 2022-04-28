@@ -18176,6 +18176,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047993500}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1048212924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8250711826829763030, guid: f742fbf48552409448eb0371641c293f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7006881608347624448}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1048212928 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7602241926823329795, guid: f742fbf48552409448eb0371641c293f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7006881608347624448}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1053778308
 GameObject:
   m_ObjectHideFlags: 0
@@ -29832,11 +29844,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handInteractionTriggers:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1048212924}
+  - {fileID: 6982440032660422350}
   triggersMeshRenderers:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1048212928}
+  - {fileID: 8927929169948401435}
   surfTriggerCorrectLeft: {fileID: 0}
   surfTriggerIncorrectLeft: {fileID: 0}
   surfTriggerCorrectRight: {fileID: 0}

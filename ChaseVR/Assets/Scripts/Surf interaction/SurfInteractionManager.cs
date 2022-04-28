@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SurfInteractionManager : MonoBehaviour
 {
     public static SurfInteractionManager Instance = null;
 
     // Array for the triggers for the hand interactions, 0 is left 1 is right
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject[] handInteractionTriggers = new GameObject[2];
-    [HideInInspector]
+    //[HideInInspector]
     public MeshRenderer[] triggersMeshRenderers = new MeshRenderer[2];// meshRendererLeft, meshRendererRight;
     [HideInInspector]
     public Material surfTriggerCorrectLeft, surfTriggerIncorrectLeft, surfTriggerCorrectRight, surfTriggerIncorrectRight;
@@ -92,7 +93,7 @@ public class SurfInteractionManager : MonoBehaviour
         {
             for (int i = 0; i < handInteractionTriggers.Length; i++)
             {
-                triggersMeshRenderers[i] = handInteractionTriggers[i].gameObject.GetComponent<MeshRenderer>();
+                //triggersMeshRenderers[i] = handInteractionTriggers[i].gameObject.GetComponent<MeshRenderer>();
             }
 
             surfTriggerCorrectLeft = Resources.Load("Materials/SurfTriggerCorrectLeft", typeof(Material)) as Material;
@@ -122,8 +123,8 @@ public class SurfInteractionManager : MonoBehaviour
 
         steerMoveAmount = sbMove.transform.position;
 
-
-        ResumeSurfing();
+        if (SceneManager.GetActiveScene().name != "TestingFriday")
+            ResumeSurfing();
     }
 
     private void Update()
@@ -139,7 +140,7 @@ public class SurfInteractionManager : MonoBehaviour
                     PauseSurfing();
                     canPause = false;
 
-                    if (tutorial)
+                    if (tutorial && SceneManager.GetActiveScene().name != "TestingFriday")
                     {
                         AudioManager.Instance.Play(AudioManager.clips.NonDominantHandAudioQueue, 
                                                    AudioManager.Instance.GetPooledAudioSourceObject().GetComponent<AudioSource>());
@@ -298,21 +299,30 @@ public class SurfInteractionManager : MonoBehaviour
             yield return null;
         }
 
-        if (tutorial)
-        StartCoroutine(MoveNonDominantTrigger());
-
-        if (stateBothHands == StateBothHands.BothHandsInTrigger && !isPlaying)
+        if (SceneManager.GetActiveScene().name != "TestingFriday")
         {
-            ResumeSurfing();
+            if (tutorial)
+                StartCoroutine(MoveNonDominantTrigger());
 
-            if (!allInteraction)
+            if (stateBothHands == StateBothHands.BothHandsInTrigger && !isPlaying)
             {
-                for (int i = 0; i < triggersMeshRenderers.Length; i++)
+                ResumeSurfing();
+
+                if (!allInteraction)
                 {
-                    handInteractionTriggers[i].gameObject.SetActive(false);
+                    for (int i = 0; i < triggersMeshRenderers.Length; i++)
+                    {
+                        handInteractionTriggers[i].gameObject.SetActive(false);
+                    }
                 }
             }
         }
+        else
+        {
+            SceneManager.LoadScene("SurfTestScene");
+        }
+
+        
     }
 
     public void SetTriggerMaterial(MeshRenderer meshRenderer, Material triggerMat)

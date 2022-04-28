@@ -18,7 +18,7 @@ public class WaypointFollower : MonoBehaviour
     private GameObject shootingTarget;
 
     void Start()
-    {
+    {   
         controllerTransform = GameObject.Find("RightHand Controller").transform;
         shootingTarget = GameObject.FindGameObjectWithTag("ShootingTarget");
         if(!canMove) return;
@@ -54,6 +54,7 @@ public class WaypointFollower : MonoBehaviour
         {
             return;
         }
+        
         shootingTarget.GetComponent<MeshRenderer>().enabled = true;
         holding = true;
         canMove = false;

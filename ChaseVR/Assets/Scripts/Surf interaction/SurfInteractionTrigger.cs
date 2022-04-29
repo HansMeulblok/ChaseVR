@@ -5,7 +5,7 @@ using UnityEngine;
 public class SurfInteractionTrigger : MonoBehaviour
 {
 
-    private void Awake()
+    private void Start()
     {
         if (gameObject.tag == "SurfTriggerLeft")
         {

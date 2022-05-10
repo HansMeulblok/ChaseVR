@@ -9,6 +9,9 @@ TagManager:
   - LeftHand
   - RightHand
   - ShootingTarget
+  - Schoenen
+  - Torso
+  - Benen
   layers:
   - Default
   - TransparentFX

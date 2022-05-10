@@ -26,6 +26,8 @@ permissions and limitations under the License.
 #error Oculus Utilities require Unity 2018.3 or higher.
 #endif
 
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1430,7 +1432,7 @@ public class OVRManager : MonoBehaviour, OVRMixedRealityCaptureConfiguration
 
 	public static string UnityAlphaOrBetaVersionWarningMessage = "WARNING: It's not recommended to use Unity alpha/beta release in Oculus development. Use a stable release if you encounter any issue.";
 
-	#region Unity Messages
+#region Unity Messages
 
 #if UNITY_EDITOR
 	[AOT.MonoPInvokeCallback(typeof(OVRPlugin.LogCallback2DelegateType))]

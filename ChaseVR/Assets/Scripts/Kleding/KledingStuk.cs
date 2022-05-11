@@ -4,11 +4,31 @@ using UnityEngine;
 
 public class KledingStuk : MonoBehaviour
 {
-    public enum kledingStaat 
+    public enum kledingStaten 
     {
         geanimeerd,
-        statisch
+        statisch,
+        opgevouwen
+    }
+
+    private kledingStaten _kledingStaat;
+    public kledingStaten kledingStaat
+    {
+        get 
+        { 
+            return _kledingStaat; 
+        }
+        set 
+        { 
+            _kledingStaat = value;
+            ChangeModel();
+        }
     }
 
     public int artikelNummer;
+
+    public void ChangeModel()
+    {
+        Debug.Log(gameObject.name + "       " + kledingStaat);
+    }
 }

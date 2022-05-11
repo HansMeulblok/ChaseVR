@@ -43,7 +43,6 @@ public class MandBlok : MonoBehaviour
 
 
                 break;
-        
         }
         
     }

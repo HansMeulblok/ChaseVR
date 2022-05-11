@@ -16,7 +16,7 @@ public class WaypointFollower : MonoBehaviour
     public Transform currentWayPoint;
     private Transform lookAtPoint;
     private GameObject shootingTarget;
-
+    
     void Start()
     {   
         controllerTransform = GameObject.Find("RightHand Controller").transform;

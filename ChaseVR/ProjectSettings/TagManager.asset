@@ -9,6 +9,7 @@ TagManager:
   - LeftHand
   - RightHand
   - ShootingTarget
+  - Etalage
   layers:
   - Default
   - TransparentFX

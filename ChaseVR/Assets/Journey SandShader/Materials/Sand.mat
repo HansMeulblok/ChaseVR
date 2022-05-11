@@ -95,7 +95,7 @@ Material:
     - _GlitterRange: 2.5
     - _GlitterScale: 5
     - _GlitterStrength: 0.157
-    - _GlitterThreshold: 0.98
+    - _GlitterThreshold: 0.985
     - _Glitterness: 5.1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -110,7 +110,7 @@ Material:
     - _RimEnabled: 1
     - _SandEnabled: 1
     - _SandScale: 100
-    - _SandStrength: 0.08
+    - _SandStrength: 0.018
     - _Shadow: 0.548
     - _SmoothnessTextureChannel: 0
     - _SpecularEnabled: 1
@@ -137,7 +137,7 @@ Material:
     m_Colors:
     - _Color: {r: 0.9098039, g: 0.6862745, b: 0.41568628, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlitterColor: {r: 5.992157, g: 5.992157, b: 4.203922, a: 1}
+    - _GlitterColor: {r: 0.1872549, g: 0.1872549, b: 0.13137256, a: 1}
     - _OceanSpecularColor: {r: 1, g: 0.90588236, b: 0.79816514, a: 1}
     - _ShadowColor: {r: 0.38679248, g: 0.34326184, b: 0.28644538, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

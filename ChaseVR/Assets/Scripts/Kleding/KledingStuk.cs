@@ -12,6 +12,7 @@ public class KledingStuk : MonoBehaviour
     }
 
     private kledingStaten _kledingStaat;
+    
     public kledingStaten kledingStaat
     {
         get 
@@ -21,14 +22,10 @@ public class KledingStuk : MonoBehaviour
         set 
         { 
             _kledingStaat = value;
-            ChangeModel();
+
+             KledingManager.Instance.ChangeKledingModel(gameObject.GetComponent<MeshRenderer>(), _kledingStaat);
         }
     }
 
     public int artikelNummer;
-
-    public void ChangeModel()
-    {
-        Debug.Log(gameObject.name + "       " + kledingStaat);
-    }
 }

@@ -10,6 +10,7 @@ TagManager:
   - RightHand
   - ShootingTarget
   - Etalage
+  - EndPoint
   layers:
   - Default
   - TransparentFX

@@ -7,10 +7,10 @@ using UnityEngine;
 public class WaypointFollower : MonoBehaviour
 {
     [HideInInspector] public Waypoints waypoints;
-    [HideInInspector] public float moveSpeed;
+    public float moveSpeed;
     public float force = 30;
     public bool canMove = true;
-    [HideInInspector] public float distanceThreshold;
+    public float distanceThreshold;
     [HideInInspector] public Transform controllerTransform;
     [HideInInspector] public bool holding;
     public Transform currentWayPoint;
@@ -27,7 +27,7 @@ public class WaypointFollower : MonoBehaviour
         transform.position = currentWayPoint.position;
     }
 
-    void Update()
+    void FixedUpdate()
     {
  
         if(!canMove)

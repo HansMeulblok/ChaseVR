@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine;
 
 public class MannequinManager : MonoBehaviour
@@ -22,7 +23,8 @@ public class MannequinManager : MonoBehaviour
         {
             Destroy(currentEtalage);
             currentEtalage = collider.gameObject;
-            collider.GetComponent<Rigidbody>().useGravity = false;
+            Destroy(collider.GetComponent<XRGrabInteractable>());
+            Destroy(collider.GetComponent<Rigidbody>());
             collider.transform.localScale = desiredScale;
             collider.transform.position = blockPlacementPoint.position;
             mannequinHolder = collider.transform.Find("MannequinHolder");

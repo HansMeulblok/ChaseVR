@@ -66,30 +66,41 @@ public class ClothesTags : MonoBehaviour
         {
             case "Torso":
 
-                if (_torsoKleding == Clothes.gameObject)
-                    _torsoKleding = null;
+                ResetClothesTransform(Clothes, _torsoKleding);
+                    
                 break;
 
             case "Benen":
-                if (_benenKleding == Clothes.gameObject)
-                    _benenKleding = null;
+                
+                ResetClothesTransform(Clothes, _benenKleding);
+
                 break;
 
             case "Schoenen":
-                if (_schoenenKleding == Clothes.gameObject)
-                    _schoenenKleding = null;
+
+                ResetClothesTransform(Clothes, _schoenenKleding);
+
                 break;
 
-
+            default:
+                break;
         }
     }
 
     public void SetCorrectClothesTransform(Collider clothes, Transform clothingTransform)
     {
+        clothes.GetComponent<KledingStuk>().kledingStaat = KledingStuk.kledingStaten.statisch;
+
         clothes.transform.position = clothingTransform.position;
         clothes.transform.rotation = clothingTransform.rotation;
         clothes.attachedRigidbody.velocity = Vector3.zero;
         clothes.attachedRigidbody.angularVelocity = Vector3.zero;
         clothes.gameObject.transform.SetParent(clothingTransform.parent.parent, true);
+    }
+
+    public void ResetClothesTransform(Collider clothes, GameObject clothingGameObject)
+    {
+        clothingGameObject = null;
+        clothes.GetComponent<KledingStuk>().kledingStaat = KledingStuk.kledingStaten.opgevouwen;
     }
 }

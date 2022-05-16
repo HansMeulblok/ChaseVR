@@ -152,7 +152,8 @@ public class KledingManager : MonoBehaviour
             Debug.Log("got rigidbody component");
             rigidbody.transform.GetChild(0).GetComponent<XRGrabInteractable>().enabled = false;
             rigidbody.GetComponent<XRGrabInteractable>().enabled = false;
-            rigidbody.GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
+            //rigidbody.GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
+            rigidbody.transform.GetChild(0).GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
         }
     }
 }

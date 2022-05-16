@@ -518,6 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   artikelNummer: 696969
+  typeKleding: 0
 --- !u!1 &681386275
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,7 +2930,7 @@ PrefabInstance:
     - target: {fileID: 3856055713853772184, guid: 2e613b20f00831f4389dcd620c5917dd,
         type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3856055713853772185, guid: 2e613b20f00831f4389dcd620c5917dd,
         type: 3}

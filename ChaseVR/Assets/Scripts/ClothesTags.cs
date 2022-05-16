@@ -17,9 +17,9 @@ public class ClothesTags : MonoBehaviour
     private void OnTriggerEnter(Collider Clothes)
     {
         //Debug.Log($"({Clothes.name}, enter) parent: {Clothes.transform.parent?.name ?? "none"}");
-        switch (Clothes.gameObject.tag)
+        switch (Clothes.GetComponent<KledingStuk>().typeKleding)
         {
-            case "Torso":
+            case TypeKleding.Torso:
 
                 if (_torsoKleding == null)
                 {
@@ -31,10 +31,11 @@ public class ClothesTags : MonoBehaviour
                 break;
              
 
-            case "Benen":
+            case TypeKleding.Benen:
                 
                 if (_benenKleding == null)
                 {
+                    Debug.Log(Clothes.gameObject.name + " in clothes tags scr");
                     _benenKleding = Clothes.gameObject;
                     SetCorrectClothesTransform(Clothes, BenenPosition);
                     break;
@@ -42,7 +43,7 @@ public class ClothesTags : MonoBehaviour
 
                 break;
 
-            case "Schoenen":
+            case TypeKleding.Schoenen:
                 if (_schoenenKleding == null)
                 {
                     _schoenenKleding = Clothes.gameObject;
@@ -60,31 +61,8 @@ public class ClothesTags : MonoBehaviour
 
     private void OnTriggerExit(Collider Clothes)
     {
-
+        ResetClothesTransform(Clothes);
         //Debug.Log($"({Clothes.name}, exit) parent: {Clothes.transform.parent?.name ?? "none"}");
-        switch (Clothes.tag)
-        {
-            case "Torso":
-
-                ResetClothesTransform(Clothes, _torsoKleding);
-                    
-                break;
-
-            case "Benen":
-                
-                ResetClothesTransform(Clothes, _benenKleding);
-
-                break;
-
-            case "Schoenen":
-
-                ResetClothesTransform(Clothes, _schoenenKleding);
-
-                break;
-
-            default:
-                break;
-        }
     }
 
     public void SetCorrectClothesTransform(Collider clothes, Transform clothingTransform)
@@ -98,9 +76,41 @@ public class ClothesTags : MonoBehaviour
         clothes.gameObject.transform.SetParent(clothingTransform.parent.parent, true);
     }
 
-    public void ResetClothesTransform(Collider clothes, GameObject clothingGameObject)
+    public void ResetClothesTransform(Collider clothes)
     {
-        clothingGameObject = null;
+        
+
+        switch (clothes.GetComponent<KledingStuk>().typeKleding)
+        {
+            case TypeKleding.Torso:
+
+                _torsoKleding = null;
+
+                break;
+
+            case TypeKleding.Benen:
+
+                _benenKleding = null;
+            
+                break;
+
+            case TypeKleding.Schoenen:
+
+                _schoenenKleding = null;
+
+                break;
+
+            default:
+                break;
+        }
+
         clothes.GetComponent<KledingStuk>().kledingStaat = KledingStuk.kledingStaten.opgevouwen;
+    }
+
+    public enum TypeKleding
+    {
+        Torso,
+        Benen,
+        Schoenen
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ClothesTags;
 
 public class KledingStuk : MonoBehaviour
 {
@@ -28,4 +29,5 @@ public class KledingStuk : MonoBehaviour
     }
 
     public int artikelNummer;
+    public TypeKleding typeKleding;
 }

@@ -27197,7 +27197,7 @@ PrefabInstance:
     - target: {fileID: 973526479457665054, guid: f2fb19316583fd74d9f7f3db5add5040,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.0499954
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 973526479457665054, guid: f2fb19316583fd74d9f7f3db5add5040,
         type: 3}
@@ -27244,6 +27244,12 @@ PrefabInstance:
       propertyPath: spawnInterval
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1889464398384525605, guid: f2fb19316583fd74d9f7f3db5add5040,
+        type: 3}
+      propertyPath: waypointFollower
+      value: 
+      objectReference: {fileID: 3357018298608229561, guid: 95df85af20899a44eb905ec8b21d5b05,
+        type: 3}
     - target: {fileID: 1889464398462158559, guid: f2fb19316583fd74d9f7f3db5add5040,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -49841,7 +49847,7 @@ MonoBehaviour:
   startWaypoint: {fileID: 3712844598261457818}
   blockPlacementPoint: {fileID: 607628435}
   mannequinWaypoints: {fileID: 3712844598780642037}
-  speed: 1
+  speed: 5
   distanceThreshold: 0.1
   desiredScale: {x: 1, y: 1, z: 1}
   mannequinSpawnInterval: 1

@@ -74,9 +74,9 @@ public class ClothesTags : MonoBehaviour
         clothes.attachedRigidbody.angularVelocity = Vector3.zero;
 
         if (clothes.transform.parent.TryGetComponent(typeof(KledingStuk), out Component component) && 
-            component.GetComponent<KledingStuk>().kledingStaat != KledingStuk.kledingStaten.statisch)
+            component.GetComponent<KledingStuk>().kledingStaat != KledingStuk.KledingStaten.statisch)
         {
-            component.GetComponent<KledingStuk>().kledingStaat = KledingStuk.kledingStaten.statisch;
+            component.GetComponent<KledingStuk>().kledingStaat = KledingStuk.KledingStaten.statisch;
         }
     }
 
@@ -106,6 +106,6 @@ public class ClothesTags : MonoBehaviour
                 break;
         }
 
-        clothes.GetComponentInParent<KledingStuk>().kledingStaat = KledingStuk.kledingStaten.opgevouwen;
+        clothes.GetComponentInParent<KledingStuk>().kledingStaat = KledingStuk.KledingStaten.opgevouwen;
     }
 }

@@ -66,11 +66,11 @@ public class KledingManager : MonoBehaviour
         return null;
     }
 
-    public void ChangeKledingModel(MeshRenderer kledingArtikelMR, KledingStuk.kledingStaten kledingStaat)
+    public void ChangeKledingModel(MeshRenderer kledingArtikelMR, KledingStuk.KledingStaten kledingStaat)
     {
         switch (kledingStaat)
         {
-            case KledingStuk.kledingStaten.opgevouwen:
+            case KledingStuk.KledingStaten.opgevouwen:
 
                 if (kledingArtikelMR.gameObject.TryGetComponent(typeof(KledingStuk), out Component kledingStuk))
                 {
@@ -82,14 +82,16 @@ public class KledingManager : MonoBehaviour
                     tmp = GetPooledOpgevouwenKledingObject();
                     tmp.GetComponent<MeshRenderer>().sharedMaterial = kledingArtikelMR.sharedMaterial;
 
-                    tmp.name = kledingArtikelMR.name + " opgevouwen";
+                    //tmp.AddComponent<KledingStuk>().artikelNummer = kledingArtikelMR.GetComponent<KledingStuk>().artikelNummer;
+
+                    tmp.name = kledingArtikelMR.GetComponent<KledingStuk>().artikelNummer.ToString();//kledingArtikelMR.name + " opgevouwen";
                     tmp.tag = kledingArtikelMR.tag;
                     tmp.transform.SetParent(kledingArtikelMR.transform, false);
                 }
 
                 break;
 
-            case KledingStuk.kledingStaten.statisch:
+            case KledingStuk.KledingStaten.statisch:
 
                 for (int i = 0; i < amountToPool; i++)
                 {
@@ -98,6 +100,7 @@ public class KledingManager : MonoBehaviour
                     {
                         opgevouwenKledingObjects[i].transform.SetParent(gameObject.transform, false);
                         opgevouwenKledingObjects[i].transform.position = Vector3.zero;
+                        //Destroy(opgevouwenKledingObjects[i].gameObject.GetComponent<KledingStuk>());
                         opgevouwenKledingObjects[i].SetActive(false);
                     }
                 }
@@ -109,7 +112,7 @@ public class KledingManager : MonoBehaviour
 
                 break;
 
-            case KledingStuk.kledingStaten.geanimeerd:
+            case KledingStuk.KledingStaten.geanimeerd:
 
                 break;
 
@@ -124,23 +127,32 @@ public class KledingManager : MonoBehaviour
     {
         if (rightRayInteractor.GetComponent<XRRayInteractor>().interactablesSelected[0].transform.TryGetComponent(out KledingStuk kledingStuk))
         {
-            kledingStuk.kledingStaat = KledingStuk.kledingStaten.opgevouwen;
+            kledingStuk.kledingStaat = KledingStuk.KledingStaten.opgevouwen;
         }
     }
     
     public void ChangeToStatisch()
     {
-        rightRayInteractor.GetComponent<XRRayInteractor>().interactablesSelected[0].transform.GetComponent<KledingStuk>().kledingStaat = KledingStuk.kledingStaten.statisch;
+        rightRayInteractor.GetComponent<XRRayInteractor>().interactablesSelected[0].transform.GetComponent<KledingStuk>().kledingStaat = KledingStuk.KledingStaten.statisch;
     }
 
     public void ShootKleding(SelectExitEventArgs args)
     {
-        if (args.interactableObject.transform.TryGetComponent(typeof(Rigidbody), out Component rigidbody))
+        if (args.interactableObject.transform.TryGetComponent(typeof(Rigidbody), out Component grabbedObject))
         {
-            rigidbody.transform.GetChild(0).GetComponent<XRGrabInteractable>().enabled = false;
-            rigidbody.GetComponent<XRGrabInteractable>().enabled = false;
-            rigidbody.GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
-            rigidbody.transform.GetChild(0).GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
+            if (grabbedObject.transform.childCount == 0)
+            {
+                grabbedObject.GetComponent<XRGrabInteractable>().enabled = false;
+                grabbedObject.GetComponent<Rigidbody>().useGravity = false;
+                grabbedObject.GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
+
+            }
+            else
+            {
+                grabbedObject.transform.GetChild(0).GetComponent<XRGrabInteractable>().enabled = false;
+                grabbedObject.transform.GetChild(0).GetComponent<Rigidbody>().useGravity = false;
+                grabbedObject.transform.GetChild(0).GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
+            }
         }
     }
 }

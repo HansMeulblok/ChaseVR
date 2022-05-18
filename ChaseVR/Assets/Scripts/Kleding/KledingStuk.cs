@@ -5,16 +5,16 @@ using static ClothesTags;
 
 public class KledingStuk : MonoBehaviour
 {
-    public enum kledingStaten 
+    public enum KledingStaten 
     {
         statisch,
         opgevouwen,
         geanimeerd
     }
 
-    private kledingStaten _kledingStaat;
+    private KledingStaten _kledingStaat;
     
-    public kledingStaten kledingStaat
+    public KledingStaten kledingStaat
     {
         get 
         { 

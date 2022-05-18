@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class WaypointFollower : MonoBehaviour
 {
+    [Header("Components")]
     public Waypoints waypoints;
+    public FollowerManager followerManager;
+    public BlokEtalage currentComponent;
+
+    
+    [Header("Current Depended Object")]
     public Transform currentWayPoint;
     public GameObject currentEtalage;
-    public BlokEtalage currentComponent;
-    public FollowerManager followerManager;
+
+    [Header("Follower Settings")]
     public float distanceThreshold;
-    public float respawnTime ;
+    public float respawnTime;
     public bool canMove = true;
     public float moveSpeed = 3;
     public float desiredScale;

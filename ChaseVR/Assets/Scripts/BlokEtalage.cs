@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine;
 
-/// DISCLAIMER: dit script is geschreven met tegenzin, geen motivatie en 3 uur slaap. 
 public class BlokEtalage : MonoBehaviour
 {
     public float force = 30;
@@ -24,7 +23,7 @@ public class BlokEtalage : MonoBehaviour
     {
         if(holding)
         return;
-        
+
         GetComponent<Rigidbody>().position = holderPoint.position;
 
         // Calculcate look direction and set Y to 0 so they only rotate towards the look point on 1 axis. 

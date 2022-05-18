@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class MannequinManager : MonoBehaviour
 {
-    public int mannequinsOnCatwalk;
+    [Header("Catwalk Settings")]
     [SerializeField] private Transform startWaypoint;
     [SerializeField] private Transform blockPlacementPoint;
     [SerializeField] private Waypoints mannequinWaypoints;
-    [SerializeField] private float speed;
+    [SerializeField] private float mannequinSpeed;
     [SerializeField] private float distanceThreshold;
     [SerializeField] private Vector3 desiredScale;
     [SerializeField] private float mannequinSpawnInterval;
+    public int mannequinsOnCatwalk;
     GameObject currentEtalage;
     Transform mannequinHolder;
 
@@ -48,7 +49,7 @@ public class MannequinManager : MonoBehaviour
         {
             Transform mannequin = Instantiate(m, startWaypoint.position, Quaternion.identity);
             MannequinWaypointFollower mannequinWaypointFollower =  mannequin.gameObject.AddComponent<MannequinWaypointFollower>();
-            mannequinWaypointFollower.moveSpeed = speed;
+            mannequinWaypointFollower.moveSpeed = mannequinSpeed;
             mannequinWaypointFollower.currentWayPoint = startWaypoint;
             mannequinWaypointFollower.distanceThreshold = this.distanceThreshold;
             mannequinWaypointFollower.mannequinManager = this.gameObject.GetComponent<MannequinManager>();

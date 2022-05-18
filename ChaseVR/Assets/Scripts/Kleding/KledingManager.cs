@@ -46,7 +46,7 @@ public class KledingManager : MonoBehaviour
 
         for (int i = 0; i < amountToPool; i++)
         {
-            tmp = Instantiate(opgevouwenKledingObjectToPool, GameObject.Find("KledingManager").transform);
+            tmp = Instantiate(opgevouwenKledingObjectToPool, transform);
             tmp.SetActive(false);
             opgevouwenKledingObjects.Add(tmp);
         }
@@ -72,31 +72,20 @@ public class KledingManager : MonoBehaviour
         {
             case KledingStuk.kledingStaten.opgevouwen:
 
-                kledingArtikelMR.enabled = false;
-                kledingArtikelMR.gameObject.GetComponent<BoxCollider>().enabled = false;
-
-                GameObject tmp;
-                tmp = GetPooledOpgevouwenKledingObject();
-                tmp.name = kledingArtikelMR.name + " opgevouwen";
-                tmp.GetComponent<MeshRenderer>().material = kledingArtikelMR.material;
-                tmp.tag = kledingArtikelMR.tag;
-                //rightRayInteractor.GetComponent<XRRayInteractor>().interactablesSelected[0] = tmp.GetComponent<XRGrabInteractable>();// = kledingArtikelMR.gameObject.transform.position;
-                tmp.transform.SetParent(kledingArtikelMR.transform, false);
-
-                if (kledingArtikelMR.gameObject.TryGetComponent(typeof(Torso), out Component torso))
+                if (kledingArtikelMR.gameObject.TryGetComponent(typeof(KledingStuk), out Component kledingStuk))
                 {
-                    tmp.AddComponent<Torso>().artikelNummer = kledingArtikelMR.gameObject.GetComponent<Torso>().artikelNummer;
-                }
-                else if (kledingArtikelMR.gameObject.TryGetComponent(typeof(Benen), out Component benen))
-                {
-                    tmp.AddComponent<Benen>().artikelNummer = kledingArtikelMR.gameObject.GetComponent<Benen>().artikelNummer;
-                }
-                else if (kledingArtikelMR.gameObject.TryGetComponent(typeof(Schoenen), out Component schoenen))
-                {
-                    tmp.AddComponent<Schoenen>().artikelNummer = kledingArtikelMR.gameObject.GetComponent<Schoenen>().artikelNummer;
-                }
+                    kledingArtikelMR.enabled = false;
+                    kledingArtikelMR.gameObject.GetComponent<BoxCollider>().enabled = false;
 
-                
+                    GameObject tmp;
+
+                    tmp = GetPooledOpgevouwenKledingObject();
+                    tmp.GetComponent<MeshRenderer>().sharedMaterial = kledingArtikelMR.sharedMaterial;
+
+                    tmp.name = kledingArtikelMR.name + " opgevouwen";
+                    tmp.tag = kledingArtikelMR.tag;
+                    tmp.transform.SetParent(kledingArtikelMR.transform, false);
+                }
 
                 break;
 
@@ -105,22 +94,27 @@ public class KledingManager : MonoBehaviour
                 for (int i = 0; i < amountToPool; i++)
                 {
                     if (opgevouwenKledingObjects[i].activeInHierarchy &&
-                        opgevouwenKledingObjects[i].gameObject.GetComponent<MeshRenderer>().material == kledingArtikelMR.material)
+                        opgevouwenKledingObjects[i].gameObject.GetComponent<MeshRenderer>().sharedMaterial == kledingArtikelMR.sharedMaterial)
                     {
+                        opgevouwenKledingObjects[i].transform.SetParent(gameObject.transform, false);
+                        opgevouwenKledingObjects[i].transform.position = Vector3.zero;
                         opgevouwenKledingObjects[i].SetActive(false);
-                        /// todo deparent opgvouwen
                     }
                 }
-
-                //kledingArtikelMR.gameObject.transform.parent.gameObject.SetActive(true);
+                
                 kledingArtikelMR.enabled = true;
                 kledingArtikelMR.gameObject.GetComponent<BoxCollider>().enabled = true;
+                kledingArtikelMR.gameObject.GetComponent<XRGrabInteractable>().enabled = true;
 
 
                 break;
 
             case KledingStuk.kledingStaten.geanimeerd:
 
+                break;
+
+            default:
+                Debug.Log("default state");
                 break;
         }
     }
@@ -141,18 +135,11 @@ public class KledingManager : MonoBehaviour
 
     public void ShootKleding(SelectExitEventArgs args)
     {
-        //rightRayInteractor = GameObject.Find("Right Ray Interactor");
-
-        Debug.Log(args.interactableObject.transform.gameObject.name);
-
-        //args.interactableObject.transform.GetComponent<XRGrabInteractable>().enabled = false;
-
         if (args.interactableObject.transform.TryGetComponent(typeof(Rigidbody), out Component rigidbody))
         {
-            Debug.Log("got rigidbody component");
             rigidbody.transform.GetChild(0).GetComponent<XRGrabInteractable>().enabled = false;
             rigidbody.GetComponent<XRGrabInteractable>().enabled = false;
-            //rigidbody.GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
+            rigidbody.GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
             rigidbody.transform.GetChild(0).GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
         }
     }

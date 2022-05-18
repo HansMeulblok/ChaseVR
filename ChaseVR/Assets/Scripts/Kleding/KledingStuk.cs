@@ -7,9 +7,9 @@ public class KledingStuk : MonoBehaviour
 {
     public enum kledingStaten 
     {
-        geanimeerd,
         statisch,
-        opgevouwen
+        opgevouwen,
+        geanimeerd
     }
 
     private kledingStaten _kledingStaat;
@@ -28,6 +28,14 @@ public class KledingStuk : MonoBehaviour
         }
     }
 
-    public int artikelNummer;
+    public enum TypeKleding
+    {
+        torso,
+        benen,
+        schoenen
+    }
+
+
     public TypeKleding typeKleding;
+    public int artikelNummer;
 }

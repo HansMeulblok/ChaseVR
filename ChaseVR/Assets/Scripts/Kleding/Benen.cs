@@ -7,5 +7,6 @@ public class Benen : KledingStuk
     private void Start()
     {
         gameObject.tag = "Benen";
+        typeKleding = TypeKleding.benen;
     }
 }

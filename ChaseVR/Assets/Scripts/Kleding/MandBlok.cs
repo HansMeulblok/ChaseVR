@@ -14,7 +14,7 @@ public class MandBlok : MonoBehaviour
             other.gameObject.tag == "Torso" ||
             other.gameObject.tag == "Benen")
         {
-            artikelenInMand.Add(other.GetComponent<KledingStuk>().artikelNummer);
+            artikelenInMand.Add(other.transform.parent.GetComponent<KledingStuk>().artikelNummer);
         }
     }
 
@@ -24,7 +24,7 @@ public class MandBlok : MonoBehaviour
             other.gameObject.tag == "Torso" ||
             other.gameObject.tag == "Benen")
         {
-            artikelenInMand.Remove(other.GetComponent<KledingStuk>().artikelNummer);
+            artikelenInMand.Remove(other.transform.parent.GetComponent<KledingStuk>().artikelNummer);
         }
     }
 }

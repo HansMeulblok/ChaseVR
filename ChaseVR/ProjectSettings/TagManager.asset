@@ -11,6 +11,9 @@ TagManager:
   - ShootingTarget
   - Etalage
   - EndPoint
+  - Schoenen
+  - Benen
+  - Torso
   layers:
   - Default
   - TransparentFX

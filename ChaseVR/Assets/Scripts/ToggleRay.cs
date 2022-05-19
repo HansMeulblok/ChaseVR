@@ -11,7 +11,7 @@ public class ToggleRay : MonoBehaviour
     {
         GetComponent<XRInteractorLineVisual>().enabled = false;
         InputAction gripAction = controls.FindAction("XRI RightHand Interaction/Select");
-        Debug.Log(gripAction);
+        //Debug.Log(gripAction);
         gripAction.started += TurnOn;
         gripAction.canceled += TurnOff;
 

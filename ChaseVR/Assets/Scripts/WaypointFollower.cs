@@ -1,35 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine;
 
-/// DISCLAIMER: dit script is groten geschreven met tegenzin, geen motivatie en 3 uur slaap. 
 public class WaypointFollower : MonoBehaviour
 {
-    [HideInInspector] public Waypoints waypoints;
-    [HideInInspector] public float moveSpeed;
-    public float force = 30;
-    public bool canMove = true;
-    [HideInInspector] public float distanceThreshold;
-    [HideInInspector] public Transform controllerTransform;
-    [HideInInspector] public bool holding;
-    public Transform currentWayPoint;
-    private Transform lookAtPoint;
-    private GameObject shootingTarget;
+    [Header("Components")]
+    public Waypoints waypoints;
+    public FollowerManager followerManager;
+    public BlokEtalage currentComponent;
 
+    
+    [Header("Current Depended Object")]
+    public Transform currentWayPoint;
+    public GameObject currentEtalage;
+
+    [Header("Follower Settings")]
+    public float distanceThreshold;
+    public float respawnTime;
+    public bool canMove = true;
+    public float moveSpeed = 3;
+    public float desiredScale;
+    private float timer;
+
+
+    // Start is called before the first frame update
     void Start()
-    {   
-        controllerTransform = GameObject.Find("RightHand Controller").transform;
-        shootingTarget = GameObject.FindGameObjectWithTag("ShootingTarget");
-        if(!canMove) return;
-        lookAtPoint = GameObject.Find("LookAtPoint").transform;
+    {
+        currentEtalage = SpawnEtalage();
         currentWayPoint = waypoints.GetNextWaypoint(currentWayPoint);
         transform.position = currentWayPoint.position;
     }
 
+    // Update is called once per frame
     void Update()
     {
- 
+        if(currentComponent.holding)
+        {
+            currentEtalage = null;
+        }
+        
+        if(currentEtalage == null)
+        {
+            timer += Time.deltaTime;
+            if(timer >= respawnTime)
+            {
+                currentEtalage = SpawnEtalage();
+                timer = 0;
+            }
+        }
+
         if(!canMove)
         return;
 
@@ -41,39 +60,14 @@ public class WaypointFollower : MonoBehaviour
         {
             currentWayPoint = waypoints.GetNextWaypoint(currentWayPoint);
         }
-
-        // Calculcate look direction and set Y to 0 so they only rotate towards the look point on 1 axis. 
-        var lookDir = lookAtPoint.position - transform.position;
-        lookDir.y = 0;
-        transform.rotation = Quaternion.LookRotation(lookDir);
     }
 
-    public void Replace(SelectEnterEventArgs args)
-    {        
-        if(holding) 
-        {
-            return;
-        }
-        
-        shootingTarget.GetComponent<MeshRenderer>().enabled = true;
-        holding = true;
-        canMove = false;
-        force = 30;
-        gameObject.AddComponent<CubeScaling>();
-    } 
-
-    public void ShootCube(SelectExitEventArgs args)
+    private GameObject SpawnEtalage()
     {
-        GetComponent<XRGrabInteractable>().enabled = false;
-        GetComponent<Rigidbody>().AddForce(controllerTransform.forward * force, ForceMode.Impulse);
-        holding = false;
-        StartCoroutine(DelayedTurnOn());
-    }
-
-    IEnumerator DelayedTurnOn()
-    {
-        yield return new WaitForSeconds(5);
-        GetComponent<XRGrabInteractable>().enabled = true;
-        shootingTarget.GetComponent<MeshRenderer>().enabled = false;
+        GameObject newObj = Instantiate(followerManager.RandomBlok(), transform.position, Quaternion.identity);
+        newObj.transform.localScale = new Vector3(desiredScale, desiredScale, desiredScale);
+        currentComponent = newObj.GetComponent<BlokEtalage>();
+        currentComponent.holderPoint = this.transform;
+        return newObj;
     }
 }

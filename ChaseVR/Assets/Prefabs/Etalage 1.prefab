@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 447157168988589233}
   - component: {fileID: 1585714950270553198}
   m_Layer: 7
-  m_Name: Etalage
+  m_Name: Etalage 1
   m_TagString: Etalage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,14 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef236cdf3686a2f428fe0be735a21fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: {fileID: 0}
-  moveSpeed: 4
   force: 30
-  canMove: 1
-  distanceThreshold: 1
   controllerTransform: {fileID: 0}
   holding: 0
-  currentWayPoint: {fileID: 0}
+  holderPoint: {fileID: 0}
 --- !u!54 &1849719481974506545
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -918,7 +914,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: cdc4d9147f34fff4ea993cdd74e13fab, type: 2}
+      objectReference: {fileID: 2100000, guid: 74af2bb68aee4bc4586bb9af31866058, type: 2}
     - target: {fileID: 4085399279134442806, guid: 29bb484def5f14b4d9c605344dfd63f1,
         type: 3}
       propertyPath: m_Materials.Array.data[2]

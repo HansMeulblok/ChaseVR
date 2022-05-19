@@ -4,62 +4,60 @@ using UnityEngine;
 
 public class FollowerManager : MonoBehaviour
 {
-    [SerializeField] private GameObject blockEtalage;
-    [SerializeField] private int amountOfBlocks;
-    [SerializeField] private float spawnInterval = 1.5f;
+    [SerializeField] private GameObject waypointFollower;
     [SerializeField] private float speed = 1;
     [SerializeField] Transform blockHolder;
-    private List<GameObject> cubes = new List<GameObject>();
+    public List<GameObject> blokEtalages = new List<GameObject>();
+    private List<GameObject> followers = new List<GameObject>();
     private bool paused = false;
+
     void Start()
     {
-        SpawnCubes();
+        SpawnFollowers();
     }
 
-    public void SpawnCubes()
+    public void SpawnFollowers()
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            GameObject block = Instantiate(blockEtalage, transform.GetChild(i).position, Quaternion.identity, blockHolder);
-            WaypointFollower waypointFollower = block.GetComponentInChildren<WaypointFollower>();
-            waypointFollower.waypoints = this.gameObject.GetComponent<Waypoints>();
-            waypointFollower.currentWayPoint = transform.GetChild(i);
-            waypointFollower.moveSpeed = speed;
-            waypointFollower.distanceThreshold = 0.5f;
-            cubes.Add(block);
+            GameObject newWaypointFollower = Instantiate(waypointFollower, transform.GetChild(i).position, Quaternion.identity, blockHolder);
+            WaypointFollower waypointFollowerComponent = waypointFollower.GetComponentInChildren<WaypointFollower>();
+            waypointFollowerComponent.waypoints = this.gameObject.GetComponent<Waypoints>();
+            waypointFollowerComponent.followerManager = this.GetComponent<FollowerManager>();
+            waypointFollowerComponent.currentWayPoint = transform.GetChild(i);
+            waypointFollowerComponent.moveSpeed = speed;
+            waypointFollowerComponent.distanceThreshold = 0.5f;
+            followers.Add(waypointFollower);
         }
     }
 
 
     public void Pause()
     {
-        // turn off booleans to move if pause is called
         paused = !paused;
 
         if(paused)
         {
-            foreach (var cube in cubes)
+            foreach (var f in followers)
             {
-                WaypointFollower waypointFollower = cube.GetComponentInChildren<WaypointFollower>();
+                WaypointFollower waypointFollower = f.GetComponentInChildren<WaypointFollower>();
                 waypointFollower.canMove = false;
             }
         }
         else
         {
-            foreach (var cube in cubes)
+            foreach (var f in followers)
             {
-                WaypointFollower waypointFollower = cube.GetComponentInChildren<WaypointFollower>();
+                WaypointFollower waypointFollower = f.GetComponentInChildren<WaypointFollower>();
                 waypointFollower.canMove = false;
             }
         }
 
     }
 
-    void Update()
+    public GameObject RandomBlok()
     {
-        if(blockHolder.childCount < 1)
-        {
-            SpawnCubes();
-        }
+        int randomInt = Random.Range(0, blokEtalages.Count);
+        return blokEtalages[randomInt];
     }
 }

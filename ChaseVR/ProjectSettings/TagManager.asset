@@ -12,6 +12,9 @@ TagManager:
   - schoenen
   - torso
   - benen
+  - Etalage
+  - EndPoint
+
   layers:
   - Default
   - TransparentFX
@@ -21,6 +24,7 @@ TagManager:
   - UI
   - Teleporter
   - Mannequin
+  - EtalageCollision
   - 
   - 
   - 

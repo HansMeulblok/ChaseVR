@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class ClothesTags : MonoBehaviour
 {
-    public Transform TorsoPosition;
-    public Transform BenenPosition;
-    public Transform SchoenenPosition;
+    public GameObject TorsoPosition;
+    public GameObject BenenPosition;
+    public GameObject SchoenenPosition;
     //public GameObject Mannequin;
-
-    private GameObject _torsoKleding;
-    private GameObject _benenKleding;
-    private GameObject _schoenenKleding;
+    [HideInInspector]
+    public GameObject _torsoKleding;
+    [HideInInspector]
+    public GameObject _benenKleding;
+    [HideInInspector]
+    public GameObject _schoenenKleding;
 
 
     private void OnTriggerEnter(Collider Clothes)
@@ -24,35 +26,27 @@ public class ClothesTags : MonoBehaviour
                 if (_torsoKleding == null)
                 {
                     _torsoKleding = Clothes.gameObject;
-                    SetCorrectClothesTransform(Clothes, TorsoPosition);
+                    SetCorrectClothesTransform(Clothes, TorsoPosition.transform);
                     break;
                 }
-
                 break;
-             
-
             case "Benen":
-                
                 if (_benenKleding == null)
                 {
                     _benenKleding = Clothes.gameObject;
-                    SetCorrectClothesTransform(Clothes, BenenPosition);
+                    SetCorrectClothesTransform(Clothes, BenenPosition.transform);
                     break;
                 }
-
                 break;
 
             case "Schoenen":
                 if (_schoenenKleding == null)
                 {
                     _schoenenKleding = Clothes.gameObject;
-                    SetCorrectClothesTransform(Clothes, SchoenenPosition);
+                    SetCorrectClothesTransform(Clothes, SchoenenPosition.transform);
                     break;
                 }
-                
                 break;
-
-
             default:
                 break;
         }
@@ -60,27 +54,21 @@ public class ClothesTags : MonoBehaviour
 
     private void OnTriggerExit(Collider Clothes)
     {
-
         //Debug.Log($"({Clothes.name}, exit) parent: {Clothes.transform.parent?.name ?? "none"}");
         switch (Clothes.tag)
         {
             case "Torso":
-
                 if (_torsoKleding == Clothes.gameObject)
                     _torsoKleding = null;
                 break;
-
             case "Benen":
                 if (_benenKleding == Clothes.gameObject)
                     _benenKleding = null;
                 break;
-
             case "Schoenen":
                 if (_schoenenKleding == Clothes.gameObject)
                     _schoenenKleding = null;
                 break;
-
-
         }
     }
 

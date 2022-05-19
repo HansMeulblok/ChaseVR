@@ -26,7 +26,9 @@ public class ShowClothingSlots : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        outlineChangeTorso = gameObject.GetComponentInParent<Outline>();
+        outlineChangeBenen = gameObject.GetComponentInParent<Outline>();
+        outlineChangeSchoenen = gameObject.GetComponentInParent<Outline>();
     }
 
     // Update is called once per frame
@@ -37,9 +39,9 @@ public class ShowClothingSlots : MonoBehaviour
         if (Physics.Raycast(ClothesRay, out hitData, 30,  MannequinHitboxLayer))
         {
             clothesTags = hitData.transform.GetComponent<ClothesTags>();
-            outlineChangeTorso = clothesTags.TorsoPosition.gameObject.GetComponent<Outline>();
-            outlineChangeBenen = clothesTags.BenenPosition.gameObject.GetComponent<Outline>();
-            outlineChangeSchoenen = clothesTags.SchoenenPosition.gameObject.GetComponent<Outline>();
+            outlineChangeTorso = clothesTags.torsoPosition.gameObject.GetComponent<Outline>();
+            outlineChangeBenen = clothesTags.benenPosition.gameObject.GetComponent<Outline>();
+            outlineChangeSchoenen = clothesTags.schoenenPosition.gameObject.GetComponent<Outline>();
             //nothing is being held
             if (IsHoldingSchoenen == false && IsHoldingBenen == false && IsHoldingTorso == false)
             {
@@ -98,6 +100,8 @@ public class ShowClothingSlots : MonoBehaviour
         }
         else
         {
+            //Debug.Log(outlineChangeTorso.gameObject.transform.parent.name);
+
             outlineChangeTorso.OutlineColor = Color.clear;
             outlineChangeBenen.OutlineColor = Color.clear;
             outlineChangeSchoenen.OutlineColor = Color.clear;
@@ -106,15 +110,15 @@ public class ShowClothingSlots : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Torso"))
+        if (other.gameObject.CompareTag("torso"))
         {
             IsHoldingTorso = true;
         }
-        if (other.gameObject.CompareTag("Benen"))
+        if (other.gameObject.CompareTag("benen"))
         {
             IsHoldingBenen = true;
         }
-        if (other.gameObject.CompareTag("Schoenen"))
+        if (other.gameObject.CompareTag("schoenen"))
         {
             IsHoldingSchoenen = true;
         }
@@ -123,15 +127,15 @@ public class ShowClothingSlots : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Torso"))
+        if (other.gameObject.CompareTag("torso"))
         {
             IsHoldingTorso = false;
         }
-        if (other.gameObject.CompareTag("Benen"))
+        if (other.gameObject.CompareTag("benen"))
         {
             IsHoldingBenen = false;
         }
-        if (other.gameObject.CompareTag("Schoenen"))
+        if (other.gameObject.CompareTag("schoenen"))
         {
             IsHoldingSchoenen = false;
         }

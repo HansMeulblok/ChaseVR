@@ -9,9 +9,9 @@ TagManager:
   - LeftHand
   - RightHand
   - ShootingTarget
-  - Schoenen
-  - Benen
-  - Torso
+  - schoenen
+  - torso
+  - benen
   layers:
   - Default
   - TransparentFX
@@ -20,7 +20,7 @@ TagManager:
   - Water
   - UI
   - Teleporter
-  - 
+  - Mannequin
   - 
   - 
   - 

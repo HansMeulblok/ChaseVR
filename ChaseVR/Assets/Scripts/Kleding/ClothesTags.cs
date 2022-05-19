@@ -1,18 +1,35 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ClothesTags : MonoBehaviour
 {
-    public Transform TorsoPosition;
-    public Transform BenenPosition;
-    public Transform SchoenenPosition;
+    [HideInInspector]
+    public Transform torsoPosition;
+    [HideInInspector]
+    public Transform benenPosition;
+    [HideInInspector]
+    public Transform schoenenPosition;
+    [HideInInspector]
+    public Transform kledingPivotPoint;
     //public GameObject Mannequin;
 
-    private GameObject _torsoKleding;
-    private GameObject _benenKleding;
-    private GameObject _schoenenKleding;
+    [HideInInspector]
+    public GameObject _torsoKleding;
+    [HideInInspector]
+    public GameObject _benenKleding;
+    [HideInInspector]
+    public GameObject _schoenenKleding;
 
+    private void Start()
+    {
+        torsoPosition = transform.GetChild(2);
+        benenPosition = transform.GetChild(1);
+        schoenenPosition = transform.GetChild(0);
+
+        kledingPivotPoint = transform.parent.GetChild(1);
+    }
 
     private void OnTriggerEnter(Collider Clothes)
     {
@@ -24,7 +41,7 @@ public class ClothesTags : MonoBehaviour
                 if (_torsoKleding == null)
                 {
                     _torsoKleding = Clothes.gameObject;
-                    SetCorrectClothesTransform(Clothes, TorsoPosition);
+                    SetCorrectClothesTransform(Clothes, kledingPivotPoint);
                     break;
                 }
 
@@ -36,7 +53,7 @@ public class ClothesTags : MonoBehaviour
                 if (_benenKleding == null)
                 {
                     _benenKleding = Clothes.gameObject;
-                    SetCorrectClothesTransform(Clothes, BenenPosition);
+                    SetCorrectClothesTransform(Clothes, kledingPivotPoint);
                     break;
                 }
 
@@ -46,7 +63,7 @@ public class ClothesTags : MonoBehaviour
                 if (_schoenenKleding == null)
                 {
                     _schoenenKleding = Clothes.gameObject;
-                    SetCorrectClothesTransform(Clothes, SchoenenPosition);
+                    SetCorrectClothesTransform(Clothes, kledingPivotPoint);
                     break;
                 }
                 

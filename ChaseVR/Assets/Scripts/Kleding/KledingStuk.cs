@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static ClothesTags;
+using UnityEngine.XR.Interaction.Toolkit;
 
+[RequireComponent(typeof(XRGrabInteractable))]
+[RequireComponent(typeof(BoxCollider))]
 public class KledingStuk : MonoBehaviour
 {
     public enum KledingStaten 
@@ -39,4 +42,7 @@ public class KledingStuk : MonoBehaviour
 
     public TypeKleding typeKleding;
     public int artikelNummer;
+    [HideInInspector]
+    public BoxCollider kledingStukCollider;
+
 }

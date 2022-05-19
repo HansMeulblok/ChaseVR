@@ -6,7 +6,7 @@ public class Torso : KledingStuk
 {
     private void Start()
     {
-        gameObject.tag = "Torso";
+        gameObject.tag = "torso";
         typeKleding = TypeKleding.torso;
     }
 }

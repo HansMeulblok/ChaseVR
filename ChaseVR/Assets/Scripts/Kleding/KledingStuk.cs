@@ -32,7 +32,8 @@ public class KledingStuk : MonoBehaviour
     {
         torso,
         benen,
-        schoenen
+        schoenen,
+        geenType
     }
 
 

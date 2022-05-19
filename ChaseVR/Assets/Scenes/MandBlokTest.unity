@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 97177447}
   - component: {fileID: 97177448}
   m_Layer: 5
-  m_Name: Content
+  m_Name: MandUiContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7690,9 +7690,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   artikelenInMand: 
-  uiContent: {fileID: 97177446}
-  mandPanelPrefab: {fileID: 2365357058115273918, guid: a1d88a309c3447d4989c0dda3c52d93b,
-    type: 3}
 --- !u!65 &1728215062
 BoxCollider:
   m_ObjectHideFlags: 0

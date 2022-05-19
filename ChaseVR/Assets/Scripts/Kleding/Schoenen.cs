@@ -6,7 +6,7 @@ public class Schoenen : KledingStuk
 {
     private void Start()
     {
-        gameObject.tag = "Schoenen";
+        gameObject.tag = "schoenen";
         typeKleding = TypeKleding.schoenen;
     }
 }

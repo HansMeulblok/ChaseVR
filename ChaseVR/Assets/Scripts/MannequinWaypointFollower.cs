@@ -44,4 +44,5 @@ public class MannequinWaypointFollower : MonoBehaviour
         lookDir.y = 0;
         transform.rotation = Quaternion.LookRotation(lookDir);
     }
+    
 }

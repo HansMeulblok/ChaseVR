@@ -49770,7 +49770,7 @@ MonoBehaviour:
   startWaypoint: {fileID: 3712844598261457818}
   blockPlacementPoint: {fileID: 607628435}
   mannequinWaypoints: {fileID: 3712844598780642037}
-  mannequinSpeed: 0
+  mannequinSpeed: 2
   distanceThreshold: 0.1
   desiredScale: {x: 1, y: 1, z: 1}
   mannequinSpawnInterval: 1

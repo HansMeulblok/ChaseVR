@@ -34,45 +34,50 @@ public class ClothesTags : MonoBehaviour
     private void OnTriggerEnter(Collider Clothes)
     {
         //Debug.Log($"({Clothes.name}, enter) parent: {Clothes.transform.parent?.name ?? "none"}");
-        switch (Clothes.GetComponentInParent<KledingStuk>().typeKleding)
+        if (!Clothes.TryGetComponent(typeof (KledingStuk), out Component kledingStuk))
         {
-            case KledingStuk.TypeKleding.torso:
+            switch (Clothes.GetComponentInParent<KledingStuk>().typeKleding)
+            {
+                case KledingStuk.TypeKleding.torso:
 
-                if (_torsoKleding == null)
-                {
-                    _torsoKleding = Clothes.gameObject;
-                    SetCorrectClothesTransform(Clothes, kledingPivotPoint);
+                    if (_torsoKleding == null)
+                    {
+                        _torsoKleding = Clothes.gameObject;
+                        SetCorrectClothesTransform(Clothes, kledingPivotPoint);
+                        break;
+                    }
+
                     break;
-                }
 
-                break;
-             
 
-            case KledingStuk.TypeKleding.benen:
-                
-                if (_benenKleding == null)
-                {
-                    _benenKleding = Clothes.gameObject;
-                    SetCorrectClothesTransform(Clothes, kledingPivotPoint);
+                case KledingStuk.TypeKleding.benen:
+
+                    if (_benenKleding == null)
+                    {
+                        _benenKleding = Clothes.gameObject;
+                        SetCorrectClothesTransform(Clothes, kledingPivotPoint);
+                        break;
+                    }
+
                     break;
-                }
 
-                break;
+                case KledingStuk.TypeKleding.schoenen:
+                    if (_schoenenKleding == null)
+                    {
+                        _schoenenKleding = Clothes.gameObject;
+                        SetCorrectClothesTransform(Clothes, kledingPivotPoint);
+                        break;
+                    }
 
-            case KledingStuk.TypeKleding.schoenen:
-                if (_schoenenKleding == null)
-                {
-                    _schoenenKleding = Clothes.gameObject;
-                    SetCorrectClothesTransform(Clothes, kledingPivotPoint);
                     break;
-                }
-                
-                break;
 
 
-            default:
-                break;
+                default:
+                    break;
+            }
         }
+
+        
     }
 
     private void OnTriggerExit(Collider Clothes)

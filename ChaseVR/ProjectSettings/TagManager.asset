@@ -14,7 +14,6 @@ TagManager:
   - benen
   - Etalage
   - EndPoint
-
   layers:
   - Default
   - TransparentFX
@@ -22,9 +21,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Teleporter
+  - TeleportLayer
   - Mannequin
-  - EtalageCollision
   - 
   - 
   - 
@@ -52,7 +50,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Fader
-    uniqueID: 2784355635
     locked: 0

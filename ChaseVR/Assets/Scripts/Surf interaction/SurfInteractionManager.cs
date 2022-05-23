@@ -436,7 +436,7 @@ public class SurfInteractionManager : MonoBehaviour
                                                      90f - (Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position) - 90f),
                                                      -90f + (Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position) - 90f) * 1.5f);
 
-        Debug.Log(sbMove.transform.GetChild(2).rotation);
+        //Debug.Log(sbMove.transform.GetChild(2).rotation);
 
         steerMoveAmount.x = sbMove.transform.position.x;
         steerMoveAmount.y = sbMove.transform.position.y;

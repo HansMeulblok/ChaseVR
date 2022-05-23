@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MannequinManager : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class MannequinManager : MonoBehaviour
             Destroy(collider.GetComponent<Rigidbody>());
             collider.transform.localScale = desiredScale;
             collider.transform.position = blockPlacementPoint.position;
+            collider.transform.rotation = Quaternion.identity;
             mannequinHolder = collider.transform.Find("MannequinHolder");
             StartCoroutine(SpawnMannequins());
             
@@ -50,18 +52,26 @@ public class MannequinManager : MonoBehaviour
         foreach (Transform m in mannequinHolder)
         {
             Transform mannequin = Instantiate(m, startWaypoint.position, Quaternion.identity);
-            MannequinWaypointFollower mannequinWaypointFollower =  mannequin.gameObject.AddComponent<MannequinWaypointFollower>();
+            MannequinWaypointFollower mannequinWaypointFollower = mannequin.gameObject.AddComponent<MannequinWaypointFollower>();
             mannequinWaypointFollower.moveSpeed = mannequinSpeed;
             mannequinWaypointFollower.currentWayPoint = startWaypoint;
             mannequinWaypointFollower.distanceThreshold = this.distanceThreshold;
             mannequinWaypointFollower.mannequinManager = this.gameObject.GetComponent<MannequinManager>();
             mannequinFollowers.Add(mannequinWaypointFollower.gameObject);
             mannequinsOnCatwalk++;
+
+            mannequin.GetChild(2).GetComponent<BoxCollider>().enabled = true;
+            mannequin.GetChild(2).GetComponent<XRGrabInteractable>().enabled = true;
+            mannequin.GetChild(2).GetComponent<Benen>().enabled = true;
+            mannequin.GetChild(3).gameObject.SetActive(true);
+
             yield return new WaitForSeconds(mannequinSpawnInterval);
         }
+
+
     }
 
-    public void Pause()
+    public void Pause(InputAction.CallbackContext context)
     {
         paused = !paused;
 
@@ -78,7 +88,7 @@ public class MannequinManager : MonoBehaviour
             foreach (var f in mannequinFollowers)
             {
                 MannequinWaypointFollower waypointFollower = f.GetComponentInChildren<MannequinWaypointFollower>();
-                waypointFollower.canMove = false;
+                waypointFollower.canMove = true;
             }
         }
 

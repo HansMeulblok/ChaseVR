@@ -39,7 +39,7 @@ public class BlokEtalage : MonoBehaviour
             return;
         }
         
-        shootingTarget.GetComponent<MeshRenderer>().enabled = true;
+        //shootingTarget.GetComponent<MeshRenderer>().enabled = true;
         holding = true;
         force = 30;
         gameObject.AddComponent<CubeScaling>();
@@ -49,14 +49,13 @@ public class BlokEtalage : MonoBehaviour
     {
         GetComponent<XRGrabInteractable>().enabled = false;
         GetComponent<Rigidbody>().AddForce(controllerTransform.forward * force, ForceMode.Impulse);
-        holding = false;
-        StartCoroutine(DelayedTurnOn());
+        //StartCoroutine(DelayedTurnOn());
     }
 
     IEnumerator DelayedTurnOn()
     {
         yield return new WaitForSeconds(5);
         GetComponent<XRGrabInteractable>().enabled = true;
-        shootingTarget.GetComponent<MeshRenderer>().enabled = false;
+        //shootingTarget.GetComponent<MeshRenderer>().enabled = false;
     }
 }

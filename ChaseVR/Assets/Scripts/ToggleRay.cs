@@ -24,7 +24,9 @@ public class ToggleRay : MonoBehaviour
 
     public void TurnOn(InputAction.CallbackContext context)
     {
+        if(GetComponent<XRRayInteractor>().interactionLayers == LayerMask.GetMask("Default"))
         GetComponent<XRInteractorLineVisual>().enabled = true;
+
         // StartCoroutine(DelayedTurnOn());
     }
 }

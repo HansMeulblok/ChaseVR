@@ -138,9 +138,8 @@ public class KledingManager : MonoBehaviour
 
     public void ShootKleding(SelectExitEventArgs args)
     {
-        if (args.interactableObject.transform.TryGetComponent(typeof(Rigidbody), out Component grabbedObject) && !args.interactableObject.transform.TryGetComponent(typeof(BlokEtalage), out Component blokEtalage))
+        if (args.interactableObject.transform.TryGetComponent(typeof(Rigidbody), out Component grabbedObject) && !args.interactableObject.transform.TryGetComponent(typeof(BlokEtalage), out Component blokEtalage) && args.interactableObject.transform.name != "ChaseLogo")
         {
-            Debug.Log("got rigidbody comp");
             if (grabbedObject.transform.childCount == 0)
             {
                 grabbedObject.GetComponent<XRGrabInteractable>().enabled = false;

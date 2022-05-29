@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8966639617464428196}
   - component: {fileID: 8966639617464428197}
   - component: {fileID: 8966639617464428198}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Benen Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 8966639618590989516}
   - component: {fileID: 8966639618590989517}
   - component: {fileID: 8966639618590989518}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Torso Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 8966639618650256122}
   - component: {fileID: 8966639618650256123}
   - component: {fileID: 8966639618650256100}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Schoenen Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}

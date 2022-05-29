@@ -208,9 +208,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4dc89f6ed0f5704795e127c89e8e348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TorsoPosition: {fileID: 9215136873324902886}
-  BenenPosition: {fileID: 625739370971862242}
-  SchoenenPosition: {fileID: 4871747504532260737}
+  torsoPosition: {fileID: 0}
+  benenPosition: {fileID: 0}
+  schoenenPosition: {fileID: 0}
+  kledingPivotPoint: {fileID: 0}
   _torsoKleding: {fileID: 0}
   _benenKleding: {fileID: 0}
   _schoenenKleding: {fileID: 0}
@@ -337,7 +338,7 @@ GameObject:
   - component: {fileID: 6667634008978560385}
   - component: {fileID: 8986493462456662959}
   - component: {fileID: 1595365200}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Benen Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1508,7 +1509,7 @@ GameObject:
   - component: {fileID: 672253593540022901}
   - component: {fileID: 1121431560499332893}
   - component: {fileID: 579956078209608749}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Schoenen Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2621,7 +2622,7 @@ GameObject:
   - component: {fileID: 1063770223760668830}
   - component: {fileID: 3136955503663569972}
   - component: {fileID: 1811180286}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Torso Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}

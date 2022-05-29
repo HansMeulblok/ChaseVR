@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 2258194256900583932}
   - component: {fileID: 4085399279134442806}
   - component: {fileID: 2572325661844546788}
-  m_Layer: 0
+  - component: {fileID: 7727571598590288672}
+  - component: {fileID: 2176504852006918235}
+  m_Layer: 8
   m_Name: CubeEtalage
-  m_TagString: Untagged
+  m_TagString: Etalage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,6 +97,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef236cdf3686a2f428fe0be735a21fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: {fileID: 0}
-  moveSpeed: 4
-  distanceThreshold: 1
+  force: 30
+  controllerTransform: {fileID: 0}
+  holding: 0
+  holderPoint: {fileID: 0}
+--- !u!114 &7727571598590288672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2572325661844546787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 0}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!65 &2176504852006918235
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2572325661844546787}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.361664, y: 4.361671, z: 4.3615294}
+  m_Center: {x: 0, y: 0, z: 0}

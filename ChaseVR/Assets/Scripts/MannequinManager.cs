@@ -19,6 +19,7 @@ public class MannequinManager : MonoBehaviour
     private List<GameObject> mannequinFollowers = new List<GameObject>();
     GameObject currentEtalage;
     Transform mannequinHolder;
+    private SphereCollider[] kledingCollider;
 
 
     void OnTriggerEnter(Collider collider)
@@ -63,8 +64,14 @@ public class MannequinManager : MonoBehaviour
             mannequin.GetChild(2).GetComponent<BoxCollider>().enabled = true;
             mannequin.GetChild(2).GetComponent<XRGrabInteractable>().enabled = true;
             mannequin.GetChild(2).GetComponent<Benen>().enabled = true;
-            mannequin.GetChild(3).gameObject.SetActive(true);
 
+            mannequin.GetChild(3).gameObject.SetActive(true);
+            kledingCollider = mannequin.GetChild(3).GetComponentsInChildren<SphereCollider>(includeInactive: true);
+            foreach (SphereCollider collider in kledingCollider)
+            {
+                collider.enabled = true;
+                collider.transform.gameObject.layer = 8;
+            }
             yield return new WaitForSeconds(mannequinSpawnInterval);
         }
 

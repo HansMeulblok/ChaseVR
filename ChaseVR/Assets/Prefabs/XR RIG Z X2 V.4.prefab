@@ -1330,6 +1330,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 07723edc-f7a5-49a4-9f82-6ca942f46e16
     m_ActionName: XRI LeftHand/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fc843031-7f2c-48db-af9e-61ae59f7810e
+    m_ActionName: XRI RightHand Interaction/PauseButton
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Generic XR Controller
   m_DefaultActionMap: XRI Head
@@ -2494,9 +2498,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clothesTags: {fileID: 0}
+  bloketalage: {fileID: 0}
+  foldedClothes: {fileID: 0}
   MannequinHitboxLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   holdingItemCollider: {fileID: 1250736779584960361}
 --- !u!1 &4597701897956243969
 GameObject:

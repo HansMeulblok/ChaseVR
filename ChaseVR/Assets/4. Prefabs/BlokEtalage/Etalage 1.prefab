@@ -259,11 +259,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4060637719198157074}
     m_Modifications:
+    - target: {fileID: 1302064976065088044, guid: fd197d40a9c780446a7d319a7eaf1ba6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ad9ca1454d4eeb488ac4beb401cf050, type: 2}
     - target: {fileID: 2957704222457576795, guid: fd197d40a9c780446a7d319a7eaf1ba6,
         type: 3}
       propertyPath: m_Name
       value: Broek3dModelHoutBlok1
       objectReference: {fileID: 0}
+    - target: {fileID: 4235127634368227688, guid: fd197d40a9c780446a7d319a7eaf1ba6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235127634368227688, guid: fd197d40a9c780446a7d319a7eaf1ba6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306754478135271469, guid: fd197d40a9c780446a7d319a7eaf1ba6,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -7393208990038640595, guid: 13eaa4f38cdf4a0488aedde5c07eb46a,
+        type: 3}
     - target: {fileID: 5326791907398880889, guid: fd197d40a9c780446a7d319a7eaf1ba6,
         type: 3}
       propertyPath: m_Enabled
@@ -486,11 +507,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4060637719198157074}
     m_Modifications:
+    - target: {fileID: 1302064976065088044, guid: fd197d40a9c780446a7d319a7eaf1ba6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ad9ca1454d4eeb488ac4beb401cf050, type: 2}
     - target: {fileID: 2957704222457576795, guid: fd197d40a9c780446a7d319a7eaf1ba6,
         type: 3}
       propertyPath: m_Name
       value: Broek3dModelHoutBlok2
       objectReference: {fileID: 0}
+    - target: {fileID: 4235127634368227688, guid: fd197d40a9c780446a7d319a7eaf1ba6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235127634368227688, guid: fd197d40a9c780446a7d319a7eaf1ba6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306754478135271469, guid: fd197d40a9c780446a7d319a7eaf1ba6,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -7393208990038640595, guid: 13eaa4f38cdf4a0488aedde5c07eb46a,
+        type: 3}
     - target: {fileID: 5326791907398880889, guid: fd197d40a9c780446a7d319a7eaf1ba6,
         type: 3}
       propertyPath: m_Enabled

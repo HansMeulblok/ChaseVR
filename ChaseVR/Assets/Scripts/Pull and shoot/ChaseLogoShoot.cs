@@ -16,6 +16,8 @@ public class ChaseLogoShoot : MonoBehaviour
 
     public InputActionAsset controls;
 
+    private bool startExtendoPartAnimation = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,10 +47,11 @@ public class ChaseLogoShoot : MonoBehaviour
 
         extendoPart.transform.position = hitForExtendoPart.point;
 
-
-        StartCoroutine(ExtendoPartAnimation(hitForExtendoPart));
-
-       
+        if (startExtendoPartAnimation)
+        {
+            StartCoroutine(ExtendoPartAnimation(hitForExtendoPart));
+            startExtendoPartAnimation = false;
+        }       
     }
 
     private IEnumerator ExtendoPartAnimation(RaycastHit hitForExtendoPart)
@@ -59,5 +62,7 @@ public class ChaseLogoShoot : MonoBehaviour
 
             yield return null;
         }
+
+        startExtendoPartAnimation = true;
     }
 }

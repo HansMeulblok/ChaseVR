@@ -390,12 +390,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 07bcee6e6baa73b45b2697de81f2c00b,
         type: 3}
       propertyPath: m_Name
-      value: ChaseLogo (1)
+      value: ChaseLogoOnHand
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 07bcee6e6baa73b45b2697de81f2c00b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07bcee6e6baa73b45b2697de81f2c00b, type: 3}
@@ -5168,7 +5168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c47f6ac40d793343b39842ef94ee7cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controls: {fileID: 0}
+  controls: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
 --- !u!1 &959167284
 GameObject:
   m_ObjectHideFlags: 0
@@ -10205,6 +10206,25 @@ Transform:
   m_Father: {fileID: 2082911152}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1902845712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1805671858066215653, guid: 07bcee6e6baa73b45b2697de81f2c00b,
+    type: 3}
+  m_PrefabInstance: {fileID: 60493690}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1902845713
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902845712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01721787, y: 0.015648337, z: 0.012744303}
+  m_Center: {x: -0.0042598383, y: -0.009518927, z: -0.0000000027375957}
 --- !u!1 &1909864463
 GameObject:
   m_ObjectHideFlags: 0

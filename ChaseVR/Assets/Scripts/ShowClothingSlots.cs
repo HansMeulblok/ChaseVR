@@ -76,30 +76,32 @@ public class ShowClothingSlots : MonoBehaviour
                 outlinechangeEtalage = bloketalage.transform.GetChild(0).gameObject.GetComponent<Outline>();
             }
 
-            if (hitData.transform == clothesTags.torsoPosition.gameObject.transform)
+            if (clothesTags != null) 
             {
-                //set torso outlines
-                outlineColorChanger(outlineChangeTorso, outlineChangeBenen, outlineChangeSchoenen, clothesTags._torsoKleding, IsHoldingBenen, IsHoldingSchoenen);
+                if (hitData.transform == clothesTags.torsoPosition.gameObject.transform)
+                {
+                    //set torso outlines
+                    outlineColorChanger(outlineChangeTorso, outlineChangeBenen, outlineChangeSchoenen, clothesTags._torsoKleding, IsHoldingBenen, IsHoldingSchoenen);
+                }
+                else if (hitData.transform == clothesTags.benenPosition.gameObject.transform)
+                {
+                    //set benen outlines
+                    outlineColorChanger(outlineChangeBenen, outlineChangeTorso, outlineChangeSchoenen, clothesTags._benenKleding, IsHoldingTorso, IsHoldingSchoenen);
+                }
+                else if (hitData.transform == clothesTags.schoenenPosition.gameObject.transform)
+                {
+                    //set schoenen outlines
+                    outlineColorChanger(outlineChangeSchoenen, outlineChangeTorso, outlineChangeBenen, clothesTags._schoenenKleding, IsHoldingTorso, IsHoldingBenen);
+                }
+                else if (hitData.transform == foldedClothes.gameObject.transform)
+                {
+                    outlineChangeOpgevouwen.OutlineColor = Color.green;
+                }
+                else if (hitData.transform == outlinechangeEtalage.gameObject.transform)
+                {
+                    outlinechangeEtalage.OutlineColor = Color.green;
+                }
             }
-            else if (hitData.transform == clothesTags.benenPosition.gameObject.transform)
-            {
-                //set benen outlines
-                outlineColorChanger(outlineChangeBenen, outlineChangeTorso, outlineChangeSchoenen, clothesTags._benenKleding, IsHoldingTorso, IsHoldingSchoenen);
-            }
-            else if (hitData.transform == clothesTags.schoenenPosition.gameObject.transform)
-            {
-                //set schoenen outlines
-                outlineColorChanger(outlineChangeSchoenen, outlineChangeTorso, outlineChangeBenen, clothesTags._schoenenKleding, IsHoldingTorso, IsHoldingBenen);
-            }
-            else if (hitData.transform == foldedClothes.gameObject.transform)
-            {
-                outlineChangeOpgevouwen.OutlineColor = Color.green;
-            }
-            else if (hitData.transform == outlinechangeEtalage.gameObject.transform)
-            {
-                outlinechangeEtalage.OutlineColor = Color.green;
-            }
-            
         }
         else
         {

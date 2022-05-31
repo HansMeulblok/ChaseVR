@@ -6,19 +6,27 @@ public class ShowClothingSlots : MonoBehaviour
 {
     [HideInInspector]
     public ClothesTags clothesTags;
+    //public FollowerManager folowerManager;
+    [HideInInspector]
+    public BlokEtalage bloketalage;
+    [HideInInspector]
+    private GameObject foldedClothes;
     private Ray ClothesRay;
     public LayerMask MannequinHitboxLayer;
+    //public MeshFilter OpgevouwenFilter;
     
     //variables needed for holding checks
     public SphereCollider holdingItemCollider;
-    private bool IsHoldingTorso;
-    private bool IsHoldingBenen;
+    private bool IsHoldingTorso = false;
+    private bool IsHoldingBenen = false;
     private bool IsHoldingSchoenen;
 
     //outlines of collider boxes
     Outline outlineChangeTorso;
     Outline outlineChangeBenen;
     Outline outlineChangeSchoenen;
+    Outline outlinechangeEtalage;
+    Outline outlineChangeOpgevouwen;
 
     RaycastHit hitData;
     //string rayTag;
@@ -29,6 +37,10 @@ public class ShowClothingSlots : MonoBehaviour
         outlineChangeTorso = gameObject.GetComponentInParent<Outline>();
         outlineChangeBenen = gameObject.GetComponentInParent<Outline>();
         outlineChangeSchoenen = gameObject.GetComponentInParent<Outline>();
+        outlinechangeEtalage = gameObject.GetComponentInParent<Outline>();
+        outlineChangeOpgevouwen = gameObject.GetComponentInParent<Outline>();
+        foldedClothes = gameObject.transform.parent.gameObject;
+       // bloketalage.gameObject.transform = gameObject.transform.parent.gameObject.transform;
     }
 
     // Update is called once per frame
@@ -36,78 +48,89 @@ public class ShowClothingSlots : MonoBehaviour
     {
         ClothesRay = new Ray(this.transform.position, transform.forward);
         //Debug.DrawRay(ClothesRay.origin, ClothesRay.direction * 10);
+
         if (Physics.Raycast(ClothesRay, out hitData, 30,  MannequinHitboxLayer))
         {
-            clothesTags = hitData.transform.GetComponent<ClothesTags>();
-            outlineChangeTorso = clothesTags.torsoPosition.gameObject.GetComponent<Outline>();
-            outlineChangeBenen = clothesTags.benenPosition.gameObject.GetComponent<Outline>();
-            outlineChangeSchoenen = clothesTags.schoenenPosition.gameObject.GetComponent<Outline>();
-            //nothing is being held
-            if (IsHoldingSchoenen == false && IsHoldingBenen == false && IsHoldingTorso == false)
+            //Debug.Log(hitData.transform.parent.gameObject.name);
+            //setting clotes outline components
+            if (hitData.transform.parent != null && hitData.transform.parent.gameObject.name == "ClothesHitbox")
+                {
+                clothesTags = hitData.transform.parent.GetComponent<ClothesTags>();
+                outlineChangeTorso = clothesTags.torsoPosition.gameObject.GetComponent<Outline>();
+                outlineChangeBenen = clothesTags.benenPosition.gameObject.GetComponent<Outline>();
+                outlineChangeSchoenen = clothesTags.schoenenPosition.gameObject.GetComponent<Outline>();
+            }
+            //incase wanting to see meshfilter
+            //Debug.Log(hitData.transform.gameObject.GetComponent<MeshFilter>().mesh.name);
+            if (hitData.transform.gameObject.GetComponent<MeshFilter>() != null &&  hitData.transform.gameObject.GetComponent<MeshFilter>().mesh.name == "Cube Instance")
             {
-                if (clothesTags._torsoKleding == null)
-                    outlineChangeTorso.OutlineColor = Color.green;
-                else
-                    outlineChangeTorso.OutlineColor = Color.red;
-                if (clothesTags._benenKleding == null)
-                    outlineChangeBenen.OutlineColor = Color.green;
-                else
-                    outlineChangeBenen.OutlineColor = Color.red;
-                if (clothesTags._schoenenKleding == null)
-                    outlineChangeSchoenen.OutlineColor = Color.green;
-                else
-                    outlineChangeSchoenen.OutlineColor = Color.red;
+                foldedClothes = hitData.transform.gameObject;
+                outlineChangeOpgevouwen = foldedClothes.gameObject.GetComponent<Outline>();
+                Debug.Log(foldedClothes.gameObject.name);
             }
 
-            //torso
-            if (IsHoldingTorso == true && clothesTags._torsoKleding == null)
+            //setting bloketalage outline components
+            if (IsHoldingTorso == false && IsHoldingBenen == false && IsHoldingSchoenen == false && hitData.transform.gameObject.tag == "Etalage")
             {
-                outlineChangeTorso.OutlineColor = Color.green;
-                outlineChangeBenen.OutlineColor = Color.clear;
-                outlineChangeSchoenen.OutlineColor = Color.clear;
-            }
-            else if (IsHoldingTorso == true && clothesTags._torsoKleding != null)
-            {
-                outlineChangeTorso.OutlineColor = Color.red;
-                outlineChangeBenen.OutlineColor = Color.clear;
-                outlineChangeSchoenen.OutlineColor = Color.clear;
-            }
-            //benen
-            if (IsHoldingBenen == true && clothesTags._benenKleding == null)
-            {
-                outlineChangeTorso.OutlineColor = Color.clear;
-                outlineChangeBenen.OutlineColor = Color.green;
-                outlineChangeSchoenen.OutlineColor = Color.clear;
-            }
-            else if (IsHoldingBenen == true && clothesTags._benenKleding != null) {
-                outlineChangeTorso.OutlineColor = Color.clear;
-                outlineChangeBenen.OutlineColor = Color.red;
-                outlineChangeSchoenen.OutlineColor = Color.clear;
+                GameObject bloketalage = hitData.transform.gameObject;
+                outlinechangeEtalage = bloketalage.transform.GetChild(0).gameObject.GetComponent<Outline>();
             }
 
-            //schoenen
-            if (IsHoldingSchoenen == true && clothesTags._schoenenKleding == null)
+            if (hitData.transform == clothesTags.torsoPosition.gameObject.transform)
             {
-                outlineChangeTorso.OutlineColor = Color.clear;
-                outlineChangeBenen.OutlineColor = Color.clear;
-                outlineChangeSchoenen.OutlineColor = Color.green;
-            }else if (IsHoldingSchoenen == true && clothesTags._schoenenKleding != null)
-            {
-                outlineChangeTorso.OutlineColor = Color.clear;
-                outlineChangeBenen.OutlineColor = Color.clear;
-                outlineChangeSchoenen.OutlineColor = Color.red;
+                //set torso outlines
+                outlineColorChanger(outlineChangeTorso, outlineChangeBenen, outlineChangeSchoenen, clothesTags._torsoKleding, IsHoldingBenen, IsHoldingSchoenen);
             }
+            else if (hitData.transform == clothesTags.benenPosition.gameObject.transform)
+            {
+                //set benen outlines
+                outlineColorChanger(outlineChangeBenen, outlineChangeTorso, outlineChangeSchoenen, clothesTags._benenKleding, IsHoldingTorso, IsHoldingSchoenen);
+            }
+            else if (hitData.transform == clothesTags.schoenenPosition.gameObject.transform)
+            {
+                //set schoenen outlines
+                outlineColorChanger(outlineChangeSchoenen, outlineChangeTorso, outlineChangeBenen, clothesTags._schoenenKleding, IsHoldingTorso, IsHoldingBenen);
+            }
+            else if (hitData.transform == foldedClothes.gameObject.transform)
+            {
+                outlineChangeOpgevouwen.OutlineColor = Color.green;
+            }
+            else if (hitData.transform == outlinechangeEtalage.gameObject.transform)
+            {
+                outlinechangeEtalage.OutlineColor = Color.green;
+            }
+            
         }
         else
         {
-            //Debug.Log(outlineChangeTorso.gameObject.transform.parent.name);
-
             outlineChangeTorso.OutlineColor = Color.clear;
             outlineChangeBenen.OutlineColor = Color.clear;
             outlineChangeSchoenen.OutlineColor = Color.clear;
-
+            outlinechangeEtalage.OutlineColor = Color.clear;
+            outlineChangeOpgevouwen.OutlineColor = Color.clear;
         }
     }
+    private void outlineColorChanger(Outline selectedOutline, Outline wrongOutline1, Outline wrongOutline2,GameObject clothesTag,bool isHoldingWrongItem, bool IsholdingWrongItem2)
+    {
+        if (isHoldingWrongItem || IsholdingWrongItem2)
+        {
+            selectedOutline.OutlineColor = Color.clear;
+        }
+        else if (clothesTag == null)
+        {
+            selectedOutline.OutlineColor = Color.green;
+            wrongOutline1.OutlineColor = Color.clear;
+            wrongOutline2.OutlineColor = Color.clear;
+
+        }
+        else if (clothesTag != null)
+        {
+            selectedOutline.OutlineColor = Color.red;
+            wrongOutline1.OutlineColor = Color.clear;
+            wrongOutline2.OutlineColor = Color.clear;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("torso"))
@@ -140,5 +163,6 @@ public class ShowClothingSlots : MonoBehaviour
             IsHoldingSchoenen = false;
         }
     }
+
 
 }

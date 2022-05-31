@@ -38526,7 +38526,7 @@ PrefabInstance:
     - target: {fileID: 309022099797289411, guid: f5ce58de286d69d419b733a2144b26de,
         type: 3}
       propertyPath: MannequinHitboxLayer.m_Bits
-      value: 128
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 1250736777732538712, guid: f5ce58de286d69d419b733a2144b26de,
         type: 3}

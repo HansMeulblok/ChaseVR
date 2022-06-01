@@ -38525,6 +38525,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 309022099797289411, guid: f5ce58de286d69d419b733a2144b26de,
         type: 3}
+      propertyPath: OpgevouwenFilter
+      value: 
+      objectReference: {fileID: 3851425803284366844, guid: 2fce03df3ecbdaf4bb16a840cdc5ba8f,
+        type: 3}
+    - target: {fileID: 309022099797289411, guid: f5ce58de286d69d419b733a2144b26de,
+        type: 3}
       propertyPath: MannequinHitboxLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}

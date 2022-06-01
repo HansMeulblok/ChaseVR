@@ -66,7 +66,8 @@ public class ShowClothingSlots : MonoBehaviour
             {
                 foldedClothes = hitData.transform.gameObject;
                 outlineChangeOpgevouwen = foldedClothes.gameObject.GetComponent<Outline>();
-                Debug.Log(foldedClothes.gameObject.name);
+                outlineChangeOpgevouwen.OutlineColor = Color.green;
+                //Debug.Log(foldedClothes.gameObject.name);
             }
 
             //setting bloketalage outline components
@@ -74,6 +75,7 @@ public class ShowClothingSlots : MonoBehaviour
             {
                 GameObject bloketalage = hitData.transform.gameObject;
                 outlinechangeEtalage = bloketalage.transform.GetChild(0).gameObject.GetComponent<Outline>();
+                outlinechangeEtalage.OutlineColor = Color.green;
             }
 
             if (hitData.transform == clothesTags.torsoPosition.gameObject.transform)
@@ -91,14 +93,7 @@ public class ShowClothingSlots : MonoBehaviour
                 //set schoenen outlines
                 outlineColorChanger(outlineChangeSchoenen, outlineChangeTorso, outlineChangeBenen, clothesTags._schoenenKleding, IsHoldingTorso, IsHoldingBenen);
             }
-            else if (hitData.transform == foldedClothes.gameObject.transform)
-            {
-                outlineChangeOpgevouwen.OutlineColor = Color.green;
-            }
-            else if (hitData.transform == outlinechangeEtalage.gameObject.transform)
-            {
-                outlinechangeEtalage.OutlineColor = Color.green;
-            }
+
             
         }
         else

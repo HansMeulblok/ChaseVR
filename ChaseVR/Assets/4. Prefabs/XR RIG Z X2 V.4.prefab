@@ -2499,7 +2499,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clothesTags: {fileID: 0}
   bloketalage: {fileID: 0}
-  foldedClothes: {fileID: 0}
   MannequinHitboxLayer:
     serializedVersion: 2
     m_Bits: 256

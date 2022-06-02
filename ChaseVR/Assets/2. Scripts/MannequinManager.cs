@@ -61,17 +61,31 @@ public class MannequinManager : MonoBehaviour
             mannequinFollowers.Add(mannequinWaypointFollower.gameObject);
             mannequinsOnCatwalk++;
 
-            mannequin.GetChild(2).GetComponent<BoxCollider>().enabled = true;
-            mannequin.GetChild(2).GetComponent<XRGrabInteractable>().enabled = true;
-            mannequin.GetChild(2).GetComponent<Benen>().enabled = true;
+            if (mannequin.TryGetComponent(typeof (BoxCollider), out Component gameObjectWithCollider))
+            {
+                BoxCollider[] boxColliders = mannequin.GetComponents<BoxCollider>();
+                foreach (BoxCollider boxCollider in boxColliders)
+                {
+                    if (boxCollider.isTrigger)
+                        boxCollider.enabled = true;
+                }
 
-            mannequin.GetChild(3).gameObject.SetActive(true);
-            kledingCollider = mannequin.GetChild(3).GetComponentsInChildren<SphereCollider>(includeInactive: true);
+                mannequin.GetComponent<XRGrabInteractable>().enabled = true;
+                mannequin.GetComponent<Benen>().enabled = true;
+            }
+
+            if (mannequin.GetChild(2).gameObject.name == "ClothesHitbox")
+            {
+                mannequin.gameObject.SetActive(true);
+            }
+                
+                //GetChild(3).gameObject.SetActive(true);
+            /*kledingCollider = mannequin.GetChild(3).GetComponentsInChildren<SphereCollider>(includeInactive: true);
             foreach (SphereCollider collider in kledingCollider)
             {
                 collider.enabled = true;
                 collider.transform.gameObject.layer = 8;
-            }
+            }*/
             yield return new WaitForSeconds(mannequinSpawnInterval);
         }
 

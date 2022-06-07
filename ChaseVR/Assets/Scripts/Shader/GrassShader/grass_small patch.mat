@@ -61,14 +61,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BendRotationRandom: 0.2
-    - _BladeCurve: 1.94
-    - _BladeForward: 0.04
-    - _BladeHeight: 1.51
-    - _BladeHeightRandom: 1.95
+    - _BladeCurve: 2.17
+    - _BladeForward: 1.04
+    - _BladeHeight: -1.23
+    - _BladeHeightRandom: 3.28
     - _BladeRandomAmount: 0.5
     - _BladeSegments: 3
     - _BladeWidth: 0.07
-    - _BladeWidthRandom: 0.02
+    - _BladeWidthRandom: -0.06
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -85,8 +85,8 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TessellationUniform: 8
-    - _TranslucentGain: 0.61
+    - _TessellationUniform: 5
+    - _TranslucentGain: 0.54
     - _UVSec: 0
     - _WindScale: 1
     - _WindStrength: 0.09
@@ -95,6 +95,6 @@ Material:
     - _BottomColor: {r: 0.34509805, g: 0.37254903, b: 0.18039216, a: 1}
     - _Color: {r: 0, g: 0.5754717, b: 0.06694827, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _TopColor: {r: 0.5139232, g: 0.7169812, b: 0.1792453, a: 1}
+    - _TopColor: {r: 0.5137255, g: 0.7176471, b: 0.18039216, a: 1}
     - _WindFrequency: {r: 0.05, g: 0.05, b: 0, a: 0}
   m_BuildTextureStacks: []

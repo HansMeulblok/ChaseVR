@@ -93,7 +93,7 @@ public class SurfInteractionManager : MonoBehaviour
         {
             for (int i = 0; i < handInteractionTriggers.Length; i++)
             {
-                //triggersMeshRenderers[i] = handInteractionTriggers[i].gameObject.GetComponent<MeshRenderer>();
+                triggersMeshRenderers[i] = handInteractionTriggers[i].gameObject.GetComponent<MeshRenderer>();
             }
 
             surfTriggerCorrectLeft = Resources.Load("Materials/SurfTriggerCorrectLeft", typeof(Material)) as Material;

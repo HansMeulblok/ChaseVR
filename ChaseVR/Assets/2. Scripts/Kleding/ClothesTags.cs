@@ -33,24 +33,25 @@ public class ClothesTags : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider Clothes)
+    private void OnTriggerEnter(Collider clothes)
     {
         //Debug.Log($"({Clothes.name}, enter) parent: {Clothes.transform.parent?.name ?? "none"}");
-        if (Clothes.TryGetComponent(typeof (KledingStuk), out Component kledingStuk))
+        if (clothes.TryGetComponent(typeof (KledingStuk), out Component kledingStuk))
         {
-            switch (Clothes.GetComponent<KledingStuk>().typeKleding)
+            switch (clothes.GetComponent<KledingStuk>().typeKleding)
             {
                 case KledingStuk.TypeKleding.torso:
 
                     if (_torsoKleding == null)
                     {
-                        _torsoKleding = Clothes.gameObject;
-                        SetCorrectClothesTransform(Clothes, kledingPivotPoint);
+                        _torsoKleding = clothes.gameObject;
+                        SetCorrectClothesTransform(clothes, kledingPivotPoint);
                         break;
                     }
-                    else
+                    else if (clothes.GetComponent<KledingStuk>().kledingStaat == KledingStuk.KledingStaten.opgevouwen)
                     {
-                        Destroy(Clothes.gameObject);
+                        Destroy(_torsoKleding.gameObject);
+                        SetCorrectClothesTransform(clothes, kledingPivotPoint);
                     }
 
                     break;
@@ -60,14 +61,15 @@ public class ClothesTags : MonoBehaviour
 
                     if (_benenKleding == null)
                     {
-                        _benenKleding = Clothes.gameObject;
+                        _benenKleding = clothes.gameObject;
 
-                        SetCorrectClothesTransform(Clothes, kledingPivotPoint);
+                        SetCorrectClothesTransform(clothes, kledingPivotPoint);
                         break;
                     }
-                    else
+                    else if (clothes.GetComponent<KledingStuk>().kledingStaat == KledingStuk.KledingStaten.opgevouwen)
                     {
-                        Destroy(Clothes.gameObject);
+                        Destroy(_benenKleding.gameObject);
+                        SetCorrectClothesTransform(clothes, kledingPivotPoint);
                     }
 
                     break;
@@ -75,13 +77,14 @@ public class ClothesTags : MonoBehaviour
                 case KledingStuk.TypeKleding.schoenen:
                     if (_schoenenKleding == null)
                     {
-                        _schoenenKleding = Clothes.gameObject;
-                        SetCorrectClothesTransform(Clothes, kledingPivotPoint);
+                        _schoenenKleding = clothes.gameObject;
+                        SetCorrectClothesTransform(clothes, kledingPivotPoint);
                         break;
                     }
-                    else
+                    else if (clothes.GetComponent<KledingStuk>().kledingStaat == KledingStuk.KledingStaten.opgevouwen)
                     {
-                        Destroy(Clothes.gameObject);
+                        Destroy(_schoenenKleding.gameObject);
+                        SetCorrectClothesTransform(clothes, kledingPivotPoint);
                     }
 
                     break;
@@ -93,9 +96,14 @@ public class ClothesTags : MonoBehaviour
         }        
     }
 
-    private void OnTriggerExit(Collider Clothes)
+    private void OnTriggerExit(Collider clothes)
     {
-        ResetClothesTransform(Clothes);
+        if (clothes.transform.TryGetComponent(typeof(KledingStuk), out Component component) &&
+            component.GetComponent<KledingStuk>().kledingStaat != KledingStuk.KledingStaten.opgevouwen)
+        {
+            ResetClothesTransform(clothes);
+        }
+        
         //Debug.Log($"({Clothes.name}, exit) parent: {Clothes.transform.parent?.name ?? "none"}");
     }
 
@@ -112,7 +120,7 @@ public class ClothesTags : MonoBehaviour
         clothes.attachedRigidbody.angularVelocity = Vector3.zero;
 
 
-        if (clothes.transform.parent.TryGetComponent(typeof(KledingStuk), out Component component) && 
+        if (clothes.transform.TryGetComponent(typeof(KledingStuk), out Component component) && 
             component.GetComponent<KledingStuk>().kledingStaat != KledingStuk.KledingStaten.statisch)
         {
             component.GetComponent<KledingStuk>().kledingStaat = KledingStuk.KledingStaten.statisch;
@@ -145,6 +153,6 @@ public class ClothesTags : MonoBehaviour
                 break;
         }
 
-        clothes.GetComponentInParent<KledingStuk>().kledingStaat = KledingStuk.KledingStaten.opgevouwen;
+        clothes.GetComponent<KledingStuk>().kledingStaat = KledingStuk.KledingStaten.opgevouwen;
     }
 }

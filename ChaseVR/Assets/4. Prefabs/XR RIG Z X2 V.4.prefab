@@ -741,7 +741,7 @@ MonoBehaviour:
   m_SphereCastRadius: 0.1
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 567
   m_RaycastTriggerInteraction: 1
   m_HitClosestOnly: 0
   m_HoverToSelect: 0
@@ -2499,7 +2499,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clothesTags: {fileID: 0}
   bloketalage: {fileID: 0}
-  foldedClothes: {fileID: 0}
   MannequinHitboxLayer:
     serializedVersion: 2
     m_Bits: 256

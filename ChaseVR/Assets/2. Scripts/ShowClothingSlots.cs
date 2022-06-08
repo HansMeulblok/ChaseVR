@@ -74,7 +74,7 @@ public class ShowClothingSlots : MonoBehaviour
             if (IsHoldingTorso == false && IsHoldingBenen == false && IsHoldingSchoenen == false && hitData.transform.gameObject.tag == "Etalage")
             {
                 GameObject bloketalage = hitData.transform.gameObject;
-                outlinechangeEtalage = bloketalage.transform.GetChild(0).gameObject.GetComponent<Outline>();
+                outlinechangeEtalage = bloketalage.transform.GetChild(1).gameObject.GetComponent<Outline>();
                 outlinechangeEtalage.OutlineColor = Color.green;
             }
             if (clothesTags != null)

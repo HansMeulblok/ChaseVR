@@ -73,61 +73,13 @@ public class KledingManager : MonoBehaviour
         {
             case KledingStuk.KledingStaten.opgevouwen:
 
-                if (kledingArtikel.gameObject.TryGetComponent<KledingStuk>(out var kledingStuk))
-                {
-                    kledingArtikel.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;            
-                    kledingArtikel.transform.GetChild(1).GetComponent<MeshRenderer>().enabled = true;                  
-
-                    boxColliders = kledingArtikel.transform.GetComponentsInChildren<BoxCollider>();
-
-                    foreach (BoxCollider boxCollider in boxColliders)
-                    {
-                        boxCollider.enabled = !boxCollider.enabled;
-                    }
-                    
-
-                    /*GameObject tmp;
-
-                    tmp = GetPooledOpgevouwenKledingObject();
-                    tmp.GetComponent<MeshRenderer>().sharedMaterial = kledingArtikelMR.sharedMaterial;
-
-                    //tmp.AddComponent<KledingStuk>().artikelNummer = kledingArtikelMR.GetComponent<KledingStuk>().artikelNummer;
-
-                    tmp.name = kledingArtikelMR.GetComponent<KledingStuk>().artikelNummer.ToString();//kledingArtikelMR.name + " opgevouwen";
-                    tmp.tag = kledingArtikelMR.tag;
-                    
-                    
-                    //tmp.transform.SetParent(kledingArtikelMR.transform, false);*/
-                }
+                FlipValuesForStateSwitch(kledingArtikel, KledingStuk.KledingStaten.opgevouwen);
 
                 break;
 
             case KledingStuk.KledingStaten.statisch:
 
-                /*for (int i = 0; i < amountToPool; i++)
-                {
-                    if (opgevouwenKledingObjects[i].activeInHierarchy &&
-                        opgevouwenKledingObjects[i].gameObject.GetComponent<MeshRenderer>().sharedMaterial == kledingArtikelMR.sharedMaterial)
-                    {
-                        opgevouwenKledingObjects[i].transform.SetParent(gameObject.transform, false);
-                        opgevouwenKledingObjects[i].transform.position = Vector3.zero;
-                        //Destroy(opgevouwenKledingObjects[i].gameObject.GetComponent<KledingStuk>());
-                        opgevouwenKledingObjects[i].SetActive(false);
-                    }
-                }*/
-
-                kledingArtikel.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
-                kledingArtikel.transform.GetChild(1).GetComponent<MeshRenderer>().enabled = true;
-
-                boxColliders = kledingArtikel.transform.GetComponentsInChildren<BoxCollider>();
-
-                foreach (BoxCollider boxCollider in boxColliders)
-                {
-                    boxCollider.enabled = !boxCollider.enabled;
-                }
-
-                kledingArtikel.gameObject.GetComponent<XRGrabInteractable>().enabled = true;
-
+                FlipValuesForStateSwitch(kledingArtikel, KledingStuk.KledingStaten.statisch);
 
                 break;
 
@@ -157,26 +109,37 @@ public class KledingManager : MonoBehaviour
 
     public void ShootKleding(SelectExitEventArgs args)
     {
-        if (args.interactableObject.transform.TryGetComponent(typeof(Rigidbody), out Component grabbedObject) && !args.interactableObject.transform.TryGetComponent(typeof(BlokEtalage), out Component blokEtalage))
+        if (args.interactableObject.transform.TryGetComponent(out Benen grabbedObject))
         {
             grabbedObject.GetComponent<XRGrabInteractable>().enabled = false;
-            //grabbedObject.GetComponent<Rigidbody>().useGravity = false;
+            grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
             grabbedObject.GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
-
-            /*if (grabbedObject.transform.childCount == 0)
-            {
-                Debug.Log("test if child 0 and shootklding triggered");
-                grabbedObject.GetComponent<XRGrabInteractable>().enabled = false;
-                grabbedObject.GetComponent<Rigidbody>().useGravity = false;
-                grabbedObject.GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
-
-            }
-            else
-            {
-                grabbedObject.transform.GetChild(0).GetComponent<XRGrabInteractable>().enabled = false;
-                grabbedObject.transform.GetChild(0).GetComponent<Rigidbody>().useGravity = false;
-                grabbedObject.transform.GetChild(0).GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
-            }*/
         }
+    }
+
+    private void FlipValuesForStateSwitch(GameObject kledingArtikel, KledingStuk.KledingStaten kledingStaat)
+    {
+        kledingArtikel.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = !kledingArtikel.transform.GetChild(0).GetComponent<MeshRenderer>().enabled;
+        kledingArtikel.transform.GetChild(1).GetComponent<MeshRenderer>().enabled = !kledingArtikel.transform.GetChild(1).GetComponent<MeshRenderer>().enabled;
+
+        boxColliders = kledingArtikel.transform.GetComponentsInChildren<BoxCollider>();
+
+        foreach (BoxCollider boxCollider in boxColliders)
+        {
+            boxCollider.enabled = !boxCollider.enabled;
+        }
+
+        /*if (kledingStaat == KledingStuk.KledingStaten.statisch)
+        {
+            kledingArtikel.gameObject.GetComponent<XRGrabInteractable>().enabled = true;
+            kledingArtikel.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+            
+        }
+        else if (kledingStaat == KledingStuk.KledingStaten.opgevouwen)
+        {
+            //kledingArtikel.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        }*/
+
     }
 }

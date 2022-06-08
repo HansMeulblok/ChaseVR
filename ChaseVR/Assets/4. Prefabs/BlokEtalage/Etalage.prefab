@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 455453272656389541}
   - component: {fileID: 455453272656389540}
   - component: {fileID: 455453272656389543}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Torso Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 455453273149787027}
   - component: {fileID: 455453273149787026}
   - component: {fileID: 455453273149787021}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Schoenen Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 455453273516480677}
   - component: {fileID: 455453273516480683}
   - component: {fileID: 455453273516480682}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: ClothesHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 455453273799729101}
   - component: {fileID: 455453273799729100}
   - component: {fileID: 455453273799729103}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Benen Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,8 +586,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 349467377383494826}
   - {fileID: 4060637719198157074}
+  - {fileID: 349467377383494826}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -786,7 +786,7 @@ GameObject:
   - component: {fileID: 6018059395478630670}
   - component: {fileID: 6018059395478630656}
   - component: {fileID: 6018059395478630657}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: ClothesHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -856,7 +856,7 @@ GameObject:
   - component: {fileID: 6018059395862541926}
   - component: {fileID: 6018059395862541927}
   - component: {fileID: 6018059395862541924}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Benen Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1004,7 +1004,7 @@ GameObject:
   - component: {fileID: 6018059396866673678}
   - component: {fileID: 6018059396866673679}
   - component: {fileID: 6018059396866673676}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Torso Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1229,7 +1229,7 @@ GameObject:
   - component: {fileID: 6018059397059076664}
   - component: {fileID: 6018059397059076665}
   - component: {fileID: 6018059397059076646}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Schoenen Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1360,7 +1360,7 @@ Transform:
   - {fileID: 455453272473946992}
   - {fileID: 6018059396650689243}
   m_Father: {fileID: 3179790484344420415}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &455453273550710409
 PrefabInstance:
@@ -1369,6 +1369,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 455453272473946992}
     m_Modifications:
+    - target: {fileID: 3856055713853772184, guid: 2e613b20f00831f4389dcd620c5917dd,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856055713853772185, guid: 2e613b20f00831f4389dcd620c5917dd,
+        type: 3}
+      propertyPath: m_RetainTransformParent
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3856055713853772190, guid: 2e613b20f00831f4389dcd620c5917dd,
         type: 3}
       propertyPath: m_Enabled
@@ -1377,7 +1387,7 @@ PrefabInstance:
     - target: {fileID: 3856055713853772190, guid: 2e613b20f00831f4389dcd620c5917dd,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5091835172811470472, guid: 2e613b20f00831f4389dcd620c5917dd,
         type: 3}
@@ -1454,6 +1464,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3179790484344420415}
     m_Modifications:
+    - target: {fileID: 2176504852006918235, guid: 29bb484def5f14b4d9c605344dfd63f1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2258194256900583932, guid: 29bb484def5f14b4d9c605344dfd63f1,
         type: 3}
       propertyPath: m_Mesh
@@ -1473,7 +1488,7 @@ PrefabInstance:
     - target: {fileID: 2952509928606924377, guid: 29bb484def5f14b4d9c605344dfd63f1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2952509928606924377, guid: 29bb484def5f14b4d9c605344dfd63f1,
         type: 3}
@@ -1599,7 +1614,7 @@ PrefabInstance:
     - target: {fileID: 3856055713853772185, guid: 2e613b20f00831f4389dcd620c5917dd,
         type: 3}
       propertyPath: m_RetainTransformParent
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3856055713853772188, guid: 2e613b20f00831f4389dcd620c5917dd,
         type: 3}

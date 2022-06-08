@@ -33,7 +33,8 @@ public class MannequinManager : MonoBehaviour
             collider.transform.localScale = desiredScale;
             collider.transform.position = blockPlacementPoint.position;
             collider.transform.rotation = Quaternion.identity;
-            mannequinHolder = collider.transform.Find("MannequinHolder");
+
+            mannequinHolder = collider.transform.GetChild(0).transform;
             StartCoroutine(SpawnMannequins());
             
         }
@@ -61,22 +62,22 @@ public class MannequinManager : MonoBehaviour
             mannequinFollowers.Add(mannequinWaypointFollower.gameObject);
             mannequinsOnCatwalk++;
 
-            if (mannequin.TryGetComponent(typeof (BoxCollider), out Component gameObjectWithCollider))
+            if (mannequin.GetChild(3).TryGetComponent(typeof (BoxCollider), out Component gameObjectWithCollider))
             {
-                BoxCollider[] boxColliders = mannequin.GetComponents<BoxCollider>();
+                BoxCollider[] boxColliders = gameObjectWithCollider.GetComponents<BoxCollider>();
                 foreach (BoxCollider boxCollider in boxColliders)
                 {
-                    if (boxCollider.isTrigger)
-                        boxCollider.enabled = true;
+                    boxCollider.enabled = true;
+                    break;
                 }
 
-                mannequin.GetComponent<XRGrabInteractable>().enabled = true;
-                mannequin.GetComponent<Benen>().enabled = true;
+                gameObjectWithCollider.GetComponent<XRGrabInteractable>().enabled = true;
+                gameObjectWithCollider.GetComponent<Benen>().enabled = true;
             }
 
-            if (mannequin.GetChild(2).gameObject.name == "ClothesHitbox")
+            if (mannequin.transform.Find("ClothesHitbox"))
             {
-                mannequin.gameObject.SetActive(true);
+                mannequin.transform.Find("ClothesHitbox").gameObject.SetActive(true);
             }
                 
                 //GetChild(3).gameObject.SetActive(true);

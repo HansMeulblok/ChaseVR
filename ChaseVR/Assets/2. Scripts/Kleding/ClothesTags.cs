@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class ClothesTags : MonoBehaviour
 {
@@ -16,11 +17,11 @@ public class ClothesTags : MonoBehaviour
     //public GameObject Mannequin;
 
     [HideInInspector]
-    public GameObject _torsoKleding;
+    public GameObject _torsoKleding = null;
     [HideInInspector]
-    public GameObject _benenKleding;
+    public GameObject _benenKleding = null;
     [HideInInspector]
-    public GameObject _schoenenKleding;
+    public GameObject _schoenenKleding = null;
 
     private void Start()
     {
@@ -31,12 +32,13 @@ public class ClothesTags : MonoBehaviour
         kledingPivotPoint = transform.parent.GetChild(1);
     }
 
+
     private void OnTriggerEnter(Collider Clothes)
     {
         //Debug.Log($"({Clothes.name}, enter) parent: {Clothes.transform.parent?.name ?? "none"}");
-        if (!Clothes.TryGetComponent(typeof (KledingStuk), out Component kledingStuk))
+        if (Clothes.TryGetComponent(typeof (KledingStuk), out Component kledingStuk))
         {
-            switch (Clothes.GetComponentInParent<KledingStuk>().typeKleding)
+            switch (Clothes.GetComponent<KledingStuk>().typeKleding)
             {
                 case KledingStuk.TypeKleding.torso:
 
@@ -45,6 +47,10 @@ public class ClothesTags : MonoBehaviour
                         _torsoKleding = Clothes.gameObject;
                         SetCorrectClothesTransform(Clothes, kledingPivotPoint);
                         break;
+                    }
+                    else
+                    {
+                        Destroy(Clothes.gameObject);
                     }
 
                     break;
@@ -55,8 +61,13 @@ public class ClothesTags : MonoBehaviour
                     if (_benenKleding == null)
                     {
                         _benenKleding = Clothes.gameObject;
+
                         SetCorrectClothesTransform(Clothes, kledingPivotPoint);
                         break;
+                    }
+                    else
+                    {
+                        Destroy(Clothes.gameObject);
                     }
 
                     break;
@@ -68,6 +79,10 @@ public class ClothesTags : MonoBehaviour
                         SetCorrectClothesTransform(Clothes, kledingPivotPoint);
                         break;
                     }
+                    else
+                    {
+                        Destroy(Clothes.gameObject);
+                    }
 
                     break;
 
@@ -75,9 +90,7 @@ public class ClothesTags : MonoBehaviour
                 default:
                     break;
             }
-        }
-
-        
+        }        
     }
 
     private void OnTriggerExit(Collider Clothes)
@@ -88,12 +101,16 @@ public class ClothesTags : MonoBehaviour
 
     public void SetCorrectClothesTransform(Collider clothes, Transform clothingTransform)
     {
-        clothes.transform.parent.transform.position = clothingTransform.position;
-        clothes.transform.parent.transform.rotation = clothingTransform.rotation;
-        clothes.transform.parent.SetParent(gameObject.transform.parent, true);
+        clothes.transform.position = clothingTransform.position;
+        clothes.transform.rotation = clothingTransform.rotation;
+        clothes.transform.SetParent(gameObject.transform.parent, true);
+
+        clothes.attachedRigidbody.isKinematic = true;
+        clothes.GetComponent<XRGrabInteractable>().enabled = true;
 
         clothes.attachedRigidbody.velocity = Vector3.zero;
         clothes.attachedRigidbody.angularVelocity = Vector3.zero;
+
 
         if (clothes.transform.parent.TryGetComponent(typeof(KledingStuk), out Component component) && 
             component.GetComponent<KledingStuk>().kledingStaat != KledingStuk.KledingStaten.statisch)
@@ -115,7 +132,7 @@ public class ClothesTags : MonoBehaviour
             case KledingStuk.TypeKleding.benen:
 
                 _benenKleding = null;
-            
+
                 break;
 
             case KledingStuk.TypeKleding.schoenen:

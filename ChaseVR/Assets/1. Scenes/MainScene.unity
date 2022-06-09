@@ -25477,6 +25477,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 515363786349614687, guid: 15967612ace5be043b181be7fd1d5c47,
+        type: 3}
+      propertyPath: m_Name
+      value: MannequinManager
+      objectReference: {fileID: 0}
     - target: {fileID: 1423319170527349309, guid: 15967612ace5be043b181be7fd1d5c47,
         type: 3}
       propertyPath: m_RootOrder
@@ -25542,6 +25547,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3712844597846503552, guid: 15967612ace5be043b181be7fd1d5c47,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.26
+      objectReference: {fileID: 0}
     - target: {fileID: 3712844597846503559, guid: 15967612ace5be043b181be7fd1d5c47,
         type: 3}
       propertyPath: m_Layer
@@ -25556,6 +25566,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712844598101225110, guid: 15967612ace5be043b181be7fd1d5c47,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.26
       objectReference: {fileID: 0}
     - target: {fileID: 3712844598261457817, guid: 15967612ace5be043b181be7fd1d5c47,
         type: 3}
@@ -25582,6 +25597,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3712844599519031097, guid: 15967612ace5be043b181be7fd1d5c47,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.26
+      objectReference: {fileID: 0}
     - target: {fileID: 3712844599941633776, guid: 15967612ace5be043b181be7fd1d5c47,
         type: 3}
       propertyPath: m_Layer
@@ -25596,6 +25616,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: 0.7466126
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308013266992677499, guid: 15967612ace5be043b181be7fd1d5c47,
+        type: 3}
+      propertyPath: firstWaypoint
+      value: 
+      objectReference: {fileID: 1581024798}
+    - target: {fileID: 5308013266992677499, guid: 15967612ace5be043b181be7fd1d5c47,
+        type: 3}
+      propertyPath: distanceThreshold
+      value: 0.000001
       objectReference: {fileID: 0}
     - target: {fileID: 7900272388779310476, guid: 15967612ace5be043b181be7fd1d5c47,
         type: 3}
@@ -39434,6 +39464,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1577633714}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1581024798 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3712844598916939600, guid: 15967612ace5be043b181be7fd1d5c47,
+    type: 3}
+  m_PrefabInstance: {fileID: 1072711914}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1584243352
 GameObject:
   m_ObjectHideFlags: 0
@@ -42220,7 +42256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.000019296082, y: -0.0000076293945}
+  m_AnchoredPosition: {x: 0.000019296082, y: -0.00015258789}
   m_SizeDelta: {x: 0, y: 874}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1684315016
@@ -51171,7 +51207,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 169112542}
   m_HandleRect: {fileID: 169112541}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:

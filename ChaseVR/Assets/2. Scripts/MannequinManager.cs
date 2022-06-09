@@ -16,15 +16,26 @@ public class MannequinManager : MonoBehaviour
     [SerializeField] private float mannequinSpawnInterval;
     public int mannequinsOnCatwalk;
     public bool paused;
-    private List<GameObject> mannequinFollowers = new List<GameObject>();
+    //[HideInInspector]
+    public List<GameObject> mannequinFollowers = new List<GameObject>();
     GameObject currentEtalage;
     Transform mannequinHolder;
     private SphereCollider[] kledingCollider;
+    private bool canMoveMannequins = true;
+
+    private Waypoints waypoints;
+    public Transform firstWaypoint;
+
+    private void Start()
+    {
+        waypoints = FindObjectOfType<Waypoints>();
+    }
 
 
     void OnTriggerEnter(Collider collider)
     {
-        if(collider.tag == "Etalage")
+        // #TODO idee van jord, gebruik een queue
+        if(collider.tag == "Etalage" && (currentEtalage == null))
         {
             Destroy(currentEtalage);
             currentEtalage = collider.gameObject;
@@ -35,14 +46,53 @@ public class MannequinManager : MonoBehaviour
             collider.transform.rotation = Quaternion.identity;
 
             mannequinHolder = collider.transform.GetChild(0).transform;
+
             StartCoroutine(SpawnMannequins());
-            
         }
     }
 
-    public void UpdateMannequinAmount()
+    private void FixedUpdate()
+    {
+        CanMoveMannequins();
+    }
+
+    public void CanMoveMannequins()
+    {
+        if (!canMoveMannequins)
+        { 
+            foreach (GameObject mannequin in mannequinFollowers)
+            {
+                int indexOfMannequin = mannequinFollowers.IndexOf(mannequin);
+                MannequinWaypointFollower mannequinWaypointFollower = mannequin.GetComponent<MannequinWaypointFollower>();
+
+                if (indexOfMannequin != 0 &&
+                    Vector3.Distance(mannequin.transform.position,
+                                     mannequinFollowers[indexOfMannequin - 1].transform.position)
+                                     <= 1.8f)
+                {
+                    foreach (GameObject m in mannequinFollowers)
+                    {
+                        m.GetComponent<MannequinWaypointFollower>().canMove = false;
+                    }
+
+                    Debug.Log("triggered stop statement     ----     " + " mannequin: " + mannequin.name);
+                }
+                else if (indexOfMannequin != 0 &&
+                         Vector3.Distance(mannequin.transform.position,
+                                          mannequinFollowers[indexOfMannequin - 1].transform.position)
+                                          > 1.8f)
+                {
+                    mannequinWaypointFollower.canMove = true;
+                }
+            }
+        }
+    }
+
+    public void UpdateMannequinAmount(GameObject mannequin)
     {
         mannequinsOnCatwalk--;
+        mannequinFollowers.Remove(mannequin);
+
         if(mannequinsOnCatwalk == 0)
         {
             Destroy(currentEtalage);
@@ -54,15 +104,17 @@ public class MannequinManager : MonoBehaviour
         foreach (Transform m in mannequinHolder)
         {
             Transform mannequin = Instantiate(m, startWaypoint.position, Quaternion.identity);
+
             MannequinWaypointFollower mannequinWaypointFollower = mannequin.gameObject.AddComponent<MannequinWaypointFollower>();
             mannequinWaypointFollower.moveSpeed = mannequinSpeed;
             mannequinWaypointFollower.currentWayPoint = startWaypoint;
             mannequinWaypointFollower.distanceThreshold = this.distanceThreshold;
             mannequinWaypointFollower.mannequinManager = this.gameObject.GetComponent<MannequinManager>();
+            mannequinWaypointFollower.name += " " + mannequinsOnCatwalk;
             mannequinFollowers.Add(mannequinWaypointFollower.gameObject);
             mannequinsOnCatwalk++;
 
-            if (mannequin.GetChild(3).TryGetComponent(typeof (BoxCollider), out Component gameObjectWithCollider))
+            if (mannequin.GetChild(3).TryGetComponent(typeof(BoxCollider), out Component gameObjectWithCollider))
             {
                 BoxCollider[] boxColliders = gameObjectWithCollider.GetComponents<BoxCollider>();
                 foreach (BoxCollider boxCollider in boxColliders)
@@ -79,18 +131,12 @@ public class MannequinManager : MonoBehaviour
             {
                 mannequin.transform.Find("ClothesHitbox").gameObject.SetActive(true);
             }
-                
-                //GetChild(3).gameObject.SetActive(true);
-            /*kledingCollider = mannequin.GetChild(3).GetComponentsInChildren<SphereCollider>(includeInactive: true);
-            foreach (SphereCollider collider in kledingCollider)
+
+            while (Vector3.Distance(mannequin.transform.position, firstWaypoint.position/*waypoints.transform.GetChild(0).transform.position*/) >= 0.2f)
             {
-                collider.enabled = true;
-                collider.transform.gameObject.layer = 8;
-            }*/
-            yield return new WaitForSeconds(mannequinSpawnInterval);
+                yield return null;
+            }
         }
-
-
     }
 
     public void Pause(InputAction.CallbackContext context)
@@ -103,6 +149,7 @@ public class MannequinManager : MonoBehaviour
             {
                 MannequinWaypointFollower waypointFollower = f.GetComponentInChildren<MannequinWaypointFollower>();
                 waypointFollower.canMove = false;
+                canMoveMannequins = false;
             }
         }
         else
@@ -111,6 +158,7 @@ public class MannequinManager : MonoBehaviour
             {
                 MannequinWaypointFollower waypointFollower = f.GetComponentInChildren<MannequinWaypointFollower>();
                 waypointFollower.canMove = true;
+                canMoveMannequins = true;
             }
         }
 

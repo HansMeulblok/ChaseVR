@@ -77,6 +77,10 @@ public class ShowClothingSlots : MonoBehaviour
                 outlinechangeEtalage = bloketalage.transform.GetChild(0).gameObject.GetComponent<Outline>();
                 outlinechangeEtalage.OutlineColor = Color.green;
             }
+            else
+            {
+                outlinechangeEtalage.OutlineColor = Color.clear;
+            }
             if (clothesTags != null)
             {
                 if (hitData.transform == clothesTags.torsoPosition.gameObject.transform)
@@ -86,6 +90,9 @@ public class ShowClothingSlots : MonoBehaviour
                 }
                 else if (hitData.transform == clothesTags.benenPosition.gameObject.transform)
                 {
+                    //Debug.Log(clothesTags.benenPosition.gameObject.name);
+                    //Debug.Log(clothesTags._benenKleding.gameObject.name);
+
                     //set benen outlines
                     outlineColorChanger(outlineChangeBenen, outlineChangeTorso, outlineChangeSchoenen, clothesTags._benenKleding, IsHoldingTorso, IsHoldingSchoenen);
                 }

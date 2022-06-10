@@ -6,6 +6,6 @@ public class GetOpgevouwenMaterial : MonoBehaviour
 {
     void Start()
     {
-        GetComponent<MeshRenderer>().sharedMaterial = transform.parent.GetChild(0).GetComponent<MeshRenderer>().sharedMaterial;
+        GetComponent<MeshRenderer>().material = transform.parent.GetChild(0).GetComponent<MeshRenderer>().material;
     }
 }

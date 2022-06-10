@@ -23,56 +23,53 @@ public class MandBlok : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "schoenen" ||
-            other.gameObject.tag == "torso" ||
-            other.gameObject.tag == "benen")
+        if (other.TryGetComponent(out KledingStuk kledingStuk))
         {
-            AddClothingToMand(other.gameObject);
+            AddClothingToMand(kledingStuk);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "schoenen" ||
-            other.gameObject.tag == "torso" ||
-            other.gameObject.tag == "benen")
+        if (other.TryGetComponent(out KledingStuk kledingStuk))
         {
-            RemoveClothingFromMand(other.gameObject);
+            RemoveClothingFromMand(kledingStuk);
         }
     }
 
 
-    public void AddClothingToMand(GameObject clothing)
+    public void AddClothingToMand(KledingStuk clothing)
     {
-        if (clothing.transform.parent != null)
-        {
-            artikelenInMand.Add(clothing.transform.parent.GetComponent<KledingStuk>().artikelNummer);
+        artikelenInMand.Add(clothing.artikelNummer);
 
-            GameObject child = Instantiate(mandPanelPrefab, uiContent.transform);
+        GameObject child = Instantiate(mandPanelPrefab, uiContent.transform);
 
-            child.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = GetItemName(clothing.name, GetTypeKleding(clothing));
+        child.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = GetItemName(clothing.artikelNummer, clothing.typeKleding);
 
 
-            clothing.GetComponent<Rigidbody>().useGravity = true;
-            clothing.GetComponent<BoxCollider>().isTrigger = false;
-            clothing.GetComponent<XRGrabInteractable>().enabled = true;
-        }
+        clothing.GetComponent<Rigidbody>().useGravity = true;
+        //clothing.GetComponent<BoxCollider>().isTrigger = false;
+        clothing.GetComponent<XRGrabInteractable>().enabled = true;
     }
 
-    public void RemoveClothingFromMand(GameObject clothing)
+    public void RemoveClothingFromMand(KledingStuk clothing)
     {
-        artikelenInMand.Remove(int.Parse(clothing.gameObject.name));
+        artikelenInMand.Remove(clothing.artikelNummer);
 
         foreach (Transform child in uiContent.transform)
         {
-            if (child.GetComponentInChildren<TextMeshProUGUI>().text == GetItemName(clothing.name, (KledingStuk.TypeKleding)System.Enum.Parse( typeof(KledingStuk.TypeKleding), clothing.tag)))
+            if (child.GetComponentInChildren<TextMeshProUGUI>().text == GetItemName(clothing.artikelNummer, clothing.typeKleding))
             {
                 Destroy(child.gameObject);
             }
         }
+
+        clothing.GetComponent<Rigidbody>().useGravity = false;
+        //clothing.GetComponent<BoxCollider>().isTrigger = false;
+        clothing.GetComponent<XRGrabInteractable>().enabled = false;
     }
 
-    public string GetItemName(string clothingName, KledingStuk.TypeKleding typeKleding)
+    public string GetItemName(int clothingName, KledingStuk.TypeKleding typeKleding)
     {
         switch (typeKleding)
         {
@@ -80,7 +77,7 @@ public class MandBlok : MonoBehaviour
 
                 foreach (GameObject torsoKleding in KledingManager.Instance.torsoKleding)
                 {
-                    if (torsoKleding.GetComponent<KledingStuk>().artikelNummer == int.Parse(clothingName))
+                    if (torsoKleding.GetComponent<KledingStuk>().artikelNummer == clothingName)
                     {
                         return torsoKleding.name;
                     }
@@ -92,7 +89,7 @@ public class MandBlok : MonoBehaviour
 
                 foreach (GameObject benenKleding in KledingManager.Instance.benenKleding)
                 {
-                    if (benenKleding.GetComponent<KledingStuk>().artikelNummer == int.Parse(clothingName))
+                    if (benenKleding.GetComponent<KledingStuk>().artikelNummer == clothingName)
                     {
                         return benenKleding.name;
                     }
@@ -104,7 +101,7 @@ public class MandBlok : MonoBehaviour
 
                 foreach (GameObject schoenenKleding in KledingManager.Instance.schoenenKleding)
                 {
-                    if (schoenenKleding.GetComponent<KledingStuk>().artikelNummer == int.Parse(clothingName))
+                    if (schoenenKleding.GetComponent<KledingStuk>().artikelNummer == clothingName)
                     {
                         return schoenenKleding.name;
                     }
@@ -114,33 +111,5 @@ public class MandBlok : MonoBehaviour
         }
 
         return "ITEM NOT FOUND";
-    }
-
-    public int GetArtikelNummer(GameObject gameObject)
-    {
-        if (gameObject.TryGetComponent(typeof(KledingStuk), out Component kledingStuk))
-        {
-            return kledingStuk.GetComponent<KledingStuk>().artikelNummer;
-        }
-        else if (gameObject.transform.parent.TryGetComponent(typeof(KledingStuk), out Component kledingStuk2))
-        {
-            return kledingStuk2.GetComponent<KledingStuk>().artikelNummer;
-        }
-
-        return 69;
-    }
-
-    public KledingStuk.TypeKleding GetTypeKleding(GameObject gameObject)
-    {
-        if (gameObject.TryGetComponent(typeof(KledingStuk), out Component kledingStuk))
-        {
-            return kledingStuk.GetComponent<KledingStuk>().typeKleding;
-        }
-        else if (gameObject.transform.parent.TryGetComponent(typeof(KledingStuk), out Component kledingStuk2))
-        {
-            return kledingStuk2.GetComponent<KledingStuk>().typeKleding;
-        }
-
-        return KledingStuk.TypeKleding.geenType;
     }
 }

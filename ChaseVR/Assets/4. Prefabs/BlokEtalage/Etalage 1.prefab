@@ -1806,6 +1806,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broek3dModelHoutBlok1
       objectReference: {fileID: 0}
+    - target: {fileID: 8214502811057853599, guid: 2e613b20f00831f4389dcd620c5917dd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e613b20f00831f4389dcd620c5917dd, type: 3}
 --- !u!4 &2644665970340333657 stripped

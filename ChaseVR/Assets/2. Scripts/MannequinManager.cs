@@ -75,7 +75,7 @@ public class MannequinManager : MonoBehaviour
                         m.GetComponent<MannequinWaypointFollower>().canMove = false;
                     }
 
-                    Debug.Log("triggered stop statement     ----     " + " mannequin: " + mannequin.name);
+                    //Debug.Log("triggered stop statement     ----     " + " mannequin: " + mannequin.name);
                 }
                 else if (indexOfMannequin != 0 &&
                          Vector3.Distance(mannequin.transform.position,
@@ -104,6 +104,7 @@ public class MannequinManager : MonoBehaviour
         foreach (Transform m in mannequinHolder)
         {
             Transform mannequin = Instantiate(m, startWaypoint.position, Quaternion.identity);
+            m.gameObject.SetActive(false);
 
             MannequinWaypointFollower mannequinWaypointFollower = mannequin.gameObject.AddComponent<MannequinWaypointFollower>();
             mannequinWaypointFollower.moveSpeed = mannequinSpeed;
@@ -137,6 +138,8 @@ public class MannequinManager : MonoBehaviour
                 yield return null;
             }
         }
+
+        Destroy(currentEtalage);
     }
 
     public void Pause(InputAction.CallbackContext context)

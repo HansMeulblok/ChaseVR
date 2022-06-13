@@ -58,6 +58,11 @@ public class MannequinManager : MonoBehaviour
 
     public void CanMoveMannequins()
     {
+        if (mannequinFollowers.Count == 0)
+        {
+            Destroy(currentEtalage);
+        }
+
         if (!canMoveMannequins)
         { 
             foreach (GameObject mannequin in mannequinFollowers)
@@ -70,12 +75,7 @@ public class MannequinManager : MonoBehaviour
                                      mannequinFollowers[indexOfMannequin - 1].transform.position)
                                      <= 1.8f)
                 {
-                    foreach (GameObject m in mannequinFollowers)
-                    {
-                        m.GetComponent<MannequinWaypointFollower>().canMove = false;
-                    }
-
-                    //Debug.Log("triggered stop statement     ----     " + " mannequin: " + mannequin.name);
+                    mannequinWaypointFollower.canMove = false;
                 }
                 else if (indexOfMannequin != 0 &&
                          Vector3.Distance(mannequin.transform.position,
@@ -138,8 +138,6 @@ public class MannequinManager : MonoBehaviour
                 yield return null;
             }
         }
-
-        Destroy(currentEtalage);
     }
 
     public void Pause(InputAction.CallbackContext context)

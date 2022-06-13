@@ -55,7 +55,7 @@ public class KledingManager : MonoBehaviour
                 kledingArtikel.layer = 7;
                 FlipValuesForStateSwitch(kledingArtikel, KledingStuk.KledingStaten.opgevouwen);
 
-                Debug.Log("changed to opgevouwen");
+                //Debug.Log("changed to opgevouwen");
 
                 break;
 
@@ -63,7 +63,7 @@ public class KledingManager : MonoBehaviour
 
                 kledingArtikel.layer = 0;
 
-                Debug.Log("changed to statisch");
+                //Debug.Log("changed to statisch");
 
                 FlipValuesForStateSwitch(kledingArtikel, KledingStuk.KledingStaten.statisch);
                 

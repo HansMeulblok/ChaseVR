@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5585651818700980874
+--- !u!1 &1180621453354918063
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 481863799176333863}
-  - component: {fileID: 7542126137992947662}
-  - component: {fileID: 4859550472804461203}
-  - component: {fileID: 4833147698033322434}
-  - component: {fileID: 3443556575384620269}
-  - component: {fileID: 3626683228659148127}
-  - component: {fileID: 1545352434046874174}
+  - component: {fileID: 1957298203310995989}
+  - component: {fileID: 3208361517637678512}
+  - component: {fileID: 820381380344234362}
   m_Layer: 0
-  m_Name: TestSchoenen
+  m_Name: Left-RETRO SNEAKER YAYA v3 3121v
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &481863799176333863
+--- !u!4 &1957298203310995989
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5585651818700980874}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.57, y: 0, z: 4.748}
-  m_LocalScale: {x: 0.33668324, y: 0.23013, z: 0.34500426}
+  m_GameObject: {fileID: 1180621453354918063}
+  m_LocalRotation: {x: 0.7123411, y: 0.0068535116, z: -0.006751781, w: 0.70176744}
+  m_LocalPosition: {x: -0.1609, y: 0.148, z: 0.0197}
+  m_LocalScale: {x: -14.888104, y: -14.933981, z: -14.4996395}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 481863799176333863}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7542126137992947662
+--- !u!33 &3208361517637678512
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5585651818700980874}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4859550472804461203
+  m_GameObject: {fileID: 1180621453354918063}
+  m_Mesh: {fileID: 5433102353385186542, guid: 3aba2aa39574643438ce5b6c96c7a220, type: 3}
+--- !u!23 &820381380344234362
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5585651818700980874}
+  m_GameObject: {fileID: 1180621453354918063}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ae37bf83c2501cf4596c1479e1bd8860, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,6 +81,123 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3071521866439952036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2444307195845663774}
+  - component: {fileID: 1604468823740699579}
+  - component: {fileID: 3576069953902618481}
+  m_Layer: 0
+  m_Name: Right-RETRO SNEAKER YAYA v3 3121v
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2444307195845663774
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071521866439952036}
+  m_LocalRotation: {x: 0.7123411, y: 0.0068535116, z: -0.006751781, w: 0.70176744}
+  m_LocalPosition: {x: -0.1657, y: 0.1482, z: 0.0378}
+  m_LocalScale: {x: -14.888104, y: -14.933981, z: -14.4996395}
+  m_Children: []
+  m_Father: {fileID: 481863799176333863}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1604468823740699579
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071521866439952036}
+  m_Mesh: {fileID: 5433102353385186542, guid: f28af143aaee38b48abdf3eca158b726, type: 3}
+--- !u!23 &3576069953902618481
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071521866439952036}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e6c822a952d8a424592c986dbcca5826, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5585651818700980874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 481863799176333863}
+  - component: {fileID: 4833147698033322434}
+  - component: {fileID: 3443556575384620269}
+  - component: {fileID: 3626683228659148127}
+  - component: {fileID: 1545352434046874174}
+  m_Layer: 0
+  m_Name: Yaya sneakers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &481863799176333863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5585651818700980874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1957298203310995989}
+  - {fileID: 2444307195845663774}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4833147698033322434
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -94,10 +207,10 @@ BoxCollider:
   m_GameObject: {fileID: 5585651818700980874}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.51956403, y: 0.1898764, z: 0.29454136}
+  m_Center: {x: 0.09478903, y: 0.1299944, z: 0.086386204}
 --- !u!114 &3443556575384620269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73dd9bf31b5913542a4f744db6d848d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  artikelNummer: 123456
+  typeKleding: 2
+  artikelNummer: 54035
+  kledingStukCollider: {fileID: 0}
 --- !u!54 &3626683228659148127
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -240,5 +355,5 @@ MonoBehaviour:
   m_ThrowVelocityScale: 1.5
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
-  m_RetainTransformParent: 1
+  m_RetainTransformParent: 0
   m_AttachPointCompatibilityMode: 0

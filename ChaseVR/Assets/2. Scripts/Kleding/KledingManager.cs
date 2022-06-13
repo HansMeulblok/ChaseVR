@@ -82,7 +82,7 @@ public class KledingManager : MonoBehaviour
 
     public void ShootKleding(SelectExitEventArgs args)
     {
-        if (args.interactableObject.transform.TryGetComponent(out Benen grabbedObject))
+        if (args.interactableObject.transform.TryGetComponent(out KledingStuk grabbedObject))
         {
             grabbedObject.gameObject.layer = 0;
             grabbedObject.GetComponent<XRGrabInteractable>().enabled = false;

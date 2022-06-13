@@ -11,12 +11,16 @@ public class BlokEtalage : MonoBehaviour
     public Transform holderPoint;
     private Transform lookAtPoint;
     private GameObject shootingTarget;
+    private bool holdingetalage;
     
     void Start()
-    {   
+    {
+
+        
         controllerTransform = GameObject.Find("RightHand Controller").transform;
         shootingTarget = GameObject.FindGameObjectWithTag("ShootingTarget");
         lookAtPoint = GameObject.Find("LookAtPoint").transform;
+        
     }
 
     void FixedUpdate()
@@ -25,7 +29,7 @@ public class BlokEtalage : MonoBehaviour
         return;
 
         GetComponent<Rigidbody>().position = holderPoint.position;
-
+        
         // Calculcate look direction and set Y to 0 so they only rotate towards the look point on 1 axis. 
         var lookDir = lookAtPoint.position - transform.position;
         lookDir.y = 0;
@@ -36,6 +40,7 @@ public class BlokEtalage : MonoBehaviour
     {        
         if(holding) 
         {
+            holdingetalage = true;
             return;
         }
         
@@ -47,15 +52,31 @@ public class BlokEtalage : MonoBehaviour
 
     public void ShootCube(SelectExitEventArgs args)
     {
+        holdingetalage = false;
         GetComponent<XRGrabInteractable>().enabled = false;
         GetComponent<Rigidbody>().AddForce(controllerTransform.forward * force, ForceMode.Impulse);
-        //StartCoroutine(DelayedTurnOn());
+        StartCoroutine(DelayedTurnOn());
     }
 
+    // user can acces the etalage after 3 seconds, after 5 seconds the etalage disapears. if the user picks up the etalage the timer resets.
     IEnumerator DelayedTurnOn()
     {
-        yield return new WaitForSeconds(5);
-        GetComponent<XRGrabInteractable>().enabled = true;
-        //shootingTarget.GetComponent<MeshRenderer>().enabled = false;
+        yield return new WaitForSeconds(3);
+        if (gameObject.GetComponent<XRGrabInteractable>() != null)
+        {
+            GetComponent<XRGrabInteractable>().enabled = true;
+            for (float timer = 5; timer >= 0; timer -= Time.deltaTime)
+            {
+                if (holdingetalage == true)
+                {
+                    yield break;
+                }
+                yield return null;
+            }
+
+            gameObject.SetActive(false);
+            yield break;
+        }
+
     }
 }

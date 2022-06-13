@@ -1089,7 +1089,7 @@ GameObject:
   - component: {fileID: 1849719481974506545}
   - component: {fileID: 447157168988589233}
   - component: {fileID: 1585714950270553198}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Etalage
   m_TagString: Etalage
   m_Icon: {fileID: 0}
@@ -1128,6 +1128,7 @@ MonoBehaviour:
   controllerTransform: {fileID: 0}
   holding: 0
   holderPoint: {fileID: 0}
+  waypointfollowerscript: {fileID: 0}
 --- !u!54 &1849719481974506545
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3442,6 +3443,7 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents:
     - {fileID: 2572325661844546788, guid: 29bb484def5f14b4d9c605344dfd63f1, type: 3}
+    - {fileID: 7727571598590288672, guid: 29bb484def5f14b4d9c605344dfd63f1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 29bb484def5f14b4d9c605344dfd63f1, type: 3}
 --- !u!1 &1122062709831470608 stripped
 GameObject:

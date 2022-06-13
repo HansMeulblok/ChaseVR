@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/1. Scenes/SurfExperience.unity
+    path: Assets/Scenes/SurfTestScene.unity
     guid: e7c5c629fc559524d955e1d19bc1cce1
   - enabled: 1
-    path: Assets/1. Scenes/MainScene.unity
+    path: Assets/Scenes/NewEnvironmentDesign.unity
     guid: fe18d7a423a5a8a4b8c7e6946e2dee2a
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,

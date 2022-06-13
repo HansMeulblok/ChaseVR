@@ -74,12 +74,8 @@ public class ShowClothingSlots : MonoBehaviour
             if (IsHoldingTorso == false && IsHoldingBenen == false && IsHoldingSchoenen == false && hitData.transform.gameObject.tag == "Etalage")
             {
                 GameObject bloketalage = hitData.transform.gameObject;
-                outlinechangeEtalage = bloketalage.transform.GetChild(0).gameObject.GetComponent<Outline>();
+                outlinechangeEtalage = bloketalage.transform.GetChild(1).gameObject.GetComponent<Outline>();
                 outlinechangeEtalage.OutlineColor = Color.green;
-            }
-            else
-            {
-                outlinechangeEtalage.OutlineColor = Color.clear;
             }
             if (clothesTags != null)
             {
@@ -90,9 +86,6 @@ public class ShowClothingSlots : MonoBehaviour
                 }
                 else if (hitData.transform == clothesTags.benenPosition.gameObject.transform)
                 {
-                    //Debug.Log(clothesTags.benenPosition.gameObject.name);
-                    //Debug.Log(clothesTags._benenKleding.gameObject.name);
-
                     //set benen outlines
                     outlineColorChanger(outlineChangeBenen, outlineChangeTorso, outlineChangeSchoenen, clothesTags._benenKleding, IsHoldingTorso, IsHoldingSchoenen);
                 }
@@ -102,6 +95,8 @@ public class ShowClothingSlots : MonoBehaviour
                     outlineColorChanger(outlineChangeSchoenen, outlineChangeTorso, outlineChangeBenen, clothesTags._schoenenKleding, IsHoldingTorso, IsHoldingBenen);
                 }
             }
+            
+
             
         }
         else

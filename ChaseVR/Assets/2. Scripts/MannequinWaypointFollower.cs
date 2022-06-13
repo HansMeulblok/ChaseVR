@@ -22,27 +22,32 @@ public class MannequinWaypointFollower : MonoBehaviour
 
     void Update()
     {
-        if(!canMove)
-        return;
-
-        // Move towards next waypoint
-        transform.position = Vector3.MoveTowards(transform.position, currentWayPoint.position, moveSpeed * Time.deltaTime);
+        if (!canMove)
+            return;
 
         // If close enough to waypoint grab the waypoint after that to pursue.
-        if(Vector3.Distance(transform.position, currentWayPoint.position) < distanceThreshold)
+        if (Vector3.Distance(transform.position, currentWayPoint.position) < distanceThreshold)
         {
             currentWayPoint = waypoints.GetNextWaypoint(currentWayPoint);
         }
 
-        if(currentWayPoint.CompareTag("EndPoint"))
+        if (currentWayPoint.CompareTag("EndPoint"))
         {
-            mannequinManager.UpdateMannequinAmount();
+            mannequinManager.UpdateMannequinAmount(gameObject);
             Destroy(this.gameObject);
         }
 
         var lookDir = waypoints.GetNextWaypoint(currentWayPoint).position - transform.position;
         lookDir.y = 0;
         transform.rotation = Quaternion.LookRotation(lookDir);
+
+        MoveToNextWayPoint();
     }
+ 
     
+    public void MoveToNextWayPoint()
+    {
+        // Move towards next waypoint
+        transform.position = Vector3.MoveTowards(transform.position, currentWayPoint.position, moveSpeed * Time.deltaTime);
+    }
 }

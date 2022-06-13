@@ -24,10 +24,11 @@ public class KledingStuk : MonoBehaviour
             return _kledingStaat; 
         }
         set 
-        { 
+        {
             _kledingStaat = value;
 
-             KledingManager.Instance.ChangeKledingModel(gameObject.GetComponent<MeshRenderer>(), _kledingStaat);
+            KledingManager.Instance.ChangeKledingModel(gameObject, _kledingStaat);
+
         }
     }
 

@@ -457,7 +457,6 @@ MonoBehaviour:
   controllerTransform: {fileID: 0}
   holding: 0
   holderPoint: {fileID: 0}
-  waypointfollowerscript: {fileID: 0}
 --- !u!54 &1849719481974506545
 Rigidbody:
   m_ObjectHideFlags: 0

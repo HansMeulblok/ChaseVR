@@ -14,6 +14,10 @@ TagManager:
   - benen
   - Etalage
   - EndPoint
+  - Benen
+  - Torso
+  - Schoenen
+  - Opgevouwen
   layers:
   - Default
   - TransparentFX
@@ -23,11 +27,11 @@ TagManager:
   - UI
   - TeleportLayer
   - Mannequin
-  - 
-  - 
-  - 
-  - 
-  - 
+  - KledingHitbox
+  - Etalage
+  - Torso
+  - Benen
+  - Schoenen
   - 
   - 
   - 

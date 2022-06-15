@@ -90,10 +90,17 @@ public class KledingManager : MonoBehaviour
         if (args.interactableObject.transform.TryGetComponent(out KledingStuk grabbedObject))
         {
             grabbedObject.gameObject.layer = 0;
-            grabbedObject.GetComponent<XRGrabInteractable>().enabled = false;
+            StartCoroutine(PickUpFoldedClothingTimer(grabbedObject));
             grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
             grabbedObject.GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
         }
+    }
+
+    private IEnumerator PickUpFoldedClothingTimer(KledingStuk grabbedObject)
+    {
+        grabbedObject.GetComponent<XRGrabInteractable>().enabled = false;
+        yield return new WaitForSeconds(1.5f);
+        grabbedObject.GetComponent<XRGrabInteractable>().enabled = true;
     }
 
     private void FlipValuesForStateSwitch(GameObject kledingArtikel)

@@ -13,5 +13,7 @@ public class ChaseLogoManager : MonoBehaviour
 
         args.interactorObject.transform.parent.GetChild(4).
             GetComponent<XRRayInteractor>().interactionLayers = LayerMask.GetMask("Default");
+
+        args.interactorObject.transform.GetComponent<ShowClothingSlots>().MannequinHitboxLayer = LayerMask.GetMask("KledingHitbox","Etalage");
     }
 }

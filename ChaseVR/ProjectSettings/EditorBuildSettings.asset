@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SurfTestScene.unity
+    path: Assets/1. Scenes/SurfExperience.unity
     guid: e7c5c629fc559524d955e1d19bc1cce1
   - enabled: 1
     path: Assets/1. Scenes/TestScenes/NewEnvironmentDesign.unity

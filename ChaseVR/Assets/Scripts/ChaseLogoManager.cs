@@ -9,8 +9,6 @@ public class ChaseLogoManager : MonoBehaviour
     {
         Destroy(args.interactableObject.transform.gameObject);
 
-        Debug.Log(args.interactorObject.transform.name);
-
         args.interactorObject.transform.GetChild(1).gameObject.SetActive(true);
 
         args.interactorObject.transform.parent.GetChild(4).

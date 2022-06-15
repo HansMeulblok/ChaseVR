@@ -43,15 +43,18 @@ public class ChaseLogoShoot : MonoBehaviour
 
     public void ShootExtendoPart(InputAction.CallbackContext context)
     {
-        rayInteractor.TryGetCurrent3DRaycastHit(out hitForExtendoPart);
+        
 
-        extendoPart.transform.position = hitForExtendoPart.point;
-
-        if (startExtendoPartAnimation)
+        /*if (rayInteractor.interactablesSelected[0] != null && rayInteractor.TryGetCurrent3DRaycastHit(out hitForExtendoPart))
         {
-            StartCoroutine(ExtendoPartAnimation(hitForExtendoPart));
-            startExtendoPartAnimation = false;
-        }       
+            extendoPart.transform.position = hitForExtendoPart.point;
+
+            if (startExtendoPartAnimation)
+            {
+                StartCoroutine(ExtendoPartAnimation(hitForExtendoPart));
+                startExtendoPartAnimation = false;
+            }
+        }*/
     }
 
     private IEnumerator ExtendoPartAnimation(RaycastHit hitForExtendoPart)

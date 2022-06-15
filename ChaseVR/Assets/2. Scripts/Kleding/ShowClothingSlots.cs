@@ -14,12 +14,13 @@ public class ShowClothingSlots : MonoBehaviour
     private Ray ClothesRay;
     public LayerMask MannequinHitboxLayer;
     //public MeshFilter OpgevouwenFilter;
-    
+
     //variables needed for holding checks
     public SphereCollider holdingItemCollider;
     private bool IsHoldingTorso = false;
     private bool IsHoldingBenen = false;
     private bool IsHoldingSchoenen;
+    private List<Outline> raycastHasHit;
 
     //outlines of collider boxes
     Outline outlineChangeTorso;
@@ -34,6 +35,7 @@ public class ShowClothingSlots : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        raycastHasHit = new List<Outline>();
         outlineChangeTorso = gameObject.GetComponentInParent<Outline>();
         outlineChangeBenen = gameObject.GetComponentInParent<Outline>();
         outlineChangeSchoenen = gameObject.GetComponentInParent<Outline>();
@@ -76,6 +78,28 @@ public class ShowClothingSlots : MonoBehaviour
                 GameObject bloketalage = hitData.transform.gameObject;
                 outlinechangeEtalage = bloketalage.transform.GetChild(1).gameObject.GetComponent<Outline>();
                 outlinechangeEtalage.OutlineColor = Color.green;
+                if (!raycastHasHit.Contains(outlinechangeEtalage))
+                {
+                    raycastHasHit.Add(outlinechangeEtalage);
+
+                }
+
+                foreach (Outline etalage in raycastHasHit)
+                {
+                    if (etalage == outlinechangeEtalage)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        etalage.OutlineColor = Color.clear;
+                        raycastHasHit.Remove(etalage);
+                        break;
+                    }
+
+
+                }
+
             }
             if (clothesTags != null)
             {

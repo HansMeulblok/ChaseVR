@@ -683,11 +683,6 @@ Transform:
   m_Father: {fileID: 883417933}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
-<<<<<<<< HEAD:ChaseVR/Assets/Scenes/TestingFriday.unity
-========
->>>>>>> develop
 --- !u!1001 &21626878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -921,10 +916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c47f6ac40d793343b39842ef94ee7cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   controls: {fileID: 0}
-=======
->>>>>>> develop
 --- !u!65 &21626883
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -954,10 +946,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
-<<<<<<< HEAD
-=======
->>>>>>>> develop:ChaseVR/Assets/1. Scenes/MainScene.unity
->>>>>>> develop
 --- !u!1 &22150504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,18 +2315,8 @@ RectTransform:
   m_Children:
   - {fileID: 1554232027}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: -103.173, z: 0}
-=======
-<<<<<<<< HEAD:ChaseVR/Assets/Scenes/TestingFriday.unity
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: -59.802, z: 0}
-========
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: -103.173, z: 0}
->>>>>>>> develop:ChaseVR/Assets/1. Scenes/MainScene.unity
->>>>>>> develop
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -18.895, y: 3.98}
@@ -4821,7 +4799,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191051621}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
 --- !u!1 &195084231
 GameObject:
   m_ObjectHideFlags: 0
@@ -4892,8 +4869,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195084231}
   m_Mesh: {fileID: 5426389866096034491, guid: 1ac62d7a7b0e1ea4090263060176654d, type: 3}
-=======
->>>>>>> develop
 --- !u!1001 &202524210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11490,7 +11465,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443619377}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
 --- !u!1 &444358511
 GameObject:
   m_ObjectHideFlags: 0
@@ -11611,8 +11585,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444358511}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-=======
->>>>>>> develop
 --- !u!1 &449424620
 GameObject:
   m_ObjectHideFlags: 0
@@ -13609,15 +13581,7 @@ PrefabInstance:
     - target: {fileID: 6546937414296737878, guid: 4272fa322a1131f41ad5abd3bcd2697d,
         type: 3}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
       value: 12
-=======
-<<<<<<<< HEAD:ChaseVR/Assets/Scenes/TestingFriday.unity
-      value: 10
-========
-      value: 12
->>>>>>>> develop:ChaseVR/Assets/1. Scenes/MainScene.unity
->>>>>>> develop
       objectReference: {fileID: 0}
     - target: {fileID: 6546937414296737878, guid: 4272fa322a1131f41ad5abd3bcd2697d,
         type: 3}
@@ -15961,7 +15925,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652697941}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
 --- !u!1 &653547374
 GameObject:
   m_ObjectHideFlags: 0
@@ -16082,8 +16045,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653547374}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-=======
->>>>>>> develop
 --- !u!1 &653736434
 GameObject:
   m_ObjectHideFlags: 0
@@ -17251,15 +17212,7 @@ Transform:
   - {fileID: 752645049}
   - {fileID: 1844427810}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 13
-=======
-<<<<<<<< HEAD:ChaseVR/Assets/Scenes/TestingFriday.unity
-  m_RootOrder: 11
-========
-  m_RootOrder: 13
->>>>>>>> develop:ChaseVR/Assets/1. Scenes/MainScene.unity
->>>>>>> develop
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &710548807
 GameObject:
@@ -19901,7 +19854,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 807197741}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1 &814204353
 GameObject:
   m_ObjectHideFlags: 0
@@ -19974,8 +19926,6 @@ CapsuleCollider:
   m_Height: 1.0294064
   m_Direction: 1
   m_Center: {x: -0.010942936, y: 0.05917138, z: -0.00000007947286}
-=======
->>>>>>> develop
 --- !u!1 &824216474
 GameObject:
   m_ObjectHideFlags: 0
@@ -21304,15 +21254,7 @@ Transform:
   - {fileID: 1906806084}
   - {fileID: 736980962}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 6
-=======
-<<<<<<<< HEAD:ChaseVR/Assets/Scenes/TestingFriday.unity
-  m_RootOrder: 4
-========
-  m_RootOrder: 6
->>>>>>>> develop:ChaseVR/Assets/1. Scenes/MainScene.unity
->>>>>>> develop
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &887484351
 GameObject:
@@ -21515,7 +21457,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 889091586}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1 &894103395
 GameObject:
   m_ObjectHideFlags: 0
@@ -21548,8 +21489,6 @@ Transform:
   m_Father: {fileID: 1089074974}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> develop
 --- !u!1 &895492440
 GameObject:
   m_ObjectHideFlags: 0
@@ -21695,15 +21634,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 11
-=======
-<<<<<<<< HEAD:ChaseVR/Assets/Scenes/TestingFriday.unity
-  m_RootOrder: 9
-========
-  m_RootOrder: 11
->>>>>>>> develop:ChaseVR/Assets/1. Scenes/MainScene.unity
->>>>>>> develop
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &898486635
 PrefabInstance:
@@ -24055,19 +23986,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5bab8826b54f9149bea8ae15c711fad, type: 3}
-<<<<<<< HEAD
 --- !u!1 &978850218
 GameObject:
   m_ObjectHideFlags: 0
-=======
---- !u!1 &978850218 stripped
-GameObject:
->>>>>>> develop
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c5bab8826b54f9149bea8ae15c711fad,
     type: 3}
   m_PrefabInstance: {fileID: 978850217}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   serializedVersion: 6
   m_Component:
   - component: {fileID: 978850221}
@@ -24083,8 +24008,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-=======
->>>>>>> develop
 --- !u!114 &978850219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24112,7 +24035,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1341210582271087568, guid: c5bab8826b54f9149bea8ae15c711fad, type: 3}
-<<<<<<< HEAD
 --- !u!4 &978850221
 Transform:
   m_ObjectHideFlags: 0
@@ -24181,8 +24103,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978850218}
   m_Mesh: {fileID: 1341210582271087568, guid: c5bab8826b54f9149bea8ae15c711fad, type: 3}
-=======
->>>>>>> develop
 --- !u!65 &978850224
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25075,7 +24995,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043914613}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
 --- !u!1 &1047944982
 GameObject:
   m_ObjectHideFlags: 0
@@ -25162,8 +25081,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047944982}
   m_Mesh: {fileID: 891474172972299587, guid: c5bab8826b54f9149bea8ae15c711fad, type: 3}
-=======
->>>>>>> develop
 --- !u!1 &1051049427
 GameObject:
   m_ObjectHideFlags: 0
@@ -26825,7 +26742,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1088429554}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1 &1089074973
 GameObject:
   m_ObjectHideFlags: 0
@@ -26861,8 +26777,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -417.478, z: 0}
-=======
->>>>>>> develop
 --- !u!1 &1091362648
 GameObject:
   m_ObjectHideFlags: 0
@@ -27407,7 +27321,6 @@ MonoBehaviour:
   m_Teleporting:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< HEAD
 --- !u!1 &1107580131
 GameObject:
   m_ObjectHideFlags: 0
@@ -27494,8 +27407,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107580131}
   m_Mesh: {fileID: 7857234584136659156, guid: c5bab8826b54f9149bea8ae15c711fad, type: 3}
-=======
->>>>>>> develop
 --- !u!1001 &1107780874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33277,7 +33188,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297626441}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
 --- !u!1 &1300053539
 GameObject:
   m_ObjectHideFlags: 0
@@ -33398,8 +33308,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300053539}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-=======
->>>>>>> develop
 --- !u!1 &1304328148
 GameObject:
   m_ObjectHideFlags: 0
@@ -34045,108 +33953,6 @@ Transform:
   m_Father: {fileID: 1424488076}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
-<<<<<<<< HEAD:ChaseVR/Assets/Scenes/TestingFriday.unity
---- !u!1001 &1336050160
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8690588286637806387, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690588286637806387, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690588286637806387, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690588286637806388, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 8928471704332959423, guid: fb4461bfb494a754ab053fd577cfe42b,
-        type: 3}
-    - target: {fileID: 8690588286637806389, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -7562843278042990413, guid: ba40724ca0786be4cb39faea4df90d4b,
-        type: 3}
-    - target: {fileID: 8690588287601602573, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_Name
-      value: PersonalMannequin
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690588287601602574, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690588287601602574, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690588287601602574, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690588287601602574, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10.58
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690588287601602574, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.4492762
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690588287601602574, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690588287601602574, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.8933929
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690588287601602574, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690588287601602574, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690588287601602574, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -126.605
-      objectReference: {fileID: 0}
-    - target: {fileID: 8690588287601602574, guid: 7c74855a416a12941b3d20254f9cd03f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7c74855a416a12941b3d20254f9cd03f, type: 3}
-========
->>>>>>>> develop:ChaseVR/Assets/1. Scenes/MainScene.unity
->>>>>>> develop
 --- !u!1 &1347507306
 GameObject:
   m_ObjectHideFlags: 0
@@ -39069,7 +38875,6 @@ PrefabInstance:
       propertyPath: MannequinHitboxLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 549444532994149990, guid: f5ce58de286d69d419b733a2144b26de,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -39090,8 +38895,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.65251416
       objectReference: {fileID: 0}
-=======
->>>>>>> develop
     - target: {fileID: 1250736777732538712, guid: f5ce58de286d69d419b733a2144b26de,
         type: 3}
       propertyPath: m_TagString
@@ -39175,15 +38978,7 @@ PrefabInstance:
     - target: {fileID: 1250736778957600075, guid: f5ce58de286d69d419b733a2144b26de,
         type: 3}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
       value: 7
-=======
-<<<<<<<< HEAD:ChaseVR/Assets/Scenes/TestingFriday.unity
-      value: 5
-========
-      value: 7
->>>>>>>> develop:ChaseVR/Assets/1. Scenes/MainScene.unity
->>>>>>> develop
       objectReference: {fileID: 0}
     - target: {fileID: 1250736778957600075, guid: f5ce58de286d69d419b733a2144b26de,
         type: 3}
@@ -45065,15 +44860,7 @@ Transform:
   - {fileID: 1348704872}
   - {fileID: 1471574338}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 5
-=======
-<<<<<<<< HEAD:ChaseVR/Assets/Scenes/TestingFriday.unity
-  m_RootOrder: 3
-========
-  m_RootOrder: 5
->>>>>>>> develop:ChaseVR/Assets/1. Scenes/MainScene.unity
->>>>>>> develop
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1764333480
 GameObject:
@@ -45697,7 +45484,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1788333357}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1 &1789441781
 GameObject:
   m_ObjectHideFlags: 0
@@ -45783,8 +45569,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789441781}
   m_Mesh: {fileID: -4175931389403517748, guid: ef890809a96b1944c813baee6860af61, type: 3}
-=======
->>>>>>> develop
 --- !u!1 &1793140437
 GameObject:
   m_ObjectHideFlags: 0
@@ -47444,7 +47228,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854288619}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
 --- !u!1 &1855835349
 GameObject:
   m_ObjectHideFlags: 0
@@ -47475,8 +47258,6 @@ Transform:
   m_Father: {fileID: 21626880}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 90}
-=======
->>>>>>> develop
 --- !u!1 &1860110383
 GameObject:
   m_ObjectHideFlags: 0
@@ -48204,15 +47985,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4281524044ae8ea4ea03360d036b19b8,
         type: 3}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
       value: 10
-=======
-<<<<<<<< HEAD:ChaseVR/Assets/Scenes/TestingFriday.unity
-      value: 8
-========
-      value: 10
->>>>>>>> develop:ChaseVR/Assets/1. Scenes/MainScene.unity
->>>>>>> develop
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4281524044ae8ea4ea03360d036b19b8,
         type: 3}
@@ -51908,15 +51681,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.5366, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 8
-=======
-<<<<<<<< HEAD:ChaseVR/Assets/Scenes/TestingFriday.unity
-  m_RootOrder: 6
-========
-  m_RootOrder: 8
->>>>>>>> develop:ChaseVR/Assets/1. Scenes/MainScene.unity
->>>>>>> develop
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2009834085
 GameObject:
@@ -52206,19 +51971,13 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019011241}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
 --- !u!4 &2027070478
 Transform:
   m_ObjectHideFlags: 0
-=======
---- !u!4 &2027070478 stripped
-Transform:
->>>>>>> develop
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1ac62d7a7b0e1ea4090263060176654d,
     type: 3}
   m_PrefabInstance: {fileID: 482778600}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 195084231}
   m_LocalRotation: {x: 0.40319037, y: 0.53385425, z: -0.35357314, w: 0.6537761}
   m_LocalPosition: {x: -20.28, y: 0.83, z: -10.76}
@@ -52228,8 +51987,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 64.784, y: 75.749, z: -4.284}
-=======
->>>>>>> develop
 --- !u!1 &2031084445
 GameObject:
   m_ObjectHideFlags: 0
@@ -53509,15 +53266,7 @@ Transform:
   m_Children:
   - {fileID: 1732105010}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 9
-=======
-<<<<<<<< HEAD:ChaseVR/Assets/Scenes/TestingFriday.unity
-  m_RootOrder: 7
-========
-  m_RootOrder: 9
->>>>>>>> develop:ChaseVR/Assets/1. Scenes/MainScene.unity
->>>>>>> develop
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2051445755
 GameObject:
@@ -56065,15 +55814,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 4
-=======
-<<<<<<<< HEAD:ChaseVR/Assets/Scenes/TestingFriday.unity
-  m_RootOrder: 2
-========
-  m_RootOrder: 4
->>>>>>>> develop:ChaseVR/Assets/1. Scenes/MainScene.unity
->>>>>>> develop
   m_LocalEulerAnglesHint: {x: 50, y: -76.76, z: 0}
 --- !u!1 &2116401056
 GameObject:

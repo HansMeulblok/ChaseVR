@@ -53,7 +53,11 @@ public class KledingManager : MonoBehaviour
             case KledingStuk.KledingStaten.opgevouwen:
 
                 kledingArtikel.layer = 7;
-                FlipValuesForStateSwitch(kledingArtikel, KledingStuk.KledingStaten.opgevouwen);
+
+                if (kledingArtikel.GetComponent<KledingStuk>().typeKleding != KledingStuk.TypeKleding.schoenen)
+                    FlipValuesForStateSwitch(kledingArtikel);
+                else
+                    FlipValuesForShoes(kledingArtikel);
 
                 //Debug.Log("changed to opgevouwen");
 
@@ -64,9 +68,10 @@ public class KledingManager : MonoBehaviour
                 kledingArtikel.layer = 0;
 
                 //Debug.Log("changed to statisch");
-
-                FlipValuesForStateSwitch(kledingArtikel, KledingStuk.KledingStaten.statisch);
-                
+                if (kledingArtikel.GetComponent<KledingStuk>().typeKleding != KledingStuk.TypeKleding.schoenen)
+                    FlipValuesForStateSwitch(kledingArtikel);
+                else
+                    FlipValuesForShoes(kledingArtikel);
 
                 break;
 
@@ -82,7 +87,7 @@ public class KledingManager : MonoBehaviour
 
     public void ShootKleding(SelectExitEventArgs args)
     {
-        if (args.interactableObject.transform.TryGetComponent(out Benen grabbedObject))
+        if (args.interactableObject.transform.TryGetComponent(out KledingStuk grabbedObject))
         {
             grabbedObject.gameObject.layer = 0;
             grabbedObject.GetComponent<XRGrabInteractable>().enabled = false;
@@ -91,7 +96,7 @@ public class KledingManager : MonoBehaviour
         }
     }
 
-    private void FlipValuesForStateSwitch(GameObject kledingArtikel, KledingStuk.KledingStaten kledingStaat)
+    private void FlipValuesForStateSwitch(GameObject kledingArtikel)
     {
         kledingArtikel.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = !kledingArtikel.transform.GetChild(0).GetComponent<MeshRenderer>().enabled;
         kledingArtikel.transform.GetChild(1).GetComponent<MeshRenderer>().enabled = !kledingArtikel.transform.GetChild(1).GetComponent<MeshRenderer>().enabled;
@@ -102,5 +107,10 @@ public class KledingManager : MonoBehaviour
         {
             boxCollider.enabled = !boxCollider.enabled;
         }
+    }
+
+    private void FlipValuesForShoes(GameObject kledingArtikel)
+    {
+        kledingArtikel.transform.GetChild(1).GetComponent<MeshRenderer>().enabled = !kledingArtikel.transform.GetChild(1).GetComponent<MeshRenderer>().enabled;
     }
 }

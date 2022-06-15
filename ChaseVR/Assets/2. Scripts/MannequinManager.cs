@@ -115,18 +115,27 @@ public class MannequinManager : MonoBehaviour
             mannequinFollowers.Add(mannequinWaypointFollower.gameObject);
             mannequinsOnCatwalk++;
 
-            if (mannequin.GetChild(3).TryGetComponent(typeof(BoxCollider), out Component gameObjectWithCollider))
+            // First Item check
+            if (mannequin.childCount >= 4 &&
+                mannequin.GetChild(3).TryGetComponent(typeof(BoxCollider), out Component firstItemWithCollider))
             {
-                BoxCollider[] boxColliders = gameObjectWithCollider.GetComponents<BoxCollider>();
-                foreach (BoxCollider boxCollider in boxColliders)
-                {
-                    boxCollider.enabled = true;
-                    break;
-                }
-
-                gameObjectWithCollider.GetComponent<XRGrabInteractable>().enabled = true;
-                gameObjectWithCollider.GetComponent<Benen>().enabled = true;
+                EnableCorrectBoxCollider(firstItemWithCollider.gameObject);
             }
+
+            // Second Item check
+            if (mannequin.childCount >= 5 &&
+                mannequin.GetChild(4).TryGetComponent(typeof(BoxCollider), out Component secondItemWithCollider))
+            {
+                EnableCorrectBoxCollider(secondItemWithCollider.gameObject);
+            }
+
+            // Third Item check
+            if (mannequin.childCount >= 6 && 
+                mannequin.GetChild(5).TryGetComponent(typeof(BoxCollider), out Component thirdItemWithCollider))
+            {
+                EnableCorrectBoxCollider(thirdItemWithCollider.gameObject);
+            }
+
 
             if (mannequin.transform.Find("ClothesHitbox"))
             {
@@ -163,5 +172,36 @@ public class MannequinManager : MonoBehaviour
             }
         }
 
+    }
+
+    public void EnableCorrectBoxCollider(GameObject gameObjectWithCollider)
+    {
+        BoxCollider[] boxColliders = gameObjectWithCollider.GetComponents<BoxCollider>();
+        foreach (BoxCollider boxCollider in boxColliders)
+        {
+            boxCollider.enabled = true;
+            break;
+        }
+
+        gameObjectWithCollider.GetComponent<XRGrabInteractable>().enabled = true;
+        gameObjectWithCollider.GetComponent<KledingStuk>().enabled = true;
+
+
+        /*switch (gameObjectWithCollider.GetComponent<KledingStuk>().typeKleding)
+        {
+            case KledingStuk.TypeKleding.torso:
+                gameObjectWithCollider.GetComponent<Torso>().enabled = true;
+
+                break;
+
+            case KledingStuk.TypeKleding.benen:
+                gameObjectWithCollider.GetComponent<Benen>().enabled = true;
+                break;
+
+            case KledingStuk.TypeKleding.schoenen:
+                gameObjectWithCollider.GetComponent<Schoenen>().enabled = true;
+                break;
+
+        }*/
     }
 }

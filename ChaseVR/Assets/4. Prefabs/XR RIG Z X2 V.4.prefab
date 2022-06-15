@@ -2502,7 +2502,7 @@ MonoBehaviour:
   bloketalage: {fileID: 0}
   MannequinHitboxLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   holdingItemCollider: {fileID: 1250736779584960361}
 --- !u!1 &4597701897956243969
 GameObject:

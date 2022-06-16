@@ -258,7 +258,7 @@ public class SurfInteractionManager : MonoBehaviour
                 break;
         }
 
-        //HeadSteer();
+        HeadSteer();
         if (isPlaying && SceneManager.GetActiveScene().name == "SurfExperience")
         {
             HeadSteer();
@@ -432,17 +432,29 @@ public class SurfInteractionManager : MonoBehaviour
 
     public void HeadSteer()
     {
+        /*sbMove.transform.GetChild(2).rotation = Quaternion.Euler(3f,
+                                                                 90f - (SteerAngle() - 90f),
+                                                                 -90f + (SteerAngle() * 1.5f));*/
+
         sbMove.transform.GetChild(2).rotation = Quaternion.Euler(3f,
-                                                     90f - (Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position) - 90f),
-                                                     -90f + (Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position) - 90f) * 1.5f);
+                                                                 90f + SteerAngle(),
+                                                                 -90f + SteerAngle());
 
         //Debug.Log(sbMove.transform.GetChild(2).rotation);
 
         steerMoveAmount.x = sbMove.transform.position.x;
         steerMoveAmount.y = sbMove.transform.position.y;
-        steerMoveAmount.z = Mathf.Clamp(sbMove.transform.position.z + (Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position) - 90f) * 0.005f, -80f, -20f);
+        steerMoveAmount.z = Mathf.Clamp(sbMove.transform.position.z + (SteerAngle() - 90f) * 0.005f, -80f, -20f);
         
 
         sbMove.transform.position = steerMoveAmount;
+    }
+
+    private float SteerAngle()
+    {
+        //return Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position/*, Vector3.forward*/);
+        Debug.Log(Vector3.SignedAngle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position, Vector3.forward));
+
+        return Vector3.SignedAngle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).forward, Vector3.forward);
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1957298203310995989}
   - component: {fileID: 3208361517637678512}
   - component: {fileID: 820381380344234362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left-RETRO SNEAKER YAYA v3 3121v
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,8 @@ GameObject:
   - component: {fileID: 2444307195845663774}
   - component: {fileID: 1604468823740699579}
   - component: {fileID: 3576069953902618481}
-  m_Layer: 0
+  - component: {fileID: 6521147879300660001}
+  m_Layer: 8
   m_Name: Right-RETRO SNEAKER YAYA v3 3121v
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,6 +163,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6521147879300660001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071521866439952036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 0}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &5585651818700980874
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +194,8 @@ GameObject:
   - component: {fileID: 3443556575384620269}
   - component: {fileID: 3626683228659148127}
   - component: {fileID: 1545352434046874174}
-  m_Layer: 0
+  - component: {fileID: 4702686683528528185}
+  m_Layer: 8
   m_Name: Yaya sneakers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,3 +377,21 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 0
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &4702686683528528185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5585651818700980874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 0}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

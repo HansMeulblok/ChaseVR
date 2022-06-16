@@ -34,7 +34,8 @@ public class SurfBoardMovement : MonoBehaviour
         radius = waveMaterial.GetFloat("_Radius");
         waveStartPos = waveMaterial.GetVector("_WaveStartPos");
 
-        waveMaterial.SetFloat("_TimeValue", timeValue);
+        waveMaterial.SetVector("_SurfBoardPos", transform.position);
+        waveMaterial.SetFloat("_TimeValue", 12);
     }
 
     // Update is called once per frame

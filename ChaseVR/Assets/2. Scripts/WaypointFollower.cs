@@ -11,7 +11,7 @@ public class WaypointFollower : MonoBehaviour
 
     
     [Header("Current Depended Object")]
-    public Transform currentWayPoint;
+    public Transform currentWayPoint = null;
     public GameObject currentEtalage;
 
     [Header("Follower Settings")]
@@ -34,11 +34,6 @@ public class WaypointFollower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentComponent.holding)
-        {
-            currentEtalage = null;
-        }
-        
         if(currentEtalage == null)
         {
             timer += Time.deltaTime;
@@ -49,7 +44,16 @@ public class WaypointFollower : MonoBehaviour
             }
         }
 
-        if(!canMove)
+        if (currentComponent != null)
+        {
+            if (currentComponent.holding)
+            {
+                currentEtalage = null;
+            }
+        }
+        
+
+        if (!canMove)
         return;
 
         // Move towards next waypoint

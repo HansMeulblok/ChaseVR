@@ -8,7 +8,7 @@ public class SurfBoardMovement : MonoBehaviour
     public Material waveMaterial;
     public float speedMultiplier;
 
-    private string finalEnvironment = "TestingFriday";
+    private string finalEnvironment = "MainScene";
 
     [HideInInspector]
     public float surfBoardSpeed;
@@ -33,6 +33,8 @@ public class SurfBoardMovement : MonoBehaviour
     {
         radius = waveMaterial.GetFloat("_Radius");
         waveStartPos = waveMaterial.GetVector("_WaveStartPos");
+
+        waveMaterial.SetFloat("_TimeValue", timeValue);
     }
 
     // Update is called once per frame

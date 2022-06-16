@@ -123,8 +123,8 @@ public class SurfInteractionManager : MonoBehaviour
 
         steerMoveAmount = sbMove.transform.position;
 
-        if (SceneManager.GetActiveScene().name != "TestingFriday")
-            ResumeSurfing();
+        /*if (SceneManager.GetActiveScene().name != "TestingFriday")
+            ResumeSurfing();*/
     }
 
     private void Update()
@@ -162,54 +162,54 @@ public class SurfInteractionManager : MonoBehaviour
 
                 break;
         }
-
-        switch (stateLeftHand)
-        {
-            case StateLeftHand.LeftOutTrigger:
-
-                ResetTriggerAlpha(0);
-
-                if ((rightDominant || leftDominant) && tutorial)
+        /*
+                switch (stateLeftHand)
                 {
-                    leftDominant = false;
-                }
-                    
+                    case StateLeftHand.LeftOutTrigger:
 
-                if (!isPlaying)
-                    canTriggerLeft = true;
+                        ResetTriggerAlpha(0);
 
-                if (stateBothHands == StateBothHands.BothHandsOutTrigger && !isPlaying)
-                    SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerIncorrectLeft);
-                
-                if (leftHandCoroutine != null)
-                    StopCoroutine(leftHandCoroutine);
-
-                break;
-
-            case StateLeftHand.LeftInTrigger:
+                        if ((rightDominant || leftDominant) && tutorial)
+                        {
+                            leftDominant = false;
+                        }
 
 
-                if (!rightDominant && !leftDominant)
-                {
-                    SetDominantHand(0);
-                }
+                        if (!isPlaying)
+                            canTriggerLeft = true;
 
-                if (canTriggerLeft)
-                {
-                    SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerCorrectLeft);
-                    leftHandCoroutine = StartCoroutine(TriggerTimer(timerTime, handInteractionTriggers[0].transform));
+                        if (stateBothHands == StateBothHands.BothHandsOutTrigger && !isPlaying)
+                            SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerIncorrectLeft);
 
-                    canTriggerLeft = false;
-                }
+                        if (leftHandCoroutine != null)
+                            StopCoroutine(leftHandCoroutine);
 
-                break;
+                        break;
 
-            default:
+                    case StateLeftHand.LeftInTrigger:
 
-                SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerIncorrectLeft);
 
-                break;
-        }
+                        if (!rightDominant && !leftDominant)
+                        {
+                            SetDominantHand(0);
+                        }
+
+                        if (canTriggerLeft)
+                        {
+                            SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerCorrectLeft);
+                            leftHandCoroutine = StartCoroutine(TriggerTimer(timerTime, handInteractionTriggers[0].transform));
+
+                            canTriggerLeft = false;
+                        }
+
+                        break;
+
+                    default:
+
+                        SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerIncorrectLeft);
+
+                        break;
+                }*/
 
 
         switch (stateRightHand)
@@ -236,10 +236,10 @@ public class SurfInteractionManager : MonoBehaviour
 
             case StateRightHand.RightInTrigger:
 
-                if (!rightDominant && !leftDominant)
+                /*if (!rightDominant && !leftDominant)
                 {
                     SetDominantHand(1);
-                }
+                }*/
 
                 if (canTriggerRight)
                 {
@@ -259,7 +259,7 @@ public class SurfInteractionManager : MonoBehaviour
         }
 
         //HeadSteer();
-        if (isPlaying)
+        if (isPlaying && SceneManager.GetActiveScene().name == "SurfExperience")
         {
             HeadSteer();
         }
@@ -299,10 +299,10 @@ public class SurfInteractionManager : MonoBehaviour
             yield return null;
         }
 
-        if (SceneManager.GetActiveScene().name != "TestingFriday")
+        if (SceneManager.GetActiveScene().name != "MainScene")
         {
-            if (tutorial)
-                StartCoroutine(MoveNonDominantTrigger());
+            /*if (tutorial)
+                StartCoroutine(MoveNonDominantTrigger());*/
 
             if (stateBothHands == StateBothHands.BothHandsInTrigger && !isPlaying)
             {
@@ -319,7 +319,7 @@ public class SurfInteractionManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("SurfTestScene");
+            SceneManager.LoadScene("SurfExperience");
         }
 
         

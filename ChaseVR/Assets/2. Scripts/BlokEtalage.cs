@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BlokEtalage : MonoBehaviour
 {
@@ -16,24 +17,29 @@ public class BlokEtalage : MonoBehaviour
     void Start()
     {
 
-        
-        controllerTransform = GameObject.Find("RightHand Controller").transform;
+        if (SceneManager.GetActiveScene().name != "SurfExperience")
+        {
+            controllerTransform = GameObject.Find("RightHand Controller").transform;
+        }
+
         shootingTarget = GameObject.FindGameObjectWithTag("ShootingTarget");
         lookAtPoint = GameObject.Find("LookAtPoint").transform;
-        
     }
 
     void FixedUpdate()
     {
-        if(holding)
-        return;
+        if (holding)
+            return;
 
         GetComponent<Rigidbody>().position = holderPoint.position;
-        
-        // Calculcate look direction and set Y to 0 so they only rotate towards the look point on 1 axis. 
-        var lookDir = lookAtPoint.position - transform.position;
-        lookDir.y = 0;
-        transform.rotation = Quaternion.LookRotation(lookDir);
+
+        /*if (SceneManager.GetActiveScene().name != "SurfExperience")
+        {*/
+            // Calculcate look direction and set Y to 0 so they only rotate towards the look point on 1 axis. 
+            var lookDir = lookAtPoint.position - transform.position;
+            lookDir.y = 0;
+            transform.rotation = Quaternion.LookRotation(lookDir);
+        //}
     }
 
     public void Replace(SelectEnterEventArgs args)

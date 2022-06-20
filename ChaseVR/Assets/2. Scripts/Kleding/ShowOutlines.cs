@@ -18,9 +18,6 @@ public class ShowOutlines : MonoBehaviour
     private GameObject FoldedNormal;
     private KledingStuk kledingstuk;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
         raycastHasHit = new List<Outline>();
@@ -28,7 +25,6 @@ public class ShowOutlines : MonoBehaviour
         outlineChangeKleding = gameObject.GetComponentInParent<Outline>(); ;
     }
 
-    // Update is called once per frame
     void Update()
     {
         OutlineRay = new Ray(this.transform.position, transform.forward);
@@ -38,9 +34,12 @@ public class ShowOutlines : MonoBehaviour
             switch (hitdata.transform.tag)
             {
                 case "Etalage":
-                    outlineChangeEtalage = hitdata.transform.GetComponent<Outline>();
-                    outlineChangeEtalage.OutlineColor = Color.green;
-                    Failsafe(outlineChangeEtalage);
+                    if (hitdata.transform.GetComponent<Outline>() != null)
+                    {
+                        outlineChangeEtalage = hitdata.transform.GetComponent<Outline>();
+                        outlineChangeEtalage.OutlineColor = Color.green;
+                        Failsafe(outlineChangeEtalage);
+                    }
                     break;
 
                 case "torso":
@@ -90,6 +89,10 @@ public class ShowOutlines : MonoBehaviour
         if (!raycastHasHit.Contains(outlineChange))
         {
             raycastHasHit.Add(outlineChange);
+        }
+        else
+        {
+            return;
         }
         foreach (Outline OutlineFailsafeCheck in raycastHasHit)
         {

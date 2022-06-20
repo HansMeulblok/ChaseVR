@@ -58,9 +58,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4dc89f6ed0f5704795e127c89e8e348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torsoPosition: {fileID: 0}
-  benenPosition: {fileID: 0}
-  schoenenPosition: {fileID: 0}
   kledingPivotPoint: {fileID: 0}
   _torsoKleding: {fileID: 0}
   _benenKleding: {fileID: 0}
@@ -189,9 +186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4dc89f6ed0f5704795e127c89e8e348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torsoPosition: {fileID: 0}
-  benenPosition: {fileID: 0}
-  schoenenPosition: {fileID: 0}
   kledingPivotPoint: {fileID: 0}
   _torsoKleding: {fileID: 0}
   _benenKleding: {fileID: 0}
@@ -817,9 +811,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4dc89f6ed0f5704795e127c89e8e348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torsoPosition: {fileID: 0}
-  benenPosition: {fileID: 0}
-  schoenenPosition: {fileID: 0}
   kledingPivotPoint: {fileID: 0}
   _torsoKleding: {fileID: 0}
   _benenKleding: {fileID: 0}
@@ -1080,9 +1071,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4dc89f6ed0f5704795e127c89e8e348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torsoPosition: {fileID: 0}
-  benenPosition: {fileID: 0}
-  schoenenPosition: {fileID: 0}
   kledingPivotPoint: {fileID: 0}
   _torsoKleding: {fileID: 0}
   _benenKleding: {fileID: 0}
@@ -1292,9 +1280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4dc89f6ed0f5704795e127c89e8e348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torsoPosition: {fileID: 0}
-  benenPosition: {fileID: 0}
-  schoenenPosition: {fileID: 0}
   kledingPivotPoint: {fileID: 0}
   _torsoKleding: {fileID: 0}
   _benenKleding: {fileID: 0}

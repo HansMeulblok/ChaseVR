@@ -56072,8 +56072,9 @@ MonoBehaviour:
   m_AudioClipForOnHoverEntered: {fileID: 0}
   m_PlayAudioClipOnHoverExited: 0
   m_AudioClipForOnHoverExited: {fileID: 0}
-  m_PlayAudioClipOnHoverCanceled: 0
-  m_AudioClipForOnHoverCanceled: {fileID: 0}
+  m_PlayAudioClipOnHoverCanceled: 1
+  m_AudioClipForOnHoverCanceled: {fileID: 8300000, guid: c09f365ae8c6ca84f9eb45ad0db6c7af,
+    type: 3}
   m_PlayHapticsOnSelectEntered: 0
   m_HapticSelectEnterIntensity: 0
   m_HapticSelectEnterDuration: 0

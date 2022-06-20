@@ -17,8 +17,6 @@ public class KledingManager : MonoBehaviour
     public List<GameObject> schoenenKleding = new List<GameObject>();
     private BoxCollider[] boxColliders;
 
-    [HideInInspector] public List<GameObject> opgevouwenKledingObjects;
-    public GameObject opgevouwenKledingObjectToPool;
     public int amountToPool;
 
     private GameObject rightRayInteractor;

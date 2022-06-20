@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Manager for all audio.
@@ -32,7 +33,8 @@ public class AudioManager : MonoBehaviour
 	{
 		BeachSound,
 		DominantHandAudioQueue,
-		NonDominantHandAudioQueue
+		NonDominantHandAudioQueue,
+		SurfMusic
 
 		/// wave sound https://www.youtube.com/watch?v=2D8pEz7eSEo, https://www.youtube.com/watch?v=T-RHIo48lPU
 	};
@@ -130,6 +132,12 @@ public class AudioManager : MonoBehaviour
 	/// <param name="clip"></param>
 	public void SetMusic(clips clipName)
 	{
+		if (SceneManager.GetActiveScene().name == "SurfExperience")
+        {
+			SurfExperienceMusic(clipName);
+			return;
+        }
+
 		// Checks and matches the enum in the method parameter to one of the clips in the Resource/Sounds/ folder.
 		AudioClip toBePlayedClip = audioClips.Where(clip => clip.name.Contains(clipName.ToString())).FirstOrDefault();
 
@@ -210,7 +218,25 @@ public class AudioManager : MonoBehaviour
     /// Stops the sounds played by the audio source given.
     /// </summary>
     /// <param name="source"></param>
-    public void Stop(AudioSource source)
+
+
+    private void SurfExperienceMusic(clips clipName)
+    {
+		// Checks and matches the enum in the method parameter to one of the clips in the Resource/Sounds/ folder.
+		AudioClip toBePlayedClip = audioClips.Where(clip => clip.name.Contains(clipName.ToString())).FirstOrDefault();
+
+		GetComponent<AudioSource>().clip = toBePlayedClip;
+		GetComponent<AudioSource>().volume = musicVolume * 3f;
+		GetComponent<AudioSource>().Play();
+
+
+		musicSource.clip = audioClips.Where(clip => clip.name.Contains(clips.SurfMusic.ToString())).FirstOrDefault();
+		musicSource.volume = musicVolume;
+		musicSource.Play();
+	}
+	
+	
+	public void Stop(AudioSource source)
 	{
 		source.Stop();
 	}

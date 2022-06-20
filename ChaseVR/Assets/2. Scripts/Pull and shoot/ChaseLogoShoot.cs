@@ -18,6 +18,8 @@ public class ChaseLogoShoot : MonoBehaviour
 
     public InputActionAsset controls;
 
+    private Coroutine hit;
+
     private bool startExtendoPartAnimation = true;
 
     void Start()
@@ -45,6 +47,8 @@ public class ChaseLogoShoot : MonoBehaviour
 
     public void ShootExtendoPart(InputAction.CallbackContext context)
     {
+        ResetExtendoPart();
+
         if (rayInteractor.TryGetCurrent3DRaycastHit(out hitForExtendoPart) &&
             rayInteractor.interactablesSelected.Count == 0 &&
             (hitForExtendoPart.transform.TryGetComponent(out XRGrabInteractable grabbable) && grabbable.enabled))
@@ -53,7 +57,9 @@ public class ChaseLogoShoot : MonoBehaviour
 
             if (startExtendoPartAnimation)
             {
-                StartCoroutine(ExtendoPartAnimation(hitForExtendoPart));
+                
+
+                hit = StartCoroutine(ExtendoPartAnimation(hitForExtendoPart));
                 startExtendoPartAnimation = false;
             }
         }
@@ -74,13 +80,18 @@ public class ChaseLogoShoot : MonoBehaviour
             yield return null;
         }
 
+        ResetExtendoPart();
+
+        startExtendoPartAnimation = true;
+        lineRenderer.enabled = false;
+    }
+
+    private void ResetExtendoPart()
+    {
         extendoPart.transform.SetParent(transform, true);
         extendoPart.transform.localScale = new Vector3(100, 100, 15);
         extendoPart.transform.localRotation = Quaternion.Euler(-90, 0, -90);
 
         extendoPart.transform.localPosition = Vector3.zero;
-
-        startExtendoPartAnimation = true;
-        lineRenderer.enabled = false;
     }
 }

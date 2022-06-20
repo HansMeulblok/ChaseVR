@@ -35,7 +35,9 @@ public class Waypoints : MonoBehaviour
         // Get next waypoit except for when it is null or if you are currently at the last checkpoint
         if(currentWaypoint == null)
         {
+            Debug.Log(transform.GetChild(0).name);
             return transform.GetChild(0);
+            
         }
 
         if(currentWaypoint.GetSiblingIndex()< transform.childCount -1)

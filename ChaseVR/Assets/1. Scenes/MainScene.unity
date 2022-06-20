@@ -27439,14 +27439,12 @@ PrefabInstance:
         type: 3}
       propertyPath: blokEtalages.Array.data[0]
       value: 
-      objectReference: {fileID: 3179790484344420408, guid: 4c02c083be1f6834e8629874b04dc6bd,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1889464398384525605, guid: f2fb19316583fd74d9f7f3db5add5040,
         type: 3}
       propertyPath: blokEtalages.Array.data[1]
       value: 
-      objectReference: {fileID: 3179790484344420408, guid: ab7e570eb6d0497468d166a6087ed13a,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1889464398462158559, guid: f2fb19316583fd74d9f7f3db5add5040,
         type: 3}
       propertyPath: m_LocalPosition.x

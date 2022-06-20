@@ -52,7 +52,7 @@ public class KledingManager : MonoBehaviour
         {
             case KledingStuk.KledingStaten.opgevouwen:
 
-                kledingArtikel.layer = 7;
+                kledingArtikel.layer = LayerMask.NameToLayer("KledingHitbox");
 
                 if (kledingArtikel.GetComponent<KledingStuk>().typeKleding != KledingStuk.TypeKleding.schoenen)
                     FlipValuesForStateSwitch(kledingArtikel);
@@ -65,7 +65,7 @@ public class KledingManager : MonoBehaviour
 
             case KledingStuk.KledingStaten.statisch:
 
-                kledingArtikel.layer = 0;
+                kledingArtikel.layer = LayerMask.NameToLayer("Default");
 
                 //Debug.Log("changed to statisch");
                 if (kledingArtikel.GetComponent<KledingStuk>().typeKleding != KledingStuk.TypeKleding.schoenen)

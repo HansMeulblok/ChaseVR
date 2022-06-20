@@ -446,7 +446,7 @@ public class SurfInteractionManager : MonoBehaviour
     private float SteerAngleUpAndDown()
     {
         //return Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position/*, Vector3.forward*/);
-        Debug.Log(Vector3.SignedAngle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).forward, Vector3.forward));
+        //Debug.Log(Vector3.SignedAngle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).forward, Vector3.forward));
 
         return Vector3.SignedAngle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).forward, Vector3.forward);
     }
@@ -454,7 +454,7 @@ public class SurfInteractionManager : MonoBehaviour
     private float SteerAngleLeftAndRight()
     {
         //return Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position/*, Vector3.forward*/);
-        Debug.Log(Vector3.SignedAngle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).up, Vector3.up));
+        //Debug.Log(Vector3.SignedAngle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).up, Vector3.up));
 
         float angle = Vector3.SignedAngle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).up, Vector3.up);
 

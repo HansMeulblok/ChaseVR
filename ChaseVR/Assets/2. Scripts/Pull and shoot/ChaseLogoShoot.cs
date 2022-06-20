@@ -39,6 +39,11 @@ public class ChaseLogoShoot : MonoBehaviour
 
     void Update()
     {
+        if (extendoPart.GetComponentInParent<KledingStuk>())
+        {
+            ResetExtendoPart();
+        }
+
         lineRenderer.SetPosition(0, lineStartPoint.position);
         lineRenderer.SetPosition(1, lineEndPoint.position);
     }

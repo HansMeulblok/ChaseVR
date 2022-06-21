@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6685936010449336148}
   - component: {fileID: 8056884602240333746}
   - component: {fileID: 1344781537952524156}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ONLJESSIE S_S CS TOP Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,14 +286,43 @@ PrefabInstance:
       propertyPath: m_Name
       value: Opgevouwen
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1deead7756c0ced4ab1cc29827aa7b2a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1deead7756c0ced4ab1cc29827aa7b2a, type: 3}
+--- !u!1 &3521302325172755340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1deead7756c0ced4ab1cc29827aa7b2a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4332256267472004829}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4293616418259042614 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1deead7756c0ced4ab1cc29827aa7b2a,
     type: 3}
   m_PrefabInstance: {fileID: 4332256267472004829}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8066002818091421148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3521302325172755340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 0}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &8900592184930329008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -381,11 +410,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: Statisch
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d844189c205248b489ada1a81b506358,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d844189c205248b489ada1a81b506358, type: 3}
+--- !u!1 &8594038788482587873 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d844189c205248b489ada1a81b506358,
+    type: 3}
+  m_PrefabInstance: {fileID: 8900592184930329008}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8939636542349936219 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d844189c205248b489ada1a81b506358,
     type: 3}
   m_PrefabInstance: {fileID: 8900592184930329008}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5564180229423410140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594038788482587873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 0}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

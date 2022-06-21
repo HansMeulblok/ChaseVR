@@ -15,11 +15,16 @@ public class ShowClothingSlots : MonoBehaviour
     public LayerMask MannequinHitboxLayer;
     //public MeshFilter OpgevouwenFilter;
 
+    private GameObject Torso;
+    private GameObject Benen;
+    private GameObject Schoenen;
+
+
     //variables needed for holding checks
     public SphereCollider holdingItemCollider;
     private bool IsHoldingTorso = false;
     private bool IsHoldingBenen = false;
-    private bool IsHoldingSchoenen;
+    private bool IsHoldingSchoenen = false;
     private List<Outline> raycastHasHit;
 
     //outlines of collider boxes
@@ -58,9 +63,59 @@ public class ShowClothingSlots : MonoBehaviour
             if (hitData.transform.parent != null && hitData.transform.parent.gameObject.name == "ClothesHitbox")
                 {
                 clothesTags = hitData.transform.parent.GetComponent<ClothesTags>();
-                outlineChangeTorso = clothesTags.torsoPosition.gameObject.GetComponent<Outline>();
-                outlineChangeBenen = clothesTags.benenPosition.gameObject.GetComponent<Outline>();
-                outlineChangeSchoenen = clothesTags.schoenenPosition.gameObject.GetComponent<Outline>();
+
+                foreach(Transform Clothes in clothesTags.transform.root)
+                {
+                    
+                    if (Clothes.tag == "torso")
+                    {
+                        Debug.Log("Torso");
+                        outlineChangeTorso =  Clothes.GetComponent<Outline>();
+                        Torso = Clothes.gameObject;
+                        Debug.Log(Clothes.transform.name);
+                    }
+                    if (Clothes.CompareTag("benen"))
+                    {
+                        Debug.Log("Benen");
+                        outlineChangeBenen = Clothes.GetComponent<Outline>();
+                        Benen = Clothes.gameObject;
+                        Debug.Log(Clothes.transform.name);
+                    }
+                    if (Clothes.CompareTag("schoenen"))
+                    {
+                        Debug.Log("Schoenen");
+                        outlineChangeSchoenen = Clothes.GetComponent<Outline>();
+                        Schoenen = Clothes.gameObject;
+                    }
+                    else
+                    {
+                        /*outlineChangeTorso = clothesTags.torsoPosition.gameObject.GetComponent<Outline>();
+                        outlineChangeBenen = clothesTags.benenPosition.gameObject.GetComponent<Outline>();
+                        outlineChangeSchoenen = clothesTags.schoenenPosition.gameObject.GetComponent<Outline>();*/
+                    }
+                }
+
+              /*  if (clothesTags.transform.parent.CompareTag("Torso"))
+                {
+                    
+                    outlineChangeTorso = clothesTags.GetComponentInParent<Torso>().gameObject.GetComponent<Outline>();
+                    Debug.Log(outlineChangeTorso.gameObject.name);
+                    //outlineChangeTorso = GameObject.FindGameObjectWithTag("Torso").transform.par;
+                    //outlineChangeTorso = clothesTags.gameObject.transform.parent.gameObject. .gameObject.GetComponent<Outline>();
+                }
+                else
+                {
+                    outlineChangeTorso = clothesTags.torsoPosition.gameObject.GetComponent<Outline>();
+                    Debug.Log(clothesTags.transform.parent.Find("Torso").tag);
+                    //outlineChangeTorso = ;
+                }*/
+               
+                //outlineChangeBenen = clothesTags.benenPosition.gameObject.GetComponent<Outline>();
+                //outlineChangeSchoenen = clothesTags.schoenenPosition.gameObject.GetComponent<Outline>();
+
+
+                //outlineChangeBenen = clothesTags.benenPosition.gameObject.GetComponent<Outline>();
+                //outlineChangeSchoenen = clothesTags.schoenenPosition.gameObject.GetComponent<Outline>();
             }
             //incase wanting to see meshfilter
             //Debug.Log(hitData.transform.gameObject.GetComponent<MeshFilter>().mesh.name);
@@ -103,17 +158,17 @@ public class ShowClothingSlots : MonoBehaviour
             }
             if (clothesTags != null)
             {
-                if (hitData.transform == clothesTags.torsoPosition.gameObject.transform)
+                if (hitData.transform == Torso)
                 {
                     //set torso outlines
                     outlineColorChanger(outlineChangeTorso, outlineChangeBenen, outlineChangeSchoenen, clothesTags._torsoKleding, IsHoldingBenen, IsHoldingSchoenen);
                 }
-                else if (hitData.transform == clothesTags.benenPosition.gameObject.transform)
+                else if (hitData.transform == Benen)
                 {
                     //set benen outlines
                     outlineColorChanger(outlineChangeBenen, outlineChangeTorso, outlineChangeSchoenen, clothesTags._benenKleding, IsHoldingTorso, IsHoldingSchoenen);
                 }
-                else if (hitData.transform == clothesTags.schoenenPosition.gameObject.transform)
+                else if (hitData.transform == Schoenen)
                 {
                     //set schoenen outlines
                     outlineColorChanger(outlineChangeSchoenen, outlineChangeTorso, outlineChangeBenen, clothesTags._schoenenKleding, IsHoldingTorso, IsHoldingBenen);

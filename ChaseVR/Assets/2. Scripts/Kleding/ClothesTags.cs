@@ -6,12 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ClothesTags : MonoBehaviour
 {
-    [HideInInspector]
-    public Transform torsoPosition;
-    [HideInInspector]
-    public Transform benenPosition;
-    [HideInInspector]
-    public Transform schoenenPosition;
+
     [HideInInspector]
     public Transform kledingPivotPoint;
     //public GameObject Mannequin;
@@ -25,9 +20,6 @@ public class ClothesTags : MonoBehaviour
 
     private void Start()
     {
-        torsoPosition = transform.GetChild(2);
-        benenPosition = transform.GetChild(1);
-        schoenenPosition = transform.GetChild(0);
 
         kledingPivotPoint = transform.parent.GetChild(1);
     }
@@ -79,6 +71,7 @@ public class ClothesTags : MonoBehaviour
                     {
                         _schoenenKleding = clothes.gameObject;
                         SetCorrectClothesTransform(clothes, kledingPivotPoint);
+
                         break;
                     }
                     else if (clothes.GetComponent<KledingStuk>().kledingStaat == KledingStuk.KledingStaten.opgevouwen)
@@ -112,10 +105,8 @@ public class ClothesTags : MonoBehaviour
         clothes.transform.position = clothingTransform.position;
         clothes.transform.rotation = clothingTransform.rotation;
         clothes.transform.SetParent(gameObject.transform.parent, true);
-
         clothes.attachedRigidbody.isKinematic = true;
         clothes.GetComponent<XRGrabInteractable>().enabled = true;
-
         clothes.attachedRigidbody.velocity = Vector3.zero;
         clothes.attachedRigidbody.angularVelocity = Vector3.zero;
 
@@ -125,6 +116,7 @@ public class ClothesTags : MonoBehaviour
         {
             component.GetComponent<KledingStuk>().kledingStaat = KledingStuk.KledingStaten.statisch;
         }
+        clothes.transform.gameObject.layer = LayerMask.NameToLayer("KledingHitbox");
     }
 
     public void ResetClothesTransform(Collider clothes)

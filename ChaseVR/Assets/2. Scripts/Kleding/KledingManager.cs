@@ -52,7 +52,7 @@ public class KledingManager : MonoBehaviour
         {
             case KledingStuk.KledingStaten.opgevouwen:
 
-                kledingArtikel.layer = 7;
+                kledingArtikel.layer = LayerMask.NameToLayer("KledingHitbox");
 
                 if (kledingArtikel.GetComponent<KledingStuk>().typeKleding != KledingStuk.TypeKleding.schoenen)
                     FlipValuesForStateSwitch(kledingArtikel);
@@ -65,7 +65,7 @@ public class KledingManager : MonoBehaviour
 
             case KledingStuk.KledingStaten.statisch:
 
-                kledingArtikel.layer = 0;
+                kledingArtikel.layer = LayerMask.NameToLayer("Default");
 
                 //Debug.Log("changed to statisch");
                 if (kledingArtikel.GetComponent<KledingStuk>().typeKleding != KledingStuk.TypeKleding.schoenen)
@@ -90,10 +90,17 @@ public class KledingManager : MonoBehaviour
         if (args.interactableObject.transform.TryGetComponent(out KledingStuk grabbedObject))
         {
             grabbedObject.gameObject.layer = 0;
-            grabbedObject.GetComponent<XRGrabInteractable>().enabled = false;
+            StartCoroutine(PickUpFoldedClothingTimer(grabbedObject));
             grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
             grabbedObject.GetComponent<Rigidbody>().AddForce(args.interactableObject.transform.forward * 5f, ForceMode.Impulse);
         }
+    }
+
+    private IEnumerator PickUpFoldedClothingTimer(KledingStuk grabbedObject)
+    {
+        grabbedObject.GetComponent<XRGrabInteractable>().enabled = false;
+        yield return new WaitForSeconds(1.5f);
+        grabbedObject.GetComponent<XRGrabInteractable>().enabled = true;
     }
 
     private void FlipValuesForStateSwitch(GameObject kledingArtikel)

@@ -7,12 +7,16 @@ public class SurfInteractionTrigger : MonoBehaviour
 
     private void Start()
     {
-        if (gameObject.tag == "SurfTriggerLeft")
+        if (SurfInteractionManager.Instance.allInteraction)
         {
-            SurfInteractionManager.Instance.handInteractionTriggers[0] = gameObject;
-            SurfInteractionManager.Instance.stateLeftHand = SurfInteractionManager.StateLeftHand.LeftOutTrigger;
+            if (gameObject.tag == "SurfTriggerLeft")
+            {
+                SurfInteractionManager.Instance.handInteractionTriggers[0] = gameObject;
+                SurfInteractionManager.Instance.stateLeftHand = SurfInteractionManager.StateLeftHand.LeftOutTrigger;
 
+            }
         }
+        
 
         if (gameObject.tag == "SurfTriggerRight")
         {
@@ -33,7 +37,7 @@ public class SurfInteractionTrigger : MonoBehaviour
             SurfInteractionManager.Instance.stateRightHand = SurfInteractionManager.StateRightHand.RightInTrigger;
         }
 
-        if (SurfInteractionManager.Instance.stateLeftHand == SurfInteractionManager.StateLeftHand.LeftInTrigger &&
+        if (/*SurfInteractionManager.Instance.stateLeftHand == SurfInteractionManager.StateLeftHand.LeftInTrigger &&*/
             SurfInteractionManager.Instance.stateRightHand == SurfInteractionManager.StateRightHand.RightInTrigger &&
             SurfInteractionManager.Instance.stateBothHands == SurfInteractionManager.StateBothHands.BothHandsOutTrigger)
         {
@@ -55,7 +59,7 @@ public class SurfInteractionTrigger : MonoBehaviour
 
         if (SurfInteractionManager.Instance.interaction)
         {
-            if ((SurfInteractionManager.Instance.stateLeftHand == SurfInteractionManager.StateLeftHand.LeftOutTrigger ||
+            if ((/*SurfInteractionManager.Instance.stateLeftHand == SurfInteractionManager.StateLeftHand.LeftOutTrigger ||*/
             SurfInteractionManager.Instance.stateRightHand == SurfInteractionManager.StateRightHand.RightOutTrigger) &&
             !SurfInteractionManager.Instance.isPlaying)
             {

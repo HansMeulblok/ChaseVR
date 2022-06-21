@@ -21,20 +21,30 @@ public class AudioManager : MonoBehaviour
 	public int amountToPool;
 
 	// Variables for the building and driving music 
-	[HideInInspector] public AudioSource musicSource;
+	[HideInInspector] public AudioSource musicSource1;
+	[HideInInspector] public AudioSource musicSource2;
 	public clips currentMusicClip;
 	[Range(0f, 0.5f)]
 	public float musicVolume;
 	public float timeToFade;
 	private float timeElapsed = 0f;
 
+	[Header("Saegull")]
+	public float intervalRangeMin;
+	public float intervalRangeMax;
+	private AudioSource seagullSource;
+	[HideInInspector]
+	public bool inDoors = false;
+
 	// Enum used for ease of use of implementing any sound effect
 	public enum clips
 	{
 		BeachSound,
+		ChaseBuildingMusic,
 		DominantHandAudioQueue,
 		NonDominantHandAudioQueue,
-		SurfMusic
+		SurfMusic,
+		Seagull
 
 		/// wave sound https://www.youtube.com/watch?v=2D8pEz7eSEo, https://www.youtube.com/watch?v=T-RHIo48lPU
 	};
@@ -58,11 +68,14 @@ public class AudioManager : MonoBehaviour
 	private void Start()
 	{
 		// Creates the music sources and plays the clip selected as current music clip
-		musicSource = FindObjectOfType<Camera>().GetComponent<AudioSource>();
+		musicSource1 = FindObjectOfType<Camera>().GetComponent<AudioSource>();
+		musicSource2 = GetComponent<AudioSource>();
 
-		musicSource.loop = true;
+		musicSource1.loop = true;
 
 		SetMusic(currentMusicClip);
+
+		seagullSource = GameObject.Find("Seagull Sound").GetComponent<AudioSource>();
 
 		// Create the audio source object pool used in the project
 		audioSourceObjects = new List<GameObject>();
@@ -75,6 +88,8 @@ public class AudioManager : MonoBehaviour
 			tmp.SetActive(false);
 			audioSourceObjects.Add(tmp);
 		}
+
+	 StartCoroutine(SeagullSoundEffect());
 	}
 
 	/// <summary>
@@ -141,9 +156,9 @@ public class AudioManager : MonoBehaviour
 		// Checks and matches the enum in the method parameter to one of the clips in the Resource/Sounds/ folder.
 		AudioClip toBePlayedClip = audioClips.Where(clip => clip.name.Contains(clipName.ToString())).FirstOrDefault();
 
-		musicSource.clip = toBePlayedClip;
-		musicSource.volume = musicVolume;
-		musicSource.Play();
+		/*musicSource1.clip = toBePlayedClip;
+		musicSource1.volume = musicVolume;
+		musicSource1.Play();*/
 
 		// and starts the coroutine for fading the music
 		StartCoroutine(FadeMusic(clipName, toBePlayedClip));
@@ -159,16 +174,16 @@ public class AudioManager : MonoBehaviour
     {
         timeElapsed = 0f;
 
-		while (timeElapsed < timeToFade)
+		/*while (timeElapsed < timeToFade)
 		{
-			musicSource.volume = Mathf.Lerp(0, musicVolume, timeElapsed / timeToFade);
+			musicSource1.volume = Mathf.Lerp(0, musicVolume, timeElapsed / timeToFade);
 
 			timeElapsed += Time.deltaTime;
 			yield return null;
-		}
+		}*/
 
 
-		/*if (clipName == clips.BuildingMusic)
+        if (clipName == clips.BeachSound)
         {
             musicSource1.clip = toBePlayedClip;
             musicSource1.Play();
@@ -183,7 +198,7 @@ public class AudioManager : MonoBehaviour
 
             musicSource2.Stop();
         }
-        else if (clipName == clips.DrivingMusic)
+        else if (clipName == clips.ChaseBuildingMusic)
         {
             musicSource2.clip = toBePlayedClip;
             musicSource2.Play();
@@ -197,45 +212,54 @@ public class AudioManager : MonoBehaviour
             }
 
             musicSource1.Stop();
-        }*/
+        }
     }
 
-    /// <summary>
-    /// Method that gets a object from the audio source object pool and plays the menu button click sound effect.
-    /// </summary>
-    /*public void MenuButtonClickSound()
-	{
-		GameObject audioSource = AudioManager.Instance.GetPooledAudioSourceObject();
-		audioSource.transform.localPosition = gameObject.transform.position;
-		audioSource.SetActive(true);
-
-		Play(clips.MenuButtonClick, audioSource.GetComponent<AudioSource>());
-
-		StartCoroutine(WaitForEndOfSound(audioSource, audioSource.GetComponent<AudioSource>().clip.length));
-	}*/
-
-    /// <summary>
-    /// Stops the sounds played by the audio source given.
-    /// </summary>
-    /// <param name="source"></param>
-
-
+    
     private void SurfExperienceMusic(clips clipName)
     {
 		// Checks and matches the enum in the method parameter to one of the clips in the Resource/Sounds/ folder.
 		AudioClip toBePlayedClip = audioClips.Where(clip => clip.name.Contains(clipName.ToString())).FirstOrDefault();
 
-		GetComponent<AudioSource>().clip = toBePlayedClip;
-		GetComponent<AudioSource>().volume = musicVolume * 3f;
-		GetComponent<AudioSource>().Play();
+		musicSource2.clip = toBePlayedClip;
+		musicSource2.volume = musicVolume * 3f;
+		musicSource2.Play();
 
 
-		musicSource.clip = audioClips.Where(clip => clip.name.Contains(clips.SurfMusic.ToString())).FirstOrDefault();
-		musicSource.volume = musicVolume;
-		musicSource.Play();
+		musicSource1.clip = audioClips.Where(clip => clip.name.Contains(clips.SurfMusic.ToString())).FirstOrDefault();
+		musicSource1.volume = musicVolume;
+		musicSource1.Play();
 	}
-	
-	
+
+
+	public IEnumerator SeagullSoundEffect()
+    {
+		seagullSource.clip = audioClips.Where(clip => clip.name.Contains(clips.Seagull.ToString())).FirstOrDefault();
+
+		float seconds = Random.Range(intervalRangeMin, intervalRangeMax);
+		float pitch = Random.Range(0.7f, 1.3f);
+
+		Debug.Log(seconds);
+
+		yield return new WaitForSeconds(seconds);
+
+		if (inDoors)
+			seagullSource.volume = 0.2f;
+		else
+			seagullSource.volume = 1f;
+
+		seagullSource.pitch = pitch;
+		seagullSource.Play();
+
+		StartCoroutine(SeagullSoundEffect());
+    }
+
+
+	/// <summary>
+	/// Stops the sounds played by the audio source given.
+	/// </summary>
+	/// <param name="source"></param>
+
 	public void Stop(AudioSource source)
 	{
 		source.Stop();

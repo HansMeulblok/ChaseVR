@@ -123,8 +123,8 @@ public class SurfInteractionManager : MonoBehaviour
 
         steerMoveAmount = sbMove.transform.position;
 
-        /*if (SceneManager.GetActiveScene().name != "TestingFriday")
-            ResumeSurfing();*/
+        if (SceneManager.GetActiveScene().name != "SurfExperience")
+            ResumeSurfing();
     }
 
     private void Update()
@@ -137,7 +137,8 @@ public class SurfInteractionManager : MonoBehaviour
 
                 if (canPause)
                 {
-                    PauseSurfing();
+                    if (SceneManager.GetActiveScene().name == "SurfExperience")
+                        PauseSurfing();
                     canPause = false;
 
                     /*if (tutorial && SceneManager.GetActiveScene().name != "TestingFriday")

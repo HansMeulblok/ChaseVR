@@ -41,7 +41,7 @@ public class MannequinManager : MonoBehaviour
             currentEtalage = collider.gameObject;
             Destroy(collider.GetComponent<XRGrabInteractable>());
             Destroy(collider.GetComponent<Rigidbody>());
-            Destroy(collider.GetComponent<Outline>());
+            Destroy(collider.transform.GetChild(1).GetComponent<BoxCollider>());
             collider.transform.localScale = desiredScale;
             collider.transform.position = blockPlacementPoint.position;
             collider.transform.rotation = Quaternion.identity;

@@ -41,7 +41,6 @@ public class NewTeleportScript : MonoBehaviour
         {
             if (isTeleporting == false && JoyWentNorth == true && raycasthithit.transform.GetComponent<TeleportationArea>().isActiveAndEnabled)
             {
-                //Debug.Log(rayInteractor.enabled);
                 isTeleporting = true;
                 StartCoroutine(FadeToBlack());
             }

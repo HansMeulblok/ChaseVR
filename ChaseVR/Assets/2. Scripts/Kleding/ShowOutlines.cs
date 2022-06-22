@@ -34,9 +34,9 @@ public class ShowOutlines : MonoBehaviour
             switch (hitdata.transform.tag)
             {
                 case "Etalage":
-                    if (hitdata.transform.GetComponent<Outline>() != null)
+                    if (hitdata.transform.GetChild(1).GetComponent<Outline>() != null)
                     {
-                        outlineChangeEtalage = hitdata.transform.GetComponent<Outline>();
+                        outlineChangeEtalage = hitdata.transform.GetChild(1).GetComponent<Outline>();
                         outlineChangeEtalage.OutlineColor = Color.green;
                         Failsafe(outlineChangeEtalage);
                     }

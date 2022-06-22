@@ -14,6 +14,7 @@ public class NewTeleportScript : MonoBehaviour
     public int fadespeed = 5;
     private bool isTeleporting;
     private bool JoyWentNorth;
+    private RaycastHit raycasthithit;
 
 
     private void Start()
@@ -21,6 +22,7 @@ public class NewTeleportScript : MonoBehaviour
         isTeleporting = false;
         JoyWentNorth = false;
         rayInteractor.enabled = false;
+
     }
 
     public void startTeleportRay(InputAction.CallbackContext context)
@@ -34,12 +36,16 @@ public class NewTeleportScript : MonoBehaviour
     }
     public void activateTeleport(InputAction.CallbackContext context)
     {
-        if (isTeleporting == false && JoyWentNorth == true )
+        rayInteractor.TryGetCurrent3DRaycastHit(out raycasthithit );
+        if (raycasthithit.transform.GetComponent<TeleportationArea>() != null)
+        {
+            if (isTeleporting == false && JoyWentNorth == true && raycasthithit.transform.GetComponent<TeleportationArea>().isActiveAndEnabled)
             {
                 //Debug.Log(rayInteractor.enabled);
                 isTeleporting = true;
                 StartCoroutine(FadeToBlack());
             }
+        }
 
     }
 

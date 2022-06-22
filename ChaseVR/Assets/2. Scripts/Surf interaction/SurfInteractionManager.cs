@@ -303,7 +303,7 @@ public class SurfInteractionManager : MonoBehaviour
             yield return null;
         }
 
-        if (SceneManager.GetActiveScene().name != "MainScene")
+        if (SceneManager.GetActiveScene().name == "SurfExperience")
         {
             /*if (tutorial)
                 StartCoroutine(MoveNonDominantTrigger());*/

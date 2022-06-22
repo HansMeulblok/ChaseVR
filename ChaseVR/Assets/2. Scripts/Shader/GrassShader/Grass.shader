@@ -178,12 +178,14 @@ Shader "Custom/Grass"
 			}
 
             CGPROGRAM
+			#pragma require geometry
+			#pragma require tessellation tessHW
             #pragma vertex vert
 			#pragma geometry geo
             #pragma fragment frag
 			#pragma hull hull
 			#pragma domain domain
-			#pragma target 3.1
+			#pragma target 3.0
 			#pragma multi_compile_fwdbase
             
 			#include "Lighting.cginc"

@@ -124,7 +124,11 @@ public class SurfInteractionManager : MonoBehaviour
         steerMoveAmount = sbMove.transform.position;
 
         if (SceneManager.GetActiveScene().name != "SurfExperience")
+        {
             ResumeSurfing();
+            //waveMaterial.SetVector("_", new Vector4());
+        }
+           
     }
 
     private void Update()

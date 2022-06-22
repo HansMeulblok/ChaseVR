@@ -14,7 +14,7 @@ Shader "Roystan/Tessellation Example"
 			#pragma fragment frag
 			#pragma hull hull
 			#pragma domain custom_domain
-			#pragma target 4.6
+			#pragma target 3.1
 			
 			#include "UnityCG.cginc"
 			#include "CustomTessellation.cginc"

@@ -183,7 +183,7 @@ Shader "Custom/Grass"
             #pragma fragment frag
 			#pragma hull hull
 			#pragma domain domain
-			#pragma target 4.6
+			#pragma target 3.1
 			#pragma multi_compile_fwdbase
             
 			#include "Lighting.cginc"

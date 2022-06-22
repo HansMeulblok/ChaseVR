@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/1. Scenes/TestScenes/ChaseLogoForPullAndShoot.unity
+    guid: 1d11f89eaa6e2ed4786426c8acec57dd
+  - enabled: 1
     path: Assets/1. Scenes/SurfExperience.unity
     guid: e7c5c629fc559524d955e1d19bc1cce1
-  - enabled: 1
+  - enabled: 0
     path: Assets/1. Scenes/MainScene.unity
     guid: 15472dd80681c9b48b44c5c2f4c1feb1
   m_configObjects:

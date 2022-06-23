@@ -44,7 +44,7 @@ public class MannequinManager : MonoBehaviour
             Destroy(collider.GetComponent<Outline>());
             collider.transform.localScale = desiredScale;
             collider.transform.position = blockPlacementPoint.position;
-            collider.transform.rotation = Quaternion.identity;
+            collider.transform.rotation = gameObject.transform.rotation;
 
             mannequinHolder = collider.transform.GetChild(0).transform;
 
@@ -137,10 +137,15 @@ public class MannequinManager : MonoBehaviour
                 EnableCorrectBoxCollider(thirdItemWithCollider.gameObject);
             }
 
-
             if (mannequin.transform.Find("ClothesHitbox"))
             {
                 mannequin.transform.Find("ClothesHitbox").gameObject.SetActive(true);
+            }
+    
+            foreach (Transform clothing in mannequin)
+            {
+                if (TryGetComponent(out KledingStuk clothingComponent))
+                    clothing.GetComponent<Outline>().enabled = true;
             }
 
             while (Vector3.Distance(mannequin.transform.position, firstWaypoint.position/*waypoints.transform.GetChild(0).transform.position*/) >= 0.2f)

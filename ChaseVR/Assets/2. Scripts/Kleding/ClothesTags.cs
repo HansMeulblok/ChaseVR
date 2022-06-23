@@ -102,9 +102,10 @@ public class ClothesTags : MonoBehaviour
 
     public void SetCorrectClothesTransform(Collider clothes, Transform clothingTransform)
     {
+        clothes.transform.SetParent(gameObject.transform.parent, true);
         clothes.transform.position = clothingTransform.position;
         clothes.transform.rotation = clothingTransform.rotation;
-        clothes.transform.SetParent(gameObject.transform.parent, true);
+        
         clothes.attachedRigidbody.isKinematic = true;
         clothes.GetComponent<XRGrabInteractable>().enabled = true;
         clothes.attachedRigidbody.velocity = Vector3.zero;

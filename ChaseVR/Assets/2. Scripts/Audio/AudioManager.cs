@@ -239,8 +239,6 @@ public class AudioManager : MonoBehaviour
 		float seconds = Random.Range(intervalRangeMin, intervalRangeMax);
 		float pitch = Random.Range(0.7f, 1.3f);
 
-		Debug.Log(seconds);
-
 		yield return new WaitForSeconds(seconds);
 
 		if (inDoors)

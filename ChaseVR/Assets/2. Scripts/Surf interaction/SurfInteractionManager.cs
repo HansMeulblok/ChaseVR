@@ -126,7 +126,7 @@ public class SurfInteractionManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "SurfExperience")
         {
             ResumeSurfing();
-            //waveMaterial.SetVector("_", new Vector4());
+            waveMaterial.SetVector("_SurfBoardPos", new Vector4(200f, -2f, 110f, 0));
         }
            
     }

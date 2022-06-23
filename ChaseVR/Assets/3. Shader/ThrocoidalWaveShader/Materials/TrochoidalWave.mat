@@ -75,7 +75,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TimeValue: 12
+    - _TimeValue: 90.916756
     - _Translation: -3
     - _UVSec: 0
     - _ZWrite: 1
@@ -83,7 +83,7 @@ Material:
     - _Color: {r: 0.8726415, g: 0.9803176, b: 1, a: 0.6666667}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RotatedOffset: {r: 0, g: 0, b: 0, a: 0}
-    - _SurfBoardPos: {r: -31.598, g: 1.127, b: -50.091, a: 0}
+    - _SurfBoardPos: {r: 66.97436, g: -1.9997101, b: 110.71573, a: 0}
     - _WaveStartPos: {r: -50, g: 0, b: -45, a: 0}
     - _WorldSpace: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

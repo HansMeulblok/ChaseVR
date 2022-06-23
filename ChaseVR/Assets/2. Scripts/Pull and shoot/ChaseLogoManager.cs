@@ -12,9 +12,13 @@ public class ChaseLogoManager : MonoBehaviour
         args.interactorObject.transform.GetChild(1).gameObject.SetActive(true);
 
         args.interactorObject.transform.parent.GetChild(4).
-            GetComponent<XRRayInteractor>().interactionLayers = LayerMask.GetMask("Default");
+            GetComponent<XRRayInteractor>().enabled = true;
 
-        args.interactorObject.transform.GetComponent<ShowClothingSlots>().MannequinHitboxLayer = LayerMask.GetMask("KledingHitbox", "Etalage");
+        args.interactorObject.transform.parent.GetChild(4).
+            GetComponent<XRRayInteractor>().interactionLayers = LayerMask.GetMask("Default");
+        
+
+        args.interactorObject.transform.GetComponent<ShowOutlines>().OutlineHitboxLayer = LayerMask.GetMask("KledingHitbox", "Etalage");
 
         args.interactorObject.transform.GetComponent<XRDirectInteractor>().interactionLayers = LayerMask.GetMask("RandomInteractables");
     }

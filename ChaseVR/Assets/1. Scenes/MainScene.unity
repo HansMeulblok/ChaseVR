@@ -44185,6 +44185,17 @@ PrefabInstance:
       propertyPath: spawnInterval
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1889464398384525605, guid: f2fb19316583fd74d9f7f3db5add5040,
+        type: 3}
+      propertyPath: blokEtalages.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889464398384525605, guid: f2fb19316583fd74d9f7f3db5add5040,
+        type: 3}
+      propertyPath: blokEtalages.Array.data[2]
+      value: 
+      objectReference: {fileID: 3179790484344420408, guid: 4ace40e96ff74544ea714d925e7d70df,
+        type: 3}
     - target: {fileID: 1889464398462158559, guid: f2fb19316583fd74d9f7f3db5add5040,
         type: 3}
       propertyPath: m_LocalPosition.x

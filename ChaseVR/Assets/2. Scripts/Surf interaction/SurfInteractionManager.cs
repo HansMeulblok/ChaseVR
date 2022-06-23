@@ -123,8 +123,12 @@ public class SurfInteractionManager : MonoBehaviour
 
         steerMoveAmount = sbMove.transform.position;
 
-        /*if (SceneManager.GetActiveScene().name != "TestingFriday")
-            ResumeSurfing();*/
+        if (SceneManager.GetActiveScene().name != "SurfExperience")
+        {
+            ResumeSurfing();
+            //waveMaterial.SetVector("_", new Vector4());
+        }
+           
     }
 
     private void Update()
@@ -137,7 +141,8 @@ public class SurfInteractionManager : MonoBehaviour
 
                 if (canPause)
                 {
-                    PauseSurfing();
+                    if (SceneManager.GetActiveScene().name == "SurfExperience")
+                        PauseSurfing();
                     canPause = false;
 
                     /*if (tutorial && SceneManager.GetActiveScene().name != "TestingFriday")
@@ -298,7 +303,7 @@ public class SurfInteractionManager : MonoBehaviour
             yield return null;
         }
 
-        if (SceneManager.GetActiveScene().name != "MainScene")
+        if (SceneManager.GetActiveScene().name == "SurfExperience")
         {
             /*if (tutorial)
                 StartCoroutine(MoveNonDominantTrigger());*/

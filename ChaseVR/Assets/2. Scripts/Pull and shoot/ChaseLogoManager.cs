@@ -18,9 +18,4 @@ public class ChaseLogoManager : MonoBehaviour
 
         args.interactorObject.transform.GetComponent<XRDirectInteractor>().interactionLayers = LayerMask.GetMask("RandomInteractables");
     }
-
-    public void Test(SelectEnterEventArgs args)
-    {
-        Debug.Log(args.interactorObject.transform.name + "      " + args.interactableObject.transform.name);
-    }
 }

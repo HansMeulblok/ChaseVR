@@ -18,8 +18,6 @@ public class ChaseLogoShoot : MonoBehaviour
 
     public InputActionAsset controls;
 
-    private Coroutine hit;
-
     private bool startExtendoPartAnimation = true;
 
     void Start()
@@ -41,6 +39,11 @@ public class ChaseLogoShoot : MonoBehaviour
 
     void Update()
     {
+        if (extendoPart.GetComponentInParent<KledingStuk>())
+        {
+            ResetExtendoPart();
+        }
+
         lineRenderer.SetPosition(0, lineStartPoint.position);
         lineRenderer.SetPosition(1, lineEndPoint.position);
     }
@@ -57,9 +60,7 @@ public class ChaseLogoShoot : MonoBehaviour
 
             if (startExtendoPartAnimation)
             {
-                
-
-                hit = StartCoroutine(ExtendoPartAnimation(hitForExtendoPart));
+                StartCoroutine(ExtendoPartAnimation(hitForExtendoPart));
                 startExtendoPartAnimation = false;
             }
         }

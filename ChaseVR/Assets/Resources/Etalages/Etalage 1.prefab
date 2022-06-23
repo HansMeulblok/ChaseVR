@@ -288,7 +288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877272886919606373}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.025, y: 0, z: 0.043}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3114175414905171923}
@@ -301,7 +301,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877272886919606373}
-  m_Mesh: {fileID: -4175931389403517748, guid: ef890809a96b1944c813baee6860af61, type: 3}
+  m_Mesh: {fileID: -4175931389403517748, guid: 4c2f4465489821a45924211b6696146e, type: 3}
 --- !u!23 &5803721909520474050
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -386,7 +386,6 @@ GameObject:
   - component: {fileID: 1849719481974506545}
   - component: {fileID: 447157168988589233}
   - component: {fileID: 1585714950270553198}
-  - component: {fileID: 4905028153685861234}
   m_Layer: 9
   m_Name: Etalage 1
   m_TagString: Etalage
@@ -594,24 +593,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 4, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4905028153685861234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3179790484344420408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 0}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &3399487874686120272
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,7 +679,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4001058594339551222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.025, y: 0, z: 0.043}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6208169732637205823}
@@ -711,7 +692,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4001058594339551222}
-  m_Mesh: {fileID: -4175931389403517748, guid: ef890809a96b1944c813baee6860af61, type: 3}
+  m_Mesh: {fileID: -4175931389403517748, guid: 4c2f4465489821a45924211b6696146e, type: 3}
 --- !u!23 &6294529785056912798
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -841,7 +822,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4225786216887847351}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.025, y: 0, z: 0.043}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4641763515859636609}
@@ -854,7 +835,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4225786216887847351}
-  m_Mesh: {fileID: -4175931389403517748, guid: ef890809a96b1944c813baee6860af61, type: 3}
+  m_Mesh: {fileID: -4175931389403517748, guid: 4c2f4465489821a45924211b6696146e, type: 3}
 --- !u!23 &1538640417352612501
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -958,7 +939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5820363858403362414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.025, y: 0, z: 0.043}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2082955249031292802}
@@ -971,7 +952,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5820363858403362414}
-  m_Mesh: {fileID: -4175931389403517748, guid: ef890809a96b1944c813baee6860af61, type: 3}
+  m_Mesh: {fileID: -4175931389403517748, guid: 4c2f4465489821a45924211b6696146e, type: 3}
 --- !u!23 &335651945331475942
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1167,7 +1148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6105023039643567626}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.025, y: 0, z: 0.043}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7101311839413549471}
@@ -1180,7 +1161,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6105023039643567626}
-  m_Mesh: {fileID: -4175931389403517748, guid: ef890809a96b1944c813baee6860af61, type: 3}
+  m_Mesh: {fileID: -4175931389403517748, guid: 4c2f4465489821a45924211b6696146e, type: 3}
 --- !u!23 &3295672740619683765
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1326,6 +1307,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3114175414905171923}
     m_Modifications:
+    - target: {fileID: 803684049089304163, guid: 6b52384a4481b3f45af64aecffe13b85,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5091835172811470472, guid: 6b52384a4481b3f45af64aecffe13b85,
         type: 3}
       propertyPath: m_RootOrder
@@ -1379,6 +1365,11 @@ PrefabInstance:
     - target: {fileID: 5091835172811470472, guid: 6b52384a4481b3f45af64aecffe13b85,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786354088416490187, guid: 6b52384a4481b3f45af64aecffe13b85,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6153051135779316411, guid: 6b52384a4481b3f45af64aecffe13b85,
@@ -1456,10 +1447,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4702686683528528185, guid: 63c4e661d5004324593089061f48b5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5585651818700980874, guid: 63c4e661d5004324593089061f48b5fe,
         type: 3}
       propertyPath: m_Name
       value: Yaya sneakers
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521147879300660001, guid: 63c4e661d5004324593089061f48b5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63c4e661d5004324593089061f48b5fe, type: 3}
@@ -1531,10 +1532,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4702686683528528185, guid: 63c4e661d5004324593089061f48b5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5585651818700980874, guid: 63c4e661d5004324593089061f48b5fe,
         type: 3}
       propertyPath: m_Name
       value: Yaya sneakers (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521147879300660001, guid: 63c4e661d5004324593089061f48b5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63c4e661d5004324593089061f48b5fe, type: 3}
@@ -1551,6 +1562,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7101311839413549471}
     m_Modifications:
+    - target: {fileID: 803684049089304163, guid: 6b52384a4481b3f45af64aecffe13b85,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5091835172811470472, guid: 6b52384a4481b3f45af64aecffe13b85,
         type: 3}
       propertyPath: m_RootOrder
@@ -1604,6 +1620,11 @@ PrefabInstance:
     - target: {fileID: 5091835172811470472, guid: 6b52384a4481b3f45af64aecffe13b85,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786354088416490187, guid: 6b52384a4481b3f45af64aecffe13b85,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6153051135779316411, guid: 6b52384a4481b3f45af64aecffe13b85,
@@ -1626,6 +1647,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4641763515859636609}
     m_Modifications:
+    - target: {fileID: 803684049089304163, guid: 6b52384a4481b3f45af64aecffe13b85,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5091835172811470472, guid: 6b52384a4481b3f45af64aecffe13b85,
         type: 3}
       propertyPath: m_RootOrder
@@ -1679,6 +1705,11 @@ PrefabInstance:
     - target: {fileID: 5091835172811470472, guid: 6b52384a4481b3f45af64aecffe13b85,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786354088416490187, guid: 6b52384a4481b3f45af64aecffe13b85,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6153051135779316411, guid: 6b52384a4481b3f45af64aecffe13b85,
@@ -1705,6 +1736,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ONLJESSIE S/S CS TOP Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564180229423410140, guid: d50283c4b54b1374aaa8192c19629009,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066002818091421148, guid: d50283c4b54b1374aaa8192c19629009,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8194108481885539993, guid: d50283c4b54b1374aaa8192c19629009,
         type: 3}
@@ -1836,10 +1877,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4702686683528528185, guid: 63c4e661d5004324593089061f48b5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5585651818700980874, guid: 63c4e661d5004324593089061f48b5fe,
         type: 3}
       propertyPath: m_Name
       value: Yaya sneakers
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521147879300660001, guid: 63c4e661d5004324593089061f48b5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63c4e661d5004324593089061f48b5fe, type: 3}
@@ -1860,6 +1911,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ONLJESSIE S_S CS TOP Brown
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331668192671834939, guid: 772ddbd98782ebb40b6bc334d5fdee51,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502237992880974503, guid: 772ddbd98782ebb40b6bc334d5fdee51,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8194108481885539993, guid: 772ddbd98782ebb40b6bc334d5fdee51,
         type: 3}
@@ -1952,6 +2013,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2572325661844546787, guid: 29bb484def5f14b4d9c605344dfd63f1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2952509928606924377, guid: 29bb484def5f14b4d9c605344dfd63f1,
         type: 3}
       propertyPath: m_RootOrder
@@ -2023,18 +2089,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -7674923503234155378, guid: 4281524044ae8ea4ea03360d036b19b8,
         type: 3}
-    m_RemovedComponents:
-    - {fileID: 2572325661844546788, guid: 29bb484def5f14b4d9c605344dfd63f1, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29bb484def5f14b4d9c605344dfd63f1, type: 3}
---- !u!1 &1122062709831470608 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2572325661844546787, guid: 29bb484def5f14b4d9c605344dfd63f1,
-    type: 3}
-  m_PrefabInstance: {fileID: 3179790485760387827}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &349467377383494826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2952509928606924377, guid: 29bb484def5f14b4d9c605344dfd63f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 3179790485760387827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1122062709831470608 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2572325661844546787, guid: 29bb484def5f14b4d9c605344dfd63f1,
     type: 3}
   m_PrefabInstance: {fileID: 3179790485760387827}
   m_PrefabAsset: {fileID: 0}
@@ -2118,10 +2183,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4702686683528528185, guid: 63c4e661d5004324593089061f48b5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5585651818700980874, guid: 63c4e661d5004324593089061f48b5fe,
         type: 3}
       propertyPath: m_Name
       value: Yaya sneakers (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521147879300660001, guid: 63c4e661d5004324593089061f48b5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63c4e661d5004324593089061f48b5fe, type: 3}
@@ -2142,6 +2217,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ONLJESSIE S_S CS TOP Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564180229423410140, guid: d50283c4b54b1374aaa8192c19629009,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066002818091421148, guid: d50283c4b54b1374aaa8192c19629009,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8194108481885539993, guid: d50283c4b54b1374aaa8192c19629009,
         type: 3}
@@ -2268,10 +2353,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4702686683528528185, guid: 63c4e661d5004324593089061f48b5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5585651818700980874, guid: 63c4e661d5004324593089061f48b5fe,
         type: 3}
       propertyPath: m_Name
       value: Yaya sneakers (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521147879300660001, guid: 63c4e661d5004324593089061f48b5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63c4e661d5004324593089061f48b5fe, type: 3}
@@ -2292,6 +2387,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ONLJESSIE S_S CS TOP Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564180229423410140, guid: d50283c4b54b1374aaa8192c19629009,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066002818091421148, guid: d50283c4b54b1374aaa8192c19629009,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8194108481885539993, guid: d50283c4b54b1374aaa8192c19629009,
         type: 3}
@@ -2363,6 +2468,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6208169732637205823}
     m_Modifications:
+    - target: {fileID: 803684049089304163, guid: 6b52384a4481b3f45af64aecffe13b85,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5091835172811470472, guid: 6b52384a4481b3f45af64aecffe13b85,
         type: 3}
       propertyPath: m_RootOrder
@@ -2418,6 +2528,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5786354088416490187, guid: 6b52384a4481b3f45af64aecffe13b85,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6153051135779316411, guid: 6b52384a4481b3f45af64aecffe13b85,
         type: 3}
       propertyPath: m_Name
@@ -2438,6 +2553,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2082955249031292802}
     m_Modifications:
+    - target: {fileID: 803684049089304163, guid: 6b52384a4481b3f45af64aecffe13b85,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3856055713853772185, guid: 6b52384a4481b3f45af64aecffe13b85,
         type: 3}
       propertyPath: m_RetainTransformParent
@@ -2503,6 +2623,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5786354088416490187, guid: 6b52384a4481b3f45af64aecffe13b85,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6153051135779316411, guid: 6b52384a4481b3f45af64aecffe13b85,
         type: 3}
       propertyPath: m_Name
@@ -2527,6 +2652,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ONLJESSIE S_S CS TOP Brown
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331668192671834939, guid: 772ddbd98782ebb40b6bc334d5fdee51,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502237992880974503, guid: 772ddbd98782ebb40b6bc334d5fdee51,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8194108481885539993, guid: 772ddbd98782ebb40b6bc334d5fdee51,
         type: 3}

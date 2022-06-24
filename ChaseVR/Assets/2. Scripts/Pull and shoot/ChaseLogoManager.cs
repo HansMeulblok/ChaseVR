@@ -18,7 +18,7 @@ public class ChaseLogoManager : MonoBehaviour
             GetComponent<XRRayInteractor>().interactionLayers = LayerMask.GetMask("Default");
         
 
-        args.interactorObject.transform.GetComponent<ShowOutlines>().OutlineHitboxLayer = LayerMask.GetMask("KledingHitbox", "Etalage");
+        args.interactorObject.transform.GetComponent<ShowOutlines>().OutlineHitboxLayer = LayerMask.GetMask("KledingHitbox");
 
         args.interactorObject.transform.GetComponent<XRDirectInteractor>().interactionLayers = LayerMask.GetMask("RandomInteractables");
     }

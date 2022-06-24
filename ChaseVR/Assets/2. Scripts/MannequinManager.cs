@@ -144,8 +144,13 @@ public class MannequinManager : MonoBehaviour
     
             foreach (Transform clothing in mannequin)
             {
-                if (TryGetComponent(out KledingStuk clothingComponent))
-                    clothing.GetComponent<Outline>().enabled = true;
+                if (clothing.TryGetComponent(out KledingStuk clothingComponent))
+                {
+                    foreach(Transform t in clothingComponent.transform)
+                    {
+                        clothing.GetComponentInChildren<Outline>().enabled = true;
+                    }
+                }                 
             }
 
             while (Vector3.Distance(mannequin.transform.position, firstWaypoint.position/*waypoints.transform.GetChild(0).transform.position*/) >= 0.2f)

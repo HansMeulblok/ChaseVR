@@ -262,7 +262,7 @@ public class SurfInteractionManager : MonoBehaviour
 
                 break;
         }
-
+        
         if (isPlaying && SceneManager.GetActiveScene().name == "SurfExperience")
         {
             HeadSteer();

@@ -28,7 +28,7 @@ public class ClothesTags : MonoBehaviour
     private void OnTriggerEnter(Collider clothes)
     {
         //Debug.Log($"({Clothes.name}, enter) parent: {Clothes.transform.parent?.name ?? "none"}");
-        if (clothes.TryGetComponent(typeof (KledingStuk), out Component kledingStuk))
+        if (clothes.TryGetComponent(typeof (KledingStuk), out Component kledingStuk) && KledingManager.Instance.rightRayInteractor.GetComponent<XRRayInteractor>().interactablesSelected.Count == 0)
         {
             switch (clothes.GetComponent<KledingStuk>().typeKleding)
             {

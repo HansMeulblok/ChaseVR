@@ -228,10 +228,15 @@ public class SurfInteractionManager : MonoBehaviour
                     rightDominant = false;
                 }
 
-                if (!isPlaying)
+                if (!isPlaying || SceneManager.GetActiveScene().name != "SurfExperience")
                     canTriggerRight = true;
 
-                if (stateBothHands == StateBothHands.BothHandsOutTrigger && !isPlaying)
+                if (SceneManager.GetActiveScene().name != "SurfExperience" &&
+                    stateBothHands == StateBothHands.BothHandsOutTrigger)
+                    SetTriggerMaterial(triggersMeshRenderers[1], surfTriggerIncorrectRight);
+                
+                if (SceneManager.GetActiveScene().name == "SurfExperience" && 
+                    stateBothHands == StateBothHands.BothHandsOutTrigger && !isPlaying)
                     SetTriggerMaterial(triggersMeshRenderers[1], surfTriggerIncorrectRight);
 
                 if (rightHandCoroutine != null)

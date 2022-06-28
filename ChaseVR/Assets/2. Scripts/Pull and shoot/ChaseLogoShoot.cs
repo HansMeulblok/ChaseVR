@@ -39,13 +39,13 @@ public class ChaseLogoShoot : MonoBehaviour
 
     void Update()
     {
-        if (extendoPart.GetComponentInParent<KledingStuk>())
+        lineRenderer.SetPosition(0, lineStartPoint.position);
+        lineRenderer.SetPosition(1, lineEndPoint.position);
+
+        if (extendoPart.GetComponentInParent<KledingStuk>() || extendoPart.GetComponentInParent<BlokEtalage>())
         {
             ResetExtendoPart();
         }
-
-        lineRenderer.SetPosition(0, lineStartPoint.position);
-        lineRenderer.SetPosition(1, lineEndPoint.position);
     }
 
     public void ShootExtendoPart(InputAction.CallbackContext context)
@@ -75,7 +75,7 @@ public class ChaseLogoShoot : MonoBehaviour
         extendoPart.transform.position = hitForExtendoPart.point;
         extendoPart.transform.SetParent(hitForExtendoPart.collider.gameObject.transform, true);
 
-        while (Vector3.Distance(lineStartPoint.position, lineEndPoint.position) > 0.1f &&
+        while (Vector3.Distance(lineStartPoint.position, lineEndPoint.position) > 0.5f &&
                Vector3.Dot((lineEndPoint.position - lineStartPoint.position), -logoBase.up) > 0)
         {
             yield return null;

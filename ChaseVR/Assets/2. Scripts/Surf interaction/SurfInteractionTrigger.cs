@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SurfInteractionTrigger : MonoBehaviour
 {
@@ -57,7 +58,7 @@ public class SurfInteractionTrigger : MonoBehaviour
             SurfInteractionManager.Instance.stateRightHand = SurfInteractionManager.StateRightHand.RightOutTrigger;
         }
 
-        if (SurfInteractionManager.Instance.interaction)
+        if (SurfInteractionManager.Instance.interaction && SceneManager.GetActiveScene().name == "SurfExperience")
         {
             if ((/*SurfInteractionManager.Instance.stateLeftHand == SurfInteractionManager.StateLeftHand.LeftOutTrigger ||*/
             SurfInteractionManager.Instance.stateRightHand == SurfInteractionManager.StateRightHand.RightOutTrigger) &&
@@ -75,6 +76,23 @@ public class SurfInteractionTrigger : MonoBehaviour
                     SurfInteractionManager.Instance.stateBothHands = SurfInteractionManager.StateBothHands.BothHandsOutTrigger;
                 }
             }
-        }       
+        }
+        else if (SurfInteractionManager.Instance.interaction && SceneManager.GetActiveScene().name != "SurfExperience")
+        {
+            if (SurfInteractionManager.Instance.stateRightHand == SurfInteractionManager.StateRightHand.RightOutTrigger)
+            {
+                SurfInteractionManager.Instance.stateBothHands = SurfInteractionManager.StateBothHands.BothHandsOutTrigger;
+            }
+
+            if (SurfInteractionManager.Instance.allInteraction)
+            {
+                if (SurfInteractionManager.Instance.stateLeftHand == SurfInteractionManager.StateLeftHand.LeftOutTrigger &&
+                    SurfInteractionManager.Instance.stateRightHand == SurfInteractionManager.StateRightHand.RightOutTrigger &&
+                    SurfInteractionManager.Instance.isPlaying)
+                {
+                    SurfInteractionManager.Instance.stateBothHands = SurfInteractionManager.StateBothHands.BothHandsOutTrigger;
+                }
+            }
+        }
     }
 }

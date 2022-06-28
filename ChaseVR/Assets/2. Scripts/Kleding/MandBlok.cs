@@ -48,7 +48,6 @@ public class MandBlok : MonoBehaviour
 
 
         clothing.GetComponent<Rigidbody>().useGravity = true;
-        //clothing.GetComponent<BoxCollider>().isTrigger = false;
         clothing.GetComponent<XRGrabInteractable>().enabled = true;
     }
 
@@ -64,9 +63,8 @@ public class MandBlok : MonoBehaviour
             }
         }
 
+        //clothing.GetComponent<XRGrabInteractable>().enabled = false;
         clothing.GetComponent<Rigidbody>().useGravity = false;
-        //clothing.GetComponent<BoxCollider>().isTrigger = false;
-        clothing.GetComponent<XRGrabInteractable>().enabled = false;
     }
 
     public string GetItemName(int clothingName, KledingStuk.TypeKleding typeKleding)

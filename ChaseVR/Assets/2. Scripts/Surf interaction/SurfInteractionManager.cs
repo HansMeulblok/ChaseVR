@@ -442,7 +442,7 @@ public class SurfInteractionManager : MonoBehaviour
 
         steerMoveAmount.x = sbMove.transform.position.x;
         steerMoveAmount.y = sbMove.transform.position.y;
-        steerMoveAmount.z = Mathf.Clamp(sbMove.transform.position.z + (SteerAngleLeftAndRight() - 90f) * 0.005f, -80f, -20f);
+        steerMoveAmount.z = Mathf.Clamp(sbMove.transform.position.z + (SteerAngleLeftAndRight() - 90f) * 0.005f, -70f, -20f);
         
 
         sbMove.transform.position = steerMoveAmount;

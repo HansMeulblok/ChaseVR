@@ -1,4 +1,4 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -58,15 +58,12 @@ public class KledingManager : MonoBehaviour
                 else
                     FlipValuesForShoes(kledingArtikel);
 
-                //Debug.Log("changed to opgevouwen");
-
                 break;
 
             case KledingStuk.KledingStaten.statisch:
 
                 kledingArtikel.layer = LayerMask.NameToLayer("Default");
 
-                //Debug.Log("changed to statisch");
                 if (kledingArtikel.GetComponent<KledingStuk>().typeKleding != KledingStuk.TypeKleding.schoenen)
                     FlipValuesForStateSwitch(kledingArtikel);
                 else

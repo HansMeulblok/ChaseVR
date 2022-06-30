@@ -59358,7 +59358,7 @@ PrefabInstance:
     - target: {fileID: 6319320020116468438, guid: f5ce58de286d69d419b733a2144b26de,
         type: 3}
       propertyPath: OutlineHitboxLayer.m_Bits
-      value: 0
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 6871378270459924686, guid: f5ce58de286d69d419b733a2144b26de,
         type: 3}

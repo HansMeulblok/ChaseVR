@@ -38,7 +38,6 @@ public class SurfBoardMovement : MonoBehaviour
         waveMaterial.SetFloat("_TimeValue", 12);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         shaderSpeed = waveMaterial.GetFloat("_DeltaSpeed");
@@ -49,21 +48,19 @@ public class SurfBoardMovement : MonoBehaviour
             if (transform.position.x <= 75f)
             {
                 transform.position += Vector3.right * surfBoardSpeed;
-                transform.position = new Vector3(transform.position.x, transform.position.y/*Mathf.Lerp(1.38f, 0.2f, t)*/, transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             }
             else if (transform.position.x >= 75f)
             {
                 SceneManager.LoadScene(finalEnvironment);
             }
 
-            waveMaterial.SetVector("_SurfBoardPos", transform.position);
-
-            //t += 0.2f * Time.deltaTime;
+           
 
 
             timeValue += Time.deltaTime;
 
-
+            waveMaterial.SetVector("_SurfBoardPos", transform.position);
             waveMaterial.SetFloat("_TimeValue", timeValue);
         }
     }

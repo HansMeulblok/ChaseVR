@@ -1858,6 +1858,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ONLMALIA S_L TOP JRS BESTSELL blauw
       objectReference: {fileID: 0}
+    - target: {fileID: 1828405061197421216, guid: 685d1002b318ed84a8b705877b526d59,
+        type: 3}
+      propertyPath: outlineColor.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8194108481885539993, guid: 685d1002b318ed84a8b705877b526d59,
         type: 3}
       propertyPath: m_RootOrder
@@ -2103,6 +2108,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ONLMALIA S_L TOP JRS BESTSELL blauw
       objectReference: {fileID: 0}
+    - target: {fileID: 1828405061197421216, guid: 685d1002b318ed84a8b705877b526d59,
+        type: 3}
+      propertyPath: outlineColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259640398637419135, guid: 685d1002b318ed84a8b705877b526d59,
+        type: 3}
+      propertyPath: outlineColor.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8194108481885539993, guid: 685d1002b318ed84a8b705877b526d59,
         type: 3}
       propertyPath: m_RootOrder
@@ -2328,6 +2343,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ONLMALIA S_L TOP JRS BESTSELL roze
       objectReference: {fileID: 0}
+    - target: {fileID: 1828405061197421216, guid: c8a00d523f0ca81428084630201b9bc4,
+        type: 3}
+      propertyPath: outlineColor.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8194108481885539993, guid: c8a00d523f0ca81428084630201b9bc4,
         type: 3}
       propertyPath: m_RootOrder
@@ -2402,6 +2422,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ONLMALIA S_L TOP JRS BESTSELL zwart
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828405061197421216, guid: 84138b5f84ba31747b619e8dcabe354b,
+        type: 3}
+      propertyPath: outlineColor.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8194108481885539993, guid: 84138b5f84ba31747b619e8dcabe354b,
         type: 3}
@@ -2552,6 +2577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ONLMALIA S_L TOP JRS BESTSELL zwart
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828405061197421216, guid: 84138b5f84ba31747b619e8dcabe354b,
+        type: 3}
+      propertyPath: outlineColor.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8194108481885539993, guid: 84138b5f84ba31747b619e8dcabe354b,
         type: 3}

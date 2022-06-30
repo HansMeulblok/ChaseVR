@@ -74,8 +74,8 @@ Shader "Custom/TrochoidalWaveShader"
         
             _Radius = clamp(_Radius, 0.1, 2);
 
-            _RotatedOffset.x = sin((_TimeValue * _DeltaSpeed + _WorldSpace.x * _Offset)/* + _Translation*/) * _Radius;
-            _RotatedOffset.y = cos(/*1.2 **/ (_TimeValue * _DeltaSpeed + _WorldSpace.x * _Offset) /*+ _Translation*/) * _Radius;
+            _RotatedOffset.x = sin((_TimeValue * _DeltaSpeed + _WorldSpace.x * _Offset)) * _Radius;
+            _RotatedOffset.y = cos( (_TimeValue * _DeltaSpeed + _WorldSpace.x * _Offset) ) * _Radius;
             v.vertex.xyz += mul(unity_WorldToObject, _RotatedOffset);
             
         }

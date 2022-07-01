@@ -156,10 +156,6 @@ public class AudioManager : MonoBehaviour
 		// Checks and matches the enum in the method parameter to one of the clips in the Resource/Sounds/ folder.
 		AudioClip toBePlayedClip = audioClips.Where(clip => clip.name.Contains(clipName.ToString())).FirstOrDefault();
 
-		/*musicSource1.clip = toBePlayedClip;
-		musicSource1.volume = musicVolume;
-		musicSource1.Play();*/
-
 		// and starts the coroutine for fading the music
 		StartCoroutine(FadeMusic(clipName, toBePlayedClip));
 	}
@@ -173,15 +169,6 @@ public class AudioManager : MonoBehaviour
     private IEnumerator FadeMusic(clips clipName, AudioClip toBePlayedClip)
     {
         timeElapsed = 0f;
-
-		/*while (timeElapsed < timeToFade)
-		{
-			musicSource1.volume = Mathf.Lerp(0, musicVolume, timeElapsed / timeToFade);
-
-			timeElapsed += Time.deltaTime;
-			yield return null;
-		}*/
-
 
         if (clipName == clips.BeachSound)
         {

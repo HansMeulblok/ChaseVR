@@ -133,8 +133,6 @@ public class SurfInteractionManager : MonoBehaviour
 
     private void Update()
     {
-        //waveMaterial.SetFloat("_DeltaTimeSpeedValue", waveMaterial.GetFloat("_TimeValue") * waveMaterial.GetFloat("_DeltaSpeed"));
-
         switch (stateBothHands)
         {
             case StateBothHands.BothHandsOutTrigger:
@@ -144,12 +142,6 @@ public class SurfInteractionManager : MonoBehaviour
                     if (SceneManager.GetActiveScene().name == "SurfExperience")
                         PauseSurfing();
                     canPause = false;
-
-                    /*if (tutorial && SceneManager.GetActiveScene().name != "TestingFriday")
-                    {
-                        AudioManager.Instance.Play(AudioManager.clips.NonDominantHandAudioQueue, 
-                                                   AudioManager.Instance.GetPooledAudioSourceObject().GetComponent<AudioSource>());
-                    }*/
                 }
 
                 break;
@@ -167,56 +159,7 @@ public class SurfInteractionManager : MonoBehaviour
 
                 break;
         }
-        /*
-                switch (stateLeftHand)
-                {
-                    case StateLeftHand.LeftOutTrigger:
-
-                        ResetTriggerAlpha(0);
-
-                        if ((rightDominant || leftDominant) && tutorial)
-                        {
-                            leftDominant = false;
-                        }
-
-
-                        if (!isPlaying)
-                            canTriggerLeft = true;
-
-                        if (stateBothHands == StateBothHands.BothHandsOutTrigger && !isPlaying)
-                            SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerIncorrectLeft);
-
-                        if (leftHandCoroutine != null)
-                            StopCoroutine(leftHandCoroutine);
-
-                        break;
-
-                    case StateLeftHand.LeftInTrigger:
-
-
-                        if (!rightDominant && !leftDominant)
-                        {
-                            SetDominantHand(0);
-                        }
-
-                        if (canTriggerLeft)
-                        {
-                            SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerCorrectLeft);
-                            leftHandCoroutine = StartCoroutine(TriggerTimer(timerTime, handInteractionTriggers[0].transform));
-
-                            canTriggerLeft = false;
-                        }
-
-                        break;
-
-                    default:
-
-                        SetTriggerMaterial(triggersMeshRenderers[0], surfTriggerIncorrectLeft);
-
-                        break;
-                }*/
-
-
+        
         switch (stateRightHand)
         {
             case StateRightHand.RightOutTrigger:
@@ -245,11 +188,6 @@ public class SurfInteractionManager : MonoBehaviour
                 break;
 
             case StateRightHand.RightInTrigger:
-
-                /*if (!rightDominant && !leftDominant)
-                {
-                    SetDominantHand(1);
-                }*/
 
                 if (canTriggerRight)
                 {
@@ -290,7 +228,6 @@ public class SurfInteractionManager : MonoBehaviour
         }
 
         triggerTransform.GetChild(0).gameObject.SetActive(false);
-        //color = triggerTransform.GetComponent<MeshRenderer>().material.color;
 
         while (t < timerTime) 
         {
@@ -310,9 +247,6 @@ public class SurfInteractionManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "SurfExperience")
         {
-            /*if (tutorial)
-                StartCoroutine(MoveNonDominantTrigger());*/
-
             if (stateBothHands == StateBothHands.BothHandsInTrigger && !isPlaying)
             {
                 ResumeSurfing();
@@ -346,24 +280,12 @@ public class SurfInteractionManager : MonoBehaviour
     {
         isPlaying = false;
 
-        //waveMaterial.SetFloat("_DeltaSpeed", 0.2f);
-        //waveMaterial.SetFloat("_Translation", -3f);
-
-        //sbMove.timeValue -= 2f;
-        //sbMove.transform.position += Vector3.left * translationFactor;
-
         sbMove.playing = isPlaying;
     }
 
     public void ResumeSurfing()
     {
         isPlaying = true;
-
-        //waveMaterial.SetFloat("_DeltaSpeed", 1.8f);
-        //waveMaterial.SetFloat("_Translation", 2f);
-
-        //sbMove.timeValue += translationFactor;
-        //sbMove.transform.position += Vector3.left * translationFactor;//new Vector3();
 
         sbMove.playing = isPlaying;
     }
@@ -383,62 +305,6 @@ public class SurfInteractionManager : MonoBehaviour
         handInteractionTriggers[i].transform.GetChild(0).gameObject.SetActive(true);
     }
 
-    public void SetDominantHand(int i)
-    {
-        if (i == 0)
-            leftDominant = true;
-        else if (i == 1)
-            rightDominant = true;
-    }
-
-    public IEnumerator MoveNonDominantTrigger()
-    {
-        tutorial = false;
-
-        if (leftDominant)
-        {
-            float t = 0;          
-
-            while (t < triggerMoveTime)
-            {
-                canTriggerRight = false;
-                handInteractionTriggers[1].transform.GetChild(0).gameObject.SetActive(false);
-
-                handInteractionTriggers[1].transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, new Vector3(0, 1, 0), triggerMoveSpeed);
-
-                t += Time.deltaTime;
-
-                yield return null;
-            }
-
-            canTriggerRight = true;
-            handInteractionTriggers[1].transform.GetChild(0).gameObject.SetActive(true);
-
-            //AudioManager.Instance.Play(AudioManager.clips.DominantHandAudioQueue, AudioManager.Instance.GetPooledAudioSourceObject().GetComponent<AudioSource>());
-        }
-        else if (rightDominant)
-        {
-            float t = 0;
-
-            while (t < triggerMoveTime)
-            {
-                canTriggerLeft = false;
-                handInteractionTriggers[0].transform.GetChild(0).gameObject.SetActive(false);
-
-                handInteractionTriggers[0].transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, new Vector3(0, 1, 0), -triggerMoveSpeed);
-
-                t += Time.deltaTime;
-
-                yield return null;
-            }
-
-            canTriggerLeft = true;
-            handInteractionTriggers[0].transform.GetChild(0).gameObject.SetActive(true);
-
-            //AudioManager.Instance.Play(AudioManager.clips.NonDominantHandAudioQueue, AudioManager.Instance.GetPooledAudioSourceObject().GetComponent<AudioSource>());
-        }
-    }
-
     public void HeadSteer()
     {
         sbMove.transform.GetChild(2).rotation = Quaternion.Euler(SteerAngleUpAndDown() + 90f,
@@ -455,17 +321,11 @@ public class SurfInteractionManager : MonoBehaviour
 
     private float SteerAngleUpAndDown()
     {
-        //return Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position/*, Vector3.forward*/);
-        //Debug.Log(Vector3.SignedAngle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).forward, Vector3.forward));
-
         return Vector3.SignedAngle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).forward, Vector3.forward);
     }
 
     private float SteerAngleLeftAndRight()
     {
-        //return Vector3.Angle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).position/*, Vector3.forward*/);
-        //Debug.Log(Vector3.SignedAngle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).up, Vector3.up));
-
         float angle = Vector3.SignedAngle(Camera.main.transform.position - sbMove.transform.GetChild(0).position, sbMove.transform.GetChild(0).up, Vector3.up);
 
         if(angle < 0)
